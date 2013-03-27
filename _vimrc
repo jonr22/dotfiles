@@ -16,8 +16,7 @@ set nowrap
 "Indenting
 set tabstop=4
 set expandtab
-set autoindent
-set smartindent
+set cindent
 set shiftwidth=4
 
 "Folding
@@ -27,8 +26,6 @@ set foldcolumn=5
 set foldlevel=5
 
 "Colors
-"syntax on
-"colorscheme elflord
 syntax enable
 set background=dark
 let g:solarized_italic=0
@@ -37,7 +34,6 @@ colorscheme solarized
 "AutoCompletion
 filetype plugin on
 set ofu=syntaxcomplete#Complete
-"set tags+=$HOME\vimfiles\tagfiles\vc_include
 map <F10> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F12> :set tags+=C:\code\sandbox\BATCH_NORTHAMERICA\Applications\tags<CR>
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f C:\code\sandbox\BATCH_NORTHAMERICA\Applications\tags C:\code\sandbox\BATCH_NORTHAMERICA\Applications<CR>
