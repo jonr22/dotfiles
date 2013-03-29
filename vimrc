@@ -1,8 +1,17 @@
 set nocompatible
+if has("win32")
+    source $VIMRUNTIME/mswin.vim
 
-"Hide toolbar in gui
-set guioptions-=T
-au VimEnter * if expand('%') != "" | cd %:h | endif
+    "For Work
+    map <F12> :set tags+=C:\code\sandbox\BATCH_NORTHAMERICA\Applications\tags<CR>
+    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f C:\code\sandbox\BATCH_NORTHAMERICA\Applications\tags C:\code\sandbox\BATCH_NORTHAMERICA\Applications<CR>
+endif
+
+if has("gui_running")
+    "Hide toolbar in gui
+    set guioptions-=T
+    autocmd VimEnter * if expand('%') != "" | cd %:h | endif
+endif
 
 "Pathogen
 execute pathogen#infect()
@@ -30,6 +39,7 @@ set foldlevel=5
 syntax enable
 set background=dark
 let g:solarized_italic=0
+set t_Co=16
 colorscheme solarized
 set encoding=utf-8
 
