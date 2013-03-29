@@ -1,5 +1,9 @@
 set nocompatible
 
+"Hide toolbar in gui
+set guioptions-=T
+au VimEnter * if expand('%') != "" | cd %:h | endif
+
 "Pathogen
 execute pathogen#infect()
 
