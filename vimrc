@@ -11,6 +11,10 @@ if has("gui_running")
     "Hide toolbar in gui
     set guioptions-=T
     autocmd VimEnter * if expand('%') != "" | cd %:h | endif
+
+    "set window size
+    set lines=36
+    set columns=120
 endif
 
 "Pathogen
