@@ -74,7 +74,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 map <F2> :NERDTreeToggle<CR>
 
 "Taglist
-map <F3> :TlistToggle<CR>
+map <F3> :TagbarToggle<CR>
 
 "Powerline
 set laststatus=2 "Always show the statusline
