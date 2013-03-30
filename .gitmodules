@@ -43,3 +43,6 @@
 [submodule "vim/bundle/omnicppcomplete"]
 	path = vim/bundle/omnicppcomplete
 	url = https://github.com/vim-scripts/OmniCppComplete
+[submodule "vim/bundle/tabbar"]
+	path = vim/bundle/tabbar
+	url = https://github.com/jordanchen/tabbar.vim
