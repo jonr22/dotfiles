@@ -12,9 +12,9 @@ if has("win32")
     map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f C:\code\sandbox\BATCH_NORTHAMERICA\Applications\tags C:\code\sandbox\BATCH_NORTHAMERICA\Applications<CR>
  
     "SingleCompile (use singlecompile on windows, as syntastic and :make don't work well
-    map <F4> :cope<CR>
     map <F5> :SCCompileRun<CR>
-    map <F7> :SCCompile<CR>
+    map <F6> :SCCompile<CR>
+    map <F7> :cope<CR>
 else "unix/linux/mac
     "Syntastic
     let g:syntastic_c_checkers = ['gcc']
@@ -62,7 +62,7 @@ let g:solarized_italic=0
 set t_Co=16
 colorscheme solarized
 set encoding=utf-8
-call togglebg#map("<leader>s") "Toggle light/dark colors with <leader>s
+call togglebg#map("<F12>") "Toggle light/dark colors with <leader>s
 
 "AutoCompletion
 filetype plugin on
@@ -81,5 +81,5 @@ set laststatus=2 "Always show the statusline
 let g:Powerline_colorscheme = 'solarized256'
 
 "MiniBufExpl
-map <F4> <leader>mbt<CR>
+nmap <F4> <leader>mbt<CR>
 
