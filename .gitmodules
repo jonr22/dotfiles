@@ -46,3 +46,6 @@
 [submodule "vim/bundle/tabbar"]
 	path = vim/bundle/tabbar
 	url = https://github.com/jordanchen/tabbar.vim
+[submodule "vim/bundle/bufexplorer"]
+	path = vim/bundle/bufexplorer
+	url = https://github.com/corntrace/bufexplorer.git
