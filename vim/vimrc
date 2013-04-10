@@ -55,6 +55,15 @@ set foldmethod=syntax
 set foldcolumn=5
 set foldlevel=5
 
+"AutoCompletion
+filetype plugin on
+set ofu=syntaxcomplete#Complete
+map <F10> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+"Cleanup trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 "Theme
 syntax enable
 set background=dark
@@ -63,12 +72,6 @@ set t_Co=16
 colorscheme solarized
 set encoding=utf-8
 call togglebg#map("<F12>") "Toggle light/dark colors with <leader>s
-
-"AutoCompletion
-filetype plugin on
-set ofu=syntaxcomplete#Complete
-map <F10> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "NERDTree
 map <F2> :NERDTreeToggle<CR>
