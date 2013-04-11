@@ -69,6 +69,12 @@ set t_Co=16
 colorscheme solarized
 set encoding=utf-8
 call togglebg#map("<F12>") "Toggle light/dark colors with <leader>s
+"RainbowParentheses
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
+map <F11> :RainbowParenthesesToggle<CR>
 
 "NERDTree
 map <F2> :NERDTreeToggle<CR>
