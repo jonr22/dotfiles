@@ -80,6 +80,3 @@ map <F3> :TagbarToggle<CR>
 set laststatus=2 "Always show the statusline
 let g:Powerline_colorscheme = 'solarized256'
 
-"MiniBufExpl
-nmap <F4> <leader>mbt<CR>
-
