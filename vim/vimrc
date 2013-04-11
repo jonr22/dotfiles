@@ -5,12 +5,6 @@ execute pathogen#infect()
 
 "Windows specific stuff
 if has("win32")
-    source $VIMRUNTIME/mswin.vim
-
-    "For Work
-    map <F12> :set tags+=C:\code\sandbox\BATCH_NORTHAMERICA\Applications\tags<CR>
-    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f C:\code\sandbox\BATCH_NORTHAMERICA\Applications\tags C:\code\sandbox\BATCH_NORTHAMERICA\Applications<CR>
- 
     "SingleCompile (use singlecompile on windows, as syntastic and :make don't work well
     map <F5> :SCCompileRun<CR>
     map <F6> :SCCompile<CR>
@@ -23,6 +17,9 @@ endif
 
 "GUI specific stuff
 if has("gui_running")
+    "add windows key behaviors for guis on any system
+    source $VIMRUNTIME/mswin.vim
+
     "Hide toolbar in gui
     set guioptions-=T
 
