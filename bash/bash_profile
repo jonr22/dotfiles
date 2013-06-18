@@ -1,3 +1,7 @@
+# Work specific stuff
+export CA_DATA=/home/jon/Developer/product/Data/CA
+export IST_LICENSES=/home/jon/Developer/product/lic
+
 #export C_INCLUDE_PATH=$HOME/Developer/include
 
 # Set these as appropriate
