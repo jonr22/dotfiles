@@ -48,6 +48,8 @@ set cindent
 
 "Ruby Specific indenting
 autocmd Filetype ruby,eruby setlocal tabstop=2 shiftwidth=2
+"html specific indenting
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2
 
 "Folding
 set foldenable
