@@ -3,10 +3,6 @@ set nocompatible
 "Pathogen
 execute pathogen#infect()
 
-"Syntastic
-let g:syntastic_c_checkers = ['gcc']
-let g:syntastic_auto_loc_list=1
-
 "GUI specific stuff
 if has("gui_running")
     "add windows key behaviors for guis on any system
@@ -78,6 +74,12 @@ colorscheme solarized
 set encoding=utf-8
 call togglebg#map("<F9>")   "Toggle light/dark colors with <leader>s
 set hlsearch                "highligh searches
+
+"Syntastic - C
+let g:syntastic_c_checkers = ['gcc']
+let g:syntastic_auto_loc_list=1
+"Syntastic - Ruby
+let g:syntastic_ruby_exec = '$HOME/.rvm/rubies/ruby-1.9.3-p429/bin/ruby'
 
 "NERDTree
 map <F2> :NERDTreeToggle<CR>
