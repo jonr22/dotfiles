@@ -8,12 +8,12 @@ execute pathogen#infect()
 if has("gui_running")
 
   if has('win32')
-    "add windows key behaviors for guis on any system
+    "add windows key behaviors for windows gui
     source $VIMRUNTIME/mswin.vim
   endif
 
-  set guioptions-=T " Hide toolbar in gui
-  set guioptions+=b " Show bottom scroll bar
+  set guioptions-=T " hide toolbar in gui
+  set guioptions+=b " show bottom scroll bar
 
   " set window size
   set lines=36
@@ -21,22 +21,26 @@ if has("gui_running")
 endif
 
 " General
-set autoread " reload files when changed on disk, i.e. via `git checkout`
-set history=1000
-set tabpagemax=50
+set autoread          " reload files when changed on disk, i.e. via `git checkout`
+set history=1000      " remember commands
+set tabpagemax=50     " maximum number of tab pages
+set nrformats-=octal  " remove octal from <C-A> incrementing
 
-set backspace=indent,eol,start
-set complete-=i
-set showmatch
-set smarttab
+set encoding=utf-8    " set file encoding
+set fileformats+=mac  " default to mac EOLs
 
-set nrformats-=octal
-set shiftround
+set laststatus=2      " always show status bar
+set noshowmode        " use airline to show the mode
+set showmatch         " show matching brackets
+set showcmd           " show incomplete commands
+set wildmenu          " show command line completion
+
+set backspace=indent,eol,start  " ???
+set complete-=i                 " ???
+
+" wait 50ms for keycodes
 set ttimeout
 set ttimeoutlen=50
-
-set fileformats+=mac
-set encoding=utf-8
 
 " no backup
 set nobackup
@@ -44,10 +48,12 @@ set nowritebackup
 set noswapfile
 
 " Indenting
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set autoindent
+set tabstop=2     " tab is 2 spaces
+set shiftwidth=2  " auto-indent and >,< use 2 spaces
+set shiftround    " always round >,< tabs to shiftwidth location
+set expandtab     " expand tabs to spaces
+set autoindent    " automatically do indenting
+set smarttab      " <BS> will delete shiftwidth worth of space at start of line
 
 " Folding
 " set foldenable
@@ -56,86 +62,84 @@ set autoindent
 " set foldlevel=5
 
 " Theme
-syntax enable
-set number
-set nowrap
-set background=dark
-let g:solarized_italic=0
-colorscheme solarized
-call togglebg#map("<F9>")   " Toggle light/dark colors with <leader>s
+syntax enable             " enable syntax highlighting
+set number                " show line numbers
+set nowrap                " don't wrap overflow text
+set background=dark       " background is dark
+let g:solarized_italic=0  " solarized italics don't look good
+colorscheme solarized     " use solarized colors
+call togglebg#map("<F9>") " Toggle light/dark colors with <leader>s
 
-set laststatus=2 " always show status bar
-set ruler        " always show cursor position
-set showcmd      " show incomplete commands
-set wildmenu
-
-" Open new split panes to right and bottom, which feels more natural
+" open new split panes to right and bottom
 set splitbelow
 set splitright
 
-" Always show some margin space
-if !&scrolloff
-  set scrolloff=1
-endif
-if !&sidescrolloff
-  set sidescrolloff=5
-endif
-set display+=lastline
+" always show some margin space
+set scrolloff=1       " always show a line above and below the cursor
+set sidescrolloff=5   " always show 5 colums to the right of the cursor
+set display+=lastline " ???
 
 " Highlight searching
-set hlsearch                " highligh searches
-set incsearch
+set hlsearch    " highlight searches
+set incsearch   " show matches as search is being typed
+" ctrl-N unhighlights
 nnoremap <silent> <C-N> :nohlsearch<CR><C-N>
 
-" keyboard shortcuts
+" Keyboard shortcuts
 let mapleader = ','
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <leader>l :Align
-nmap <leader>a :Ack
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>d :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
-nmap <leader>t :CtrlP<CR>
-nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
-nmap <leader>] :TagbarToggle<CR>
-" nmap <leader><space> :call whitespace#strip_trailing()<CR>
-nmap <leader>g :GitGutterToggle<CR>
+
+map <C-h> <C-w>h  " move left a window
+map <C-j> <C-w>j  " move down a window
+map <C-k> <C-w>k  " move up a window
+map <C-l> <C-w>l  " move right a window
+
+map <leader>l :Align                          " align text blocks on a symbol
+nmap <leader>a :Ack                           " grep replacement
+nmap <leader>d :NERDTreeToggle<CR>            " toggle file browser
+nmap <leader>f :NERDTreeFind<CR>              " find current file in file browser
+nmap <leader>t :CtrlP<CR>                     " fuzzy file searching
+nmap <leader>b :CtrlPBuffer<CR>               " fuzzy file searching in current buffers
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR> " clear fuzzy file searching cache
+nmap <leader>] :TagbarToggle<CR>              " toggle ctag browser
+nmap <leader>g :GitGutterToggle<CR>           " toggle git diff markers in gutter
+
 " rails naviagion
-nmap <leader>v :Eview<CR>
-nmap <leader>c :Econtroller<CR>
-nmap <leader>m :Emodel<CR>
-" set vimrc path appropriately
+nmap <leader>v :Eview<CR>         " navigate to rails view file
+nmap <leader>c :Econtroller<CR>   " naviagte to rails controller file
+nmap <leader>m :Emodel<CR>        " navigate to rails model file
+
+" set vimrc path appropriately, and set command to reload vimrc
 if has('win32')
   map <silent> <leader>V :source ~/_vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 else
   map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 endif
+" nmap <leader><space> :call whitespace#strip_trailing()<CR>
 
-" plugin settings
-let g:ctrlp_match_window = 'order:ttb,max:20'
-let g:NERDSpaceDelims=1
-let g:gitgutter_enabled = 0
-let g:Powerline_colorscheme = 'solarized256'
-let g:syntastic_check_on_open=1
+" Plugin settings
+let g:ctrlp_match_window = 'order:ttb,max:20'   " ???
+let g:NERDSpaceDelims=1                         " ???
+let g:gitgutter_enabled=0                       " git gutter disabled by default
+let g:syntastic_check_on_open=1                 " use syntastic to check file on open
+let g:airline_section_b = '%{fugitive#head()}'  " set airline's second section to git branch
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" use silver searcher, when available
 if executable('ag')
   let g:ackprg = 'ag --nogroup --column'
 
-  " Use Ag over Grep
+  " use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
 " Autocommands
-autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
-autocmd BufWritePre * :%s/\s\+$//e " Cleanup trailing whitespace on save
-autocmd BufRead,BufNewFile *.fdoc set filetype=yaml " fdoc is yaml
+autocmd VimResized * :wincmd =      " automatically rebalance windows on vim resize
+autocmd BufWritePre * :%s/\s\+$//e  " Cleanup trailing whitespace on save
+
+" add filetype mappings
+autocmd BufRead,BufNewFile *.fdoc set filetype=yaml   " fdoc is yaml
 autocmd BufRead,BufNewFile *.md set filetype=markdown " md is markdown
 
 " extra rails.vim help
@@ -146,7 +150,10 @@ autocmd User Rails silent! Rnavcommand job            app/jobs                  
 autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
 autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
 
-" don't use rvm on window
+
+" Extra
+
+" don't use rvm on windows
 if !has('win32')
   autocmd BufEnter * Rvm
 endif
@@ -159,11 +166,11 @@ if &listchars ==# 'eol:$'
   endif
 endif
 
-" Allow color schemes to do bright colors without forcing bold.
+" allow color schemes to do bright colors without forcing bold.
 if &t_Co == 8 && $TERM !~# '^linux'
   set t_Co=16
 endif
 
-" Make Y consistent with C and D.  See :help Y.
+" make Y consistent with C and D.  See :help Y.
 nnoremap Y y$
 
