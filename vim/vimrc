@@ -6,25 +6,22 @@ execute pathogen#infect()
 
 " GUI specific stuff
 if has("gui_running")
+
+  if has('win32')
     "add windows key behaviors for guis on any system
-    "source $VIMRUNTIME/mswin.vim
+    source $VIMRUNTIME/mswin.vim
+  endif
 
-    " Hide toolbar in gui
-    set guioptions-=T
+  set guioptions-=T " Hide toolbar in gui
+  set guioptions+=b " Show bottom scroll bar
 
-    " Show bottom scroll bar
-    set guioptions+=b
-
-    " set window size
-    set lines=36
-    set columns=120
+  " set window size
+  set lines=36
+  set columns=120
 endif
 
 " General
 set autoread " reload files when changed on disk, i.e. via `git checkout`
-set nobackup
-set nowritebackup
-set noswapfile
 set history=1000
 set tabpagemax=50
 
@@ -40,6 +37,11 @@ set ttimeoutlen=50
 
 set fileformats+=mac
 set encoding=utf-8
+
+" no backup
+set nobackup
+set nowritebackup
+set noswapfile
 
 " Indenting
 set tabstop=2
@@ -83,7 +85,7 @@ set display+=lastline
 " Highlight searching
 set hlsearch                " highligh searches
 set incsearch
-nnoremap <silent> <C-S> :nohlsearch<CR><C-S>
+nnoremap <silent> <C-N> :nohlsearch<CR><C-N>
 
 " keyboard shortcuts
 let mapleader = ','
@@ -101,11 +103,16 @@ nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nmap <leader>] :TagbarToggle<CR>
 " nmap <leader><space> :call whitespace#strip_trailing()<CR>
 nmap <leader>g :GitGutterToggle<CR>
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " rails naviagion
 nmap <leader>v :Eview<CR>
 nmap <leader>c :Econtroller<CR>
 nmap <leader>m :Emodel<CR>
+" set vimrc path appropriately
+if has('win32')
+  map <silent> <leader>V :source ~/_vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+else
+  map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+endif
 
 " plugin settings
 let g:ctrlp_match_window = 'order:ttb,max:20'
@@ -138,7 +145,11 @@ autocmd User Rails silent! Rnavcommand feature        features                  
 autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
 autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
 autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
-autocmd BufEnter * Rvm
+
+" don't use rvm on window
+if !has('win32')
+  autocmd BufEnter * Rvm
+endif
 
 " List chars
 if &listchars ==# 'eol:$'
