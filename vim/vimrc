@@ -63,8 +63,8 @@ colorscheme solarized
 call togglebg#map("<F9>")   " Toggle light/dark colors with <leader>s
 
 set laststatus=2 " always show status bar
-set ruler
-set showcmd
+set ruler        " always show cursor position
+set showcmd      " show incomplete commands
 set wildmenu
 
 " Open new split panes to right and bottom, which feels more natural
@@ -109,6 +109,7 @@ let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 0
 let g:Powerline_colorscheme = 'solarized256'
 let g:syntastic_ruby_exec = '/Users/Jonathan/.rvm/bin/rvm-auto-ruby'
+let g:syntastic_check_on_open=1
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
