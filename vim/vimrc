@@ -102,6 +102,10 @@ nmap <leader>] :TagbarToggle<CR>
 " nmap <leader><space> :call whitespace#strip_trailing()<CR>
 nmap <leader>g :GitGutterToggle<CR>
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+" rails naviagion
+nmap <leader>v :Eview<CR>
+nmap <leader>c :Econtroller<CR>
+nmap <leader>m :Emodel<CR>
 
 " plugin settings
 let g:ctrlp_match_window = 'order:ttb,max:20'
@@ -135,6 +139,7 @@ autocmd User Rails silent! Rnavcommand feature        features                  
 autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
 autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
 autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
+autocmd BufEnter * Rvm
 
 " List chars
 if &listchars ==# 'eol:$'
