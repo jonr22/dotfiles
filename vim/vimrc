@@ -88,25 +88,36 @@ nnoremap <silent> <C-N> :nohlsearch<CR><C-N>
 " Keyboard shortcuts
 let mapleader = ','
 
-map <C-h> <C-w>h  " move left a window
-map <C-j> <C-w>j  " move down a window
-map <C-k> <C-w>k  " move up a window
-map <C-l> <C-w>l  " move right a window
+" map easier window movement
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
-map <leader>l :Align                          " align text blocks on a symbol
-nmap <leader>a :Ack                           " grep replacement
-nmap <leader>d :NERDTreeToggle<CR>            " toggle file browser
-nmap <leader>f :NERDTreeFind<CR>              " find current file in file browser
-nmap <leader>t :CtrlP<CR>                     " fuzzy file searching
-nmap <leader>b :CtrlPBuffer<CR>               " fuzzy file searching in current buffers
-nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR> " clear fuzzy file searching cache
-nmap <leader>] :TagbarToggle<CR>              " toggle ctag browser
-nmap <leader>g :GitGutterToggle<CR>           " toggle git diff markers in gutter
+" align text blocks on a symbol
+map <leader>l :Align
+" grep replacement
+nmap <leader>a :Ack
+" toggle file browser
+nmap <leader>d :NERDTreeToggle<CR>
+" find current file in file browser
+nmap <leader>f :NERDTreeFind<CR>
+" fuzzy file searching
+nmap <leader>t :CtrlP<CR>
+" fuzzy file searching in current buffers
+nmap <leader>b :CtrlPBuffer<CR>
+" clear fuzzy file searching cache
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+" toggle ctag browser
+nmap <leader>] :TagbarToggle<CR>
+" toggle git diff markers in gutter
+nmap <leader>g :GitGutterToggle<CR>
+
 
 " rails naviagion
-nmap <leader>v :Eview<CR>         " navigate to rails view file
-nmap <leader>c :Econtroller<CR>   " naviagte to rails controller file
-nmap <leader>m :Emodel<CR>        " navigate to rails model file
+nmap <leader>v :Eview<CR>
+nmap <leader>c :Econtroller<CR>
+nmap <leader>m :Emodel<CR>
 
 " set vimrc path appropriately, and set command to reload vimrc
 if has('win32')
