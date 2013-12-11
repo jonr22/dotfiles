@@ -2,4 +2,5 @@
 *.swp
 Reimels*
 .DS_Store
+.netrwhist
 
