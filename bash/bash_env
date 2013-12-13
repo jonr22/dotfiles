@@ -1,0 +1,56 @@
+#export C_INCLUDE_PATH=$HOME/Developer/include
+
+# Set TERM (for tmux)
+if [ "$TERM" == "xterm" ]; then
+  TERM="xterm-256color"
+fi
+
+# Set these as appropriate
+#export JAVA_HOME=/usr/local/java/jdk1.7.0_17
+#export HADOOP_INSTALL=$HOME/Developer/lib/hadoop-1.1.2
+#export HEROKU_PATH=/usr/local/heroku
+
+# Build PATH
+# Java
+if [[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]]; then
+    PATH=$PATH:$JAVA_HOME/bin
+fi
+
+# Hadoop
+if [[ -n "$HADOOP_INSTALL" && -d "$HADOOP_INSTALL/bin" && -d "$HADOOP_INSTALL/sbin" ]]; then
+    PATH=$PATH:$HADOOP_INSTALL/bin:$HADOOP_INSTALL/sbin
+fi
+
+# Heroku
+if [[ -n "$HEROKU_PATH" && -d "$HEROKU_PATH/bin" ]]; then
+    PATH=$PATH:$HEROKU_PATH/bin
+fi
+
+# Scala Build Tool
+if [ -d "$HOME/Developer/lib/sbt/bin" ]; then
+    PATH=$PATH:$HOME/Developer/lib/sbt/bin
+fi
+
+# Add Ruby RVM
+if [ -d "$HOME/.rvm/bin" ]; then
+    PATH=$PATH:$HOME/.rvm/bin
+fi
+
+# personal bin
+if [ -d "$HOME/Developer/bin" ]; then
+    PATH=$PATH:$HOME/Developer/bin
+fi
+
+# export path
+export PATH
+
+# add personal lib
+if [ -d "$HOME/Developer/lib" ]; then
+    if [ -n "$LD_LIBRARY_PATH" ]; then
+        LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Developer/lib
+    else
+        LD_LIBRARY_PATH=$HOME/Developer/lib
+    fi
+    export LD_LIBRARY_PATH
+fi
+
