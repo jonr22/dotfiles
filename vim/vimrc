@@ -196,3 +196,9 @@ set mouse=a
 vmap <leader>y "+y
 nmap <leader>p "+p
 
+" rspec / tslime
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+map <leader>R :call RunAllSpecs()<CR>
+map <leader>r :call RunCurrentSpecFile()<CR>
+map <leader>s :call RunNearestSpec()<CR>
+nmap <C-b> <Plug>SetTmuxVars
