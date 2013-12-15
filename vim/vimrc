@@ -192,6 +192,9 @@ nnoremap Y y$
 " enable mouse interaction
 set mouse=a
 
+" rempap C-a as tmux steals it
+nnoremap <C-q> <C-a>
+
 " paste from clipboard
 vmap <leader>y "+y
 nmap <leader>p "+p
@@ -201,4 +204,4 @@ let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 map <leader>R :call RunAllSpecs()<CR>
 map <leader>r :call RunCurrentSpecFile()<CR>
 map <leader>s :call RunNearestSpec()<CR>
-nmap <C-b> <Plug>SetTmuxVars
+nmap <C-[> <Plug>SetTmuxVars
