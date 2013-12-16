@@ -165,7 +165,6 @@ autocmd User Rails silent! Rnavcommand job            app/jobs                  
 autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
 autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
 
-
 " Extra
 
 " don't use rvm on windows
@@ -192,7 +191,7 @@ nnoremap Y y$
 " enable mouse interaction
 set mouse=a
 
-" rempap C-a as tmux steals it
+" repmap C-a as tmux steals it
 nnoremap <C-q> <C-a>
 
 " paste from clipboard
@@ -204,4 +203,4 @@ let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 map <leader>R :call RunAllSpecs()<CR>
 map <leader>r :call RunCurrentSpecFile()<CR>
 map <leader>s :call RunNearestSpec()<CR>
-nmap <C-[> <Plug>SetTmuxVars
+nmap <leader>b <Plug>SetTmuxVars
