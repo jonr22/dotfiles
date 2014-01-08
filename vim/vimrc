@@ -191,3 +191,7 @@ nnoremap Y y$
 " enable mouse interaction
 set mouse=a
 
+" paste from clipboard
+vmap <leader>y "+y
+nmap <leader>p "+p
+
