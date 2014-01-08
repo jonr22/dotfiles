@@ -3,9 +3,9 @@ ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # ZSH_THEME="jon"
-ZSH_THEME="blinks"
+# ZSH_THEME="blinks"
 # ZSH_THEME="dst"
-# ZSH_THEME="tjkirch"
+ZSH_THEME="tjkirch"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -64,3 +64,4 @@ if [ $(uname) = Darwin ]; then
   # set vim to always use mvim
   alias vim='mvim -v'
 fi
+
