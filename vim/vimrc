@@ -128,10 +128,11 @@ endif
 " nmap <leader><space> :call whitespace#strip_trailing()<CR>
 
 " Plugin settings
-let g:ctrlp_match_window = 'order:ttb,max:20'   " ???
-let g:NERDSpaceDelims=1                         " ???
-let g:gitgutter_enabled=0                       " git gutter disabled by default
-let g:syntastic_check_on_open=1                 " use syntastic to check file on open
+let g:ctrlp_match_window = 'order:ttb,max:20'      " ???
+let g:NERDSpaceDelims=1                            " ???
+let g:gitgutter_enabled=0                          " git gutter disabled by default
+let g:syntastic_check_on_open=1                    " use syntastic to check file on open
+let g:syntastic_ruby_checkers = ['rubocop'] " use rubocop and default for ruby
 " set airline's second section to git branch, doesn't work by default on win
 if has('win32')
   let g:airline_section_b = '%{fugitive#head()}'
