@@ -3,3 +3,5 @@
 	email = jonr2219@gmail.com
 [core]
 	excludesfile = /Users/Jonathan/.gitignore
+[push]
+	default = simple
