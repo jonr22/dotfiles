@@ -137,6 +137,7 @@ let g:NERDSpaceDelims=1                            " ???
 let g:gitgutter_enabled=0                          " git gutter disabled by default
 let g:syntastic_check_on_open=1                    " use syntastic to check file on open
 let g:syntastic_ruby_checkers = ['rubocop'] " use rubocop and default for ruby
+let g:airline_powerline_fonts = 1
 " set airline's second section to git branch, doesn't work by default on win
 if has('win32')
   let g:airline_section_b = '%{fugitive#head()}'
@@ -189,7 +190,7 @@ if &t_Co == 8 && $TERM !~# '^linux'
   set t_Co=16
 endif
 
-" make Y consistent with C and D.  See :help Y.
+" make Y consistent with C and D
 nnoremap Y y$
 
 " enable mouse interaction
@@ -207,7 +208,7 @@ let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 map <leader>R :call RunAllSpecs()<CR>
 map <leader>r :call RunCurrentSpecFile()<CR>
 map <leader>s :call RunNearestSpec()<CR>
-nmap <leader>b <Plug>SetTmuxVars
+" nmap <leader>b <Plug>SetTmuxVars
 
 " cucumber bar/pipe align
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
