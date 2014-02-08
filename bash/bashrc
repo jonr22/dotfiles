@@ -37,8 +37,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Run env commands if they exist
-if [ -f ~/.bash_env ]; then
-    source ~/.bash_env
+if [ -f ~/.env ]; then
+    source ~/.env
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -50,11 +50,6 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     source /etc/bash_completion
   fi
-fi
-
-# Load RVM into a shell session as a function*
-if [ -s "$HOME/.rvm/scripts/rvm" ]; then
-    source "$HOME/.rvm/scripts/rvm"
 fi
 
 # mac specific settings

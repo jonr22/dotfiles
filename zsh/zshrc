@@ -53,15 +53,7 @@ bindkey "^F" vi-cmd-mode
 # # use incremental search
 bindkey "^R" history-incremental-search-backward
 
-# setup rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-# add npm to PATH
-export PATH=$PATH:/usr/local/share/npm/bin
-
-# mac specific settings
-if [ $(uname) = Darwin ]; then
-  # set vim to always use mvim
-  alias vim='mvim -v'
+# Run env commands if they exist
+if [ -f ~/.env ]; then
+    source ~/.env
 fi
-
