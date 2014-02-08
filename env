@@ -11,6 +11,7 @@ fi
 # Set env specific variables
 if [[ $(uname) = Darwin ]]; then
   HOMEBREW_PATH=/usr/local
+  NPM_BIN=/usr/local/share/npm/bin
 else
   JAVA_HOME=/usr/local/java/jdk1.7.0_17
   HADOOP_INSTALL=$HOME/Developer/lib/hadoop-1.1.2
@@ -23,6 +24,11 @@ fi
 # Homebrew
 if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
     PATH=$HOMEBREW_PATH/bin:$PATH
+fi
+
+# Binaries installed by NPM
+if [[ -n "$NPM_BIN" && -d "$NPM_BIN" ]]; then
+    PATH=$PATH:$NPM_BIN
 fi
 
 # Java
