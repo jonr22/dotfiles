@@ -34,8 +34,8 @@ ZSH_THEME="../../my_themes/simple"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git osx rails ruby rvm bundler brew gem heroku github tmux vagrant npm node)
-# plugins=(git github tmux)
+# plugins=(git osx rails ruby rvm bundler brew gem heroku github tmux vagrant npm node)
+plugins=(git github tmux)
 
 source $ZSH/oh-my-zsh.sh
 

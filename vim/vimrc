@@ -42,8 +42,8 @@ set nowritebackup
 set noswapfile
 
 " Indenting
-set tabstop=2     " tab is 2 spaces
-set shiftwidth=2  " auto-indent and >,< use 2 spaces
+set tabstop=4     " tab is 4 spaces
+set shiftwidth=4  " auto-indent and >,< use 4 spaces
 set shiftround    " always round >,< tabs to shiftwidth location
 set expandtab     " expand tabs to spaces
 set autoindent    " automatically do indenting
