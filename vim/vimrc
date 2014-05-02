@@ -6,12 +6,6 @@ execute pathogen#infect()
 
 " GUI specific stuff
 if has("gui_running")
-
-  if has('win32')
-    "add windows key behaviors for windows gui
-    source $VIMRUNTIME/mswin.vim
-  endif
-
   set guioptions-=T " hide toolbar in gui
   set guioptions+=b " show bottom scroll bar
 
@@ -117,6 +111,11 @@ nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nmap <leader>] :TagbarToggle<CR>
 " toggle git diff markers in gutter
 nmap <leader>g :GitGutterToggle<CR>
+" update tags
+nmap <leader>[ :!ctags -R .<CR>
+
+" hide *.pyc files in NERDTree
+let NERDTreeIgnore = ['\.pyc$']
 
 " rails naviagion
 nmap <leader>v :Eview<CR>
@@ -124,11 +123,7 @@ nmap <leader>c :Econtroller<CR>
 nmap <leader>m :Emodel<CR>
 
 " set vimrc path appropriately, and set command to reload vimrc
-if has('win32')
-  map <silent> <leader>V :source ~/_vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-else
-  map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-endif
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " nmap <leader><space> :call whitespace#strip_trailing()<CR>
 
 " Plugin settings
@@ -138,10 +133,6 @@ let g:gitgutter_enabled=0                          " git gutter disabled by defa
 let g:syntastic_check_on_open=1                    " use syntastic to check file on open
 let g:syntastic_ruby_checkers = ['rubocop'] " use rubocop and default for ruby
 let g:airline_powerline_fonts = 1
-" set airline's second section to git branch, doesn't work by default on win
-if has('win32')
-  let g:airline_section_b = '%{fugitive#head()}'
-endif
 
 " use silver searcher, when available
 if executable('ag')
@@ -172,10 +163,7 @@ autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions 
 
 " Extra
 
-" don't use rvm on windows
-if !has('win32')
-  autocmd BufEnter * Rvm
-endif
+" autocmd BufEnter * Rvm
 
 " List chars
 if &listchars ==# 'eol:$'

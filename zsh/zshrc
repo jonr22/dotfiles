@@ -35,6 +35,7 @@ ZSH_THEME="../../my_themes/simple"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git osx rails ruby rvm bundler brew gem heroku github tmux vagrant npm node)
+# plugins=(git github tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -56,4 +57,9 @@ bindkey "^R" history-incremental-search-backward
 # Run env commands if they exist
 if [ -f ~/.env ]; then
     source ~/.env
+fi
+
+# Run alias commands if they exist
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
 fi
