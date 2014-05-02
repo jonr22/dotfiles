@@ -31,9 +31,14 @@ shopt -s checkwinsize
 # Set prompt
 PS1='\w\$ '
 
-# Run aliases if they exist
+# Run bash specific aliases if they exist
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
+fi
+
+# Run aliases if they exist
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
 fi
 
 # Run env commands if they exist
