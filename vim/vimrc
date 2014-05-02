@@ -183,6 +183,7 @@ nnoremap Y y$
 
 " enable mouse interaction
 set mouse=a
+set ttymouse=xterm2
 
 " repmap C-a as tmux steals it
 nnoremap <C-q> <C-a>
