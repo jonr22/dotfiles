@@ -5,3 +5,5 @@
 	excludesfile = /Users/Jonathan/.gitignore
 [push]
 	default = simple
+[alias]
+	st = status

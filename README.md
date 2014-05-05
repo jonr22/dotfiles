@@ -5,6 +5,11 @@ my config files
 
 vim
 bash
-splint
-terminator
-ruby gems
+zsh
+tmux
+
+Dependencies
+
+pyflakes
+jedi-vim
+exuberant c-tags

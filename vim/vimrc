@@ -127,12 +127,15 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " nmap <leader><space> :call whitespace#strip_trailing()<CR>
 
 " Plugin settings
-let g:ctrlp_match_window = 'order:ttb,max:20'      " ???
-let g:NERDSpaceDelims=1                            " ???
-let g:gitgutter_enabled=0                          " git gutter disabled by default
-let g:syntastic_check_on_open=1                    " use syntastic to check file on open
-let g:syntastic_ruby_checkers = ['rubocop'] " use rubocop and default for ruby
+let g:ctrlp_match_window = 'order:ttb,max:20'            " ???
+let g:NERDSpaceDelims=1                                  " ???
+let g:gitgutter_enabled=0                                " git gutter disabled by default
+let g:syntastic_check_on_open=1                          " use syntastic to check file on open
+let g:syntastic_ruby_checkers = ['rubocop']              " use rubocop and default for ruby
+let g:syntastic_python_checkers = ['python', 'pyflakes'] " use pyflakes and default for python
 let g:airline_powerline_fonts = 1
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabClosePreviewOnPopupClose = 1
 
 " use silver searcher, when available
 if executable('ag')
