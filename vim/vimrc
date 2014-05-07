@@ -124,7 +124,7 @@ nmap <leader>m :Emodel<CR>
 
 " set vimrc path appropriately, and set command to reload vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-" nmap <leader><space> :call whitespace#strip_trailing()<CR>
+nmap <leader><space> :call <SID>strip_trailing()<CR>
 
 " Plugin settings
 let g:ctrlp_match_window = 'order:ttb,max:20'            " ???
@@ -136,6 +136,8 @@ let g:syntastic_python_checkers = ['python', 'pyflakes'] " use pyflakes and defa
 let g:airline_powerline_fonts = 1
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
+let g:jedi#goto_assignments_command = "<leader><leader>g"
+let g:jedi#goto_definitions_command = "<leader><leader>d"
 
 " use silver searcher, when available
 if executable('ag')
@@ -150,7 +152,7 @@ endif
 
 " Autocommands
 autocmd VimResized * :wincmd =      " automatically rebalance windows on vim resize
-autocmd BufWritePre * :%s/\s\+$//e  " Cleanup trailing whitespace on save
+autocmd BufWritePre * call <SID>strip_trailing() " Cleanup trailing whitespace on save
 
 " add filetype mappings
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml   " fdoc is yaml
@@ -215,3 +217,17 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
+
+" Strip trailing whitespace
+function! s:strip_trailing()
+  let previous_search=@/
+  let previous_cursor_line=line('.')
+  let previous_cursor_column=col('.')
+  %s/\s\+$//e
+  let @/=previous_search
+  call cursor(previous_cursor_line, previous_cursor_column)
+endfunction
+
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
