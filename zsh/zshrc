@@ -36,7 +36,7 @@ ENABLE_CORRECTION="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # plugins=(git osx rails ruby rvm bundler brew gem heroku github tmux vagrant npm node)
-plugins=(git github tmux node npm nvm pip python)
+plugins=(git rails ruby rvm bundler gem github tmux node npm nvm pip python)
 
 source $ZSH/oh-my-zsh.sh
 
