@@ -36,7 +36,7 @@ ENABLE_CORRECTION="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # plugins=(git osx rails ruby rvm bundler brew gem heroku github tmux vagrant npm node)
-plugins=(git github tmux)
+plugins=(git github tmux node npm nvm pip python)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -48,11 +48,14 @@ setopt auto_cd
 export VISUAL=vim
 export EDITOR=$VISUAL
 
-# # vi mode
+# vi mode
 bindkey -v
 bindkey "^F" vi-cmd-mode
 
-# # use incremental search
+# shift-tab reverses menu completion
+bindkey "[Z" reverse-menu-complete
+
+# use incremental search
 bindkey "^R" history-incremental-search-backward
 
 # Run env commands if they exist

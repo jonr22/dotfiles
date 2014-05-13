@@ -12,6 +12,11 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   source "$HOME/.rvm/scripts/rvm"
 fi
 
+# Load NVM
+if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
+  source "$HOME/.nvm/nvm.sh"
+fi
+
 # Set env specific variables
 if [[ $(uname) = Darwin ]]; then
   HOMEBREW_PATH=/usr/local
