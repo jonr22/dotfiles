@@ -35,8 +35,11 @@ ENABLE_CORRECTION="true"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# plugins=(git osx rails ruby rvm bundler brew gem heroku github tmux vagrant npm node)
-plugins=(git rails ruby rvm bundler gem github tmux node npm nvm pip python)
+if [ $(uname) = Darwin ]; then
+  plugins=(git rails ruby rvm bundler gem github tmux node npm python pip heroku vagrant osx brew)
+else
+  plugins=(git rails ruby rvm bundler gem github tmux node npm python pip nvm)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,10 +63,10 @@ bindkey "^R" history-incremental-search-backward
 
 # Run env commands if they exist
 if [ -f ~/.env ]; then
-    source ~/.env
+  source ~/.env
 fi
 
 # Run alias commands if they exist
 if [ -f ~/.aliases ]; then
-    source ~/.aliases
+  source ~/.aliases
 fi

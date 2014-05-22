@@ -12,9 +12,10 @@
 	st = status -sb
 	co = checkout
 	ci = commit
-    cim = commit -m
+	cim = commit -m
 	d = diff
+    dc = diff --cached
 	b = branch
 	ba = branch -a
-[alias]
-	st = status
+	logb = log --first-parent
+	lgb = log --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
