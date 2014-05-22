@@ -127,3 +127,9 @@
 [submodule "vim/bundle/Kwbd.vim"]
 	path = vim/bundle/Kwbd.vim
 	url = https://github.com/rgarver/Kwbd.vim.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/vim-mustache-handlebars"]
+	path = vim/bundle/vim-mustache-handlebars
+	url = https://github.com/mustache/vim-mustache-handlebars
