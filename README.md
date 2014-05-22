@@ -20,6 +20,7 @@ git submodule upgrade
 .zshrc -> dotfiles/zsh/zshrc
 .aliases
 .vimrc.local
+.gitconfig.local
 
 
 

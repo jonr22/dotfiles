@@ -1,10 +1,8 @@
-[user]
-	name = jonr22
-	email = jonr2219@gmail.com
 [core]
-	excludesfile = /Users/Jonathan/.gitignore
+	excludesfile = ~/.gitignore
+	editor = vim
 [push]
-	default = simple
+	default = current
 [color]
 	ui = auto
 [alias]
@@ -19,3 +17,5 @@
 	ba = branch -a
 	logb = log --first-parent
 	lgb = log --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[include]
+    path = .gitconfig.local
