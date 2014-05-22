@@ -28,6 +28,7 @@ set noshowmode        " use airline to show the mode
 set showmatch         " show matching brackets
 set showcmd           " show incomplete commands
 set wildmenu          " show command line completion
+" set wildmode=longest,list,full  " show a navigable menu for tab completion
 
 set backspace=indent,eol,start  " ???
 set complete-=i                 " ???
@@ -43,6 +44,7 @@ set noswapfile
 
 " Indenting
 set tabstop=2     " tab is 2 spaces
+set softtabstop=2 " insert mode tab and backspace use 2 spaces
 set shiftwidth=2  " auto-indent and >,< use 2 spaces
 set shiftround    " always round >,< tabs to shiftwidth location
 set expandtab     " expand tabs to spaces
@@ -73,9 +75,11 @@ set scrolloff=1       " always show a line above and below the cursor
 set sidescrolloff=5   " always show 5 colums to the right of the cursor
 set display+=lastline " ???
 
-" Highlight searching
+" Searching
 set hlsearch    " highlight searches
 set incsearch   " show matches as search is being typed
+set ignorecase  " case-insensitive search
+set smartcase   " case-sensitive search if there are any caps
 " ctrl-N unhighlights
 nnoremap <silent> <C-N> :nohlsearch<CR><C-N>
 
@@ -89,11 +93,11 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " align text blocks on a symbol
-" map <leader>l :Align
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
+map <leader>l :Tabularize
+nmap <leader>l= :Tabularize /=<CR>
+vmap <leader>l= :Tabularize /=<CR>
+nmap <leader>l: :Tabularize /:\zs<CR>
+vmap <leader>l: :Tabularize /:\zs<CR>
 
 " grep replacement
 nmap <leader>a :Ack
@@ -113,14 +117,19 @@ nmap <leader>] :TagbarToggle<CR>
 nmap <leader>g :GitGutterToggle<CR>
 " update tags
 nmap <leader>[ :!ctags -R .<CR>
+" properly delete buffer
+nnoremap <leader>c :Kwbd<CR>
+
+" in case you forgot to sudo
+cnoremap w!! %!sudo tee > /dev/null %
 
 " hide *.pyc files in NERDTree
 let NERDTreeIgnore = ['\.pyc$']
 
 " rails naviagion
-nmap <leader>v :Eview<CR>
-nmap <leader>c :Econtroller<CR>
-nmap <leader>m :Emodel<CR>
+" nmap <leader>v :Eview<CR>
+" nmap <leader>c :Econtroller<CR>
+" nmap <leader>m :Emodel<CR>
 
 " set vimrc path appropriately, and set command to reload vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
