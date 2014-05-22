@@ -147,6 +147,20 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 let g:jedi#goto_assignments_command = "<leader><leader>g"
 let g:jedi#goto_definitions_command = "<leader><leader>d"
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
 
 " use silver searcher, when available
 if executable('ag')
