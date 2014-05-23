@@ -50,7 +50,7 @@ All local customizations should be made in these files:
 ##Dependencies
 
 * [tmux 1.8](http://sourceforge.net/projects/tmux/files/tmux/tmux-1.8/) - to use tmux specific settings
-** with tmux on mac, `reattach-to-user-namespace` should be installed via brew and used in combinatiion with `tmux/tmux.conf.mac` in order to enable system wide copy/paste functionality
+  * with tmux on mac, `reattach-to-user-namespace` should be installed via brew and used in combinatiion with `tmux/tmux.conf.mac` in order to enable system wide copy/paste functionality
 * [rubocop](https://github.com/bbatsov/rubocop) - for ruby syntax validation (install via `gem` in `rvm`)
 * [jshint](http://www.jshint.com/) - for javascript syntax validation (install via `npm`)
 * [pyflakes](https://pypi.python.org/pypi/pyflakes) - for python syntax validation (install via `pip`)
