@@ -26,17 +26,17 @@ ln -s dotfiles/vim/vimrc .vimrc
 
 Alias| File | Description
 -----|------|------------
-`.bash_aliases` | `bash/bash_aliases` | default bash aliases
-`.bash_profile` | `bash/bash_profile` | profile calls bashrc
-`.bashrc` | `bash/bashrc` | bash configuration
-`.env` | `env` | sets environment variables such as PATH, and RVM settings, this is called by both bash and zsh
-`.gitconfig` | `git/gitconfig` | git settings such as aliases
-`.gitignore` | `git/gitignore` | git globally ignored files
-`.oh-my-zsh` | `zsh/oh-my-zsh` | [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-`.tmux.conf` | `tmux/tmux.conf` | tmux configuration settings
-`.vim` | `vim` | vim directory, contains all plugins
-`.vimrc` | `vim/vimrc` | vim configuration settings
-`.zshrc` | `zsh/zshrc` | zsh configurations
+`.bash_aliases` | `bash/bash_aliases` | Some bash specific aliases (with zsh most of these are handled via oh-my-zsh), such as `la` and `ll` as well as other common aliases.
+`.bash_profile` | `bash/bash_profile` | The bash profile, this just calls bashrc so that everything is funneled through one configuration.
+`.bashrc` | `bash/bashrc` | The main bash configuration file. This sources `bash_aliases`, `aliases`, and `env`, and sets some standard configuration settings.
+`.env` | `env` | Sets environment variables such as PATH and RVM settings. It checks for certain files and folders and then adds them to the path if they exist. This is called by both zsh and bash.
+`.gitconfig` | `git/gitconfig` | The git configuration file, it contains aliases (described below) and some other common settings.
+`.gitignore` | `git/gitignore` | Files that git should ignore globally.
+`.oh-my-zsh` | `zsh/oh-my-zsh` | The [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) package. This contains many aliases and other helpful settings.
+`.tmux.conf` | `tmux/tmux.conf` | Configuration settings for tmux. Some of these settings are described below. They are all platform independent. For mac / linux specific settings (mainly for copy/paste) see the `tmux/tmux.conf.mac` and `tmux/tmux.conf.linux` files described below.
+`.vim` | `vim` | The vim directory, this contains all vim plugins/bundles as submodules.
+`.vimrc` | `vim/vimrc` | The vim configuration settings. Some of these settings are described below.
+`.zshrc` | `zsh/zshrc` | The main zsh configuration file. This sources `aliases`, `env`, and `oh-my-zsh`.
 
 ##Customizations
 
@@ -50,6 +50,7 @@ All local customizations should be made in these files:
 ##Dependencies
 
 * [tmux 1.8](http://sourceforge.net/projects/tmux/files/tmux/tmux-1.8/) - to use tmux specific settings
+** with tmux on mac, `reattach-to-user-namespace` should be installed via brew and used in combinatiion with `tmux/tmux.conf.mac` in order to enable system wide copy/paste functionality
 * [rubocop](https://github.com/bbatsov/rubocop) - for ruby syntax validation (install via `gem` in `rvm`)
 * [jshint](http://www.jshint.com/) - for javascript syntax validation (install via `npm`)
 * [pyflakes](https://pypi.python.org/pypi/pyflakes) - for python syntax validation (install via `pip`)
