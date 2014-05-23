@@ -4,8 +4,8 @@
 
 These are the dotfiles I set up on both OSX and linux machines. These configurations mostly apply to
 vim, tmux, and zsh, but I also have some bash configurations for the rare cases where I can't use zsh.
-A lot of the credit for these configuration is owed to [Square's](http://square.github.io/) [Maximum Awesome](https://github.com/square/maximum-awesome)
-and [Thoughtbot's](http://thoughtbot.com/) [dotfiles](https://github.com/thoughtbot/dotfiles).
+A lot of the credit for these configuration is owed to [Square's](http://square.github.io/) *[Maximum Awesome](https://github.com/square/maximum-awesome)*
+and [Thoughtbot's](http://thoughtbot.com/) *[dotfiles](https://github.com/thoughtbot/dotfiles)*.
 
 ##Install
 
