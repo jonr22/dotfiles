@@ -2,7 +2,7 @@
 
 ##About
 
-These are the dotfiles I set up on both OSX and linux machines. These configurations mostly apply to
+These are the dotfiles I use on both OSX and linux machines. These configurations mostly apply to
 vim, tmux, and zsh, but I also have some bash configurations for the rare cases where I can't use zsh.
 A lot of the credit for these configuration is owed to [Square's](http://square.github.io/) *[Maximum Awesome](https://github.com/square/maximum-awesome)*
 and [Thoughtbot's](http://thoughtbot.com/) *[dotfiles](https://github.com/thoughtbot/dotfiles)*.
@@ -26,36 +26,54 @@ ln -s dotfiles/vim/vimrc .vimrc
 
 Alias| File | Description
 -----|------|------------
+`.aliases` | `aliases` | Shared aliases between bash and zsh, this sources `.aliases.local`.
 `.bash_aliases` | `bash/bash_aliases` | Some bash specific aliases (with zsh most of these are handled via oh-my-zsh), such as `la` and `ll` as well as other common aliases.
 `.bash_profile` | `bash/bash_profile` | The bash profile, this just calls bashrc so that everything is funneled through one configuration.
 `.bashrc` | `bash/bashrc` | The main bash configuration file. This sources `bash_aliases`, `aliases`, and `env`, and sets some standard configuration settings.
-`.env` | `env` | Sets environment variables such as PATH and RVM settings. It checks for certain files and folders and then adds them to the path if they exist. This is called by both zsh and bash.
-`.gitconfig` | `git/gitconfig` | The git configuration file, it contains aliases (described below) and some other common settings.
+`.env` | `env` | Sets environment variables such as the PATH as well as RVM and NVM settings. It checks for certain files and folders and then adds them to the path if they exist. This is called by both zsh and bash. This also sources `.env.local`.
+`.gitconfig` | `git/gitconfig` | The git configuration file, it contains aliases (described below) and some other common settings. This sources `.gitconfig.local`.
 `.gitignore` | `git/gitignore` | Files that git should ignore globally.
 `.oh-my-zsh` | `zsh/oh-my-zsh` | The [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) package. This contains many aliases and other helpful settings.
-`.tmux.conf` | `tmux/tmux.conf` | Configuration settings for tmux. Some of these settings are described below. They are all platform independent. For mac / linux specific settings (mainly for copy/paste) see the `tmux/tmux.conf.mac` and `tmux/tmux.conf.linux` files described below.
+`.tmux.conf` | `tmux/tmux.conf` | Configuration settings for tmux. Some of these settings are described below. They are all platform independent. For mac / linux specific settings (mainly for copy/paste) see the `tmux/tmux.conf.mac` and `tmux/tmux.conf.linux` files described below. This sources `.tmux.conf.local`
 `.vim` | `vim` | The vim directory, this contains all vim plugins/bundles as submodules.
-`.vimrc` | `vim/vimrc` | The vim configuration settings. Some of these settings are described below.
+`.vimrc` | `vim/vimrc` | The vim configuration settings. Some of these settings are described below. This sources `.vimrc.local`.
 `.zshrc` | `zsh/zshrc` | The main zsh configuration file. This sources `aliases`, `env`, and `oh-my-zsh`.
 
 ##Customizations
 
 All local customizations should be made in these files:
 
-* `.aliases` - aliases to be used by both zsh and bash
-* `.vimrc.local` - vim customizations
+* `.aliases.local` - aliases to be used by both zsh and bash
+* `.env.local` - environment settings (like PATH modification) to be used by both zsh and bash
 * `.gitconfig.local` - local git settings such as user and email
 * `.tmux.conf.local` - local tmux settings, mac and linux specific copy/paste settings can be used by linking to either `tmux/tmux.conf.mac` or `tmux/tmux.conf.linux`
+* `.vimrc.local` - vim customizations
 
-##Dependencies
+##External Dependencies
 
-* [tmux 1.8](http://sourceforge.net/projects/tmux/files/tmux/tmux-1.8/) - to use tmux specific settings
-  * with tmux on mac, `reattach-to-user-namespace` should be installed via brew and used in combinatiion with `tmux/tmux.conf.mac` in order to enable system wide copy/paste functionality
-* [rubocop](https://github.com/bbatsov/rubocop) - for ruby syntax validation (install via `gem` in `rvm`)
-* [jshint](http://www.jshint.com/) - for javascript syntax validation (install via `npm`)
-* [pyflakes](https://pypi.python.org/pypi/pyflakes) - for python syntax validation (install via `pip`)
-* [jedi](https://github.com/davidhalter/jedi) - for improved python code completion (install via `pip`)
+While not everything on this list is, strictly speaking, a dependency, they are all used by this setup and enhance the experience of working with this configuration.
+
+###mac and linux
 * [exuberant c-tags](http://ctags.sourceforge.net/)
+* [jedi](https://github.com/davidhalter/jedi)
+* [jshint](http://www.jshint.com/)
+* [npm](https://www.npmjs.org/)
+* [pip](https://pypi.python.org/pypi/pip)
+* [pyflakes](https://pypi.python.org/pypi/pyflakes)
+* [rubocop](https://github.com/bbatsov/rubocop)
+* [rvm](https://rvm.io/)
+* [The Silver Searcher](https://github.com/ggreer/the_silver_searcher.git)
+* [tmux](http://sourceforge.net/projects/tmux) [(>1.8)](http://sourceforge.net/projects/tmux/files/tmux/tmux-1.8/)
+* [zsh](http://www.zsh.org/)
+
+###mac specific
+* [homebrew](http://brew.sh/)
+* [macvim](https://code.google.com/p/macvim/)
+* [tmux-MacOSX-pasteboard](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard.git)
+
+###linux specific
+* [gvim](http://www.vim.org/download.php)
+* [nvm](https://github.com/creationix/nvm)
 
 ##Recomendations
 
@@ -64,10 +82,7 @@ All local customizations should be made in these files:
 and [gnome terminal](https://github.com/sigurdga/gnome-terminal-colors-solarized) are available.
 * [Powerline fonts](https://github.com/Lokaltog/powerline-fonts) (used with Airline in vim) and set it as the default for your terminal.
 I prefer [Meslo LG S Regular for Powerline](https://github.com/Lokaltog/powerline-fonts/blob/master/Meslo/Meslo%20LG%20S%20Regular%20for%20Powerline.otf).
-* [brew](http://brew.sh/) to install packages on mac.
-* [rvm](https://rvm.io/) to manage rubies.
-* [pip](https://pypi.python.org/pypi/pip) to manage python modules.
-* [npm](https://www.npmjs.org/) to install node packages. On linux use [nvm](https://github.com/creationix/nvm) to manage npm instances.
+
 
 ##Settings
 
