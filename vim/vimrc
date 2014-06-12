@@ -137,6 +137,7 @@ nmap <leader><space> :call <SID>strip_trailing()<CR>
 
 " Plugin settings
 let g:ctrlp_match_window = 'order:ttb,max:20'            " ???
+let g:ctrlp_switch_buffer = 'H'                          " Open a new instance of a buffer unless <c-x> is pressed
 let g:NERDSpaceDelims=1                                  " ???
 let g:gitgutter_enabled=0                                " git gutter disabled by default
 let g:syntastic_check_on_open=1                          " use syntastic to check file on open
