@@ -22,6 +22,8 @@ Setup soft links (i.e.):
 ln -s dotfiles/vim/vimrc .vimrc
 ```
 
+[Detailed Install Guide](INSTALL.md)
+
 ##Included Files
 
 Alias| File | Description
@@ -34,7 +36,7 @@ Alias| File | Description
 `.gitconfig` | `git/gitconfig` | The git configuration file, it contains aliases (described below) and some other common settings. This sources `.gitconfig.local`.
 `.gitignore` | `git/gitignore` | Files that git should ignore globally.
 `.oh-my-zsh` | `zsh/oh-my-zsh` | The [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) package. This contains many aliases and other helpful settings.
-`.tmux.conf` | `tmux/tmux.conf` | Configuration settings for tmux. Some of these settings are described below. They are all platform independent. For mac / linux specific settings (mainly for copy/paste) see the `tmux/tmux.conf.mac` and `tmux/tmux.conf.linux` files described below. This sources `.tmux.conf.local`
+`.tmux.conf` | `tmux/tmux.conf` | Configuration settings for tmux. Some of these settings are described below. They are all platform independent. For OS X / linux specific settings (mainly for copy/paste) see the `tmux/tmux.conf.mac` and `tmux/tmux.conf.linux` files described below. This sources `.tmux.conf.local`
 `.vim` | `vim` | The vim directory, this contains all vim plugins/bundles as submodules.
 `.vimrc` | `vim/vimrc` | The vim configuration settings. Some of these settings are described below. This sources `.vimrc.local`.
 `.zshrc` | `zsh/zshrc` | The main zsh configuration file. This sources `aliases`, `env`, and `oh-my-zsh`.
@@ -46,14 +48,14 @@ All local customizations should be made in these files:
 * `.aliases.local` - aliases to be used by both zsh and bash
 * `.env.local` - environment settings (like PATH modification) to be used by both zsh and bash
 * `.gitconfig.local` - local git settings such as user and email
-* `.tmux.conf.local` - local tmux settings, mac and linux specific copy/paste settings can be used by linking to either `tmux/tmux.conf.mac` or `tmux/tmux.conf.linux`
+* `.tmux.conf.local` - local tmux settings, OS X and linux specific copy/paste settings can be used by linking to either `tmux/tmux.conf.mac` or `tmux/tmux.conf.linux`
 * `.vimrc.local` - vim customizations
 
 ##External Dependencies
 
 While not everything on this list is, strictly speaking, a dependency, they are all used by this setup and enhance the experience of working with this configuration.
 
-###mac and linux
+###OS X and linux
 * [exuberant c-tags](http://ctags.sourceforge.net/)
 * [jedi](https://github.com/davidhalter/jedi)
 * [jshint](http://www.jshint.com/)
@@ -66,7 +68,7 @@ While not everything on this list is, strictly speaking, a dependency, they are 
 * [tmux](http://sourceforge.net/projects/tmux) [(>1.8)](http://sourceforge.net/projects/tmux/files/tmux/tmux-1.8/)
 * [zsh](http://www.zsh.org/)
 
-###mac specific
+###OS X specific
 * [homebrew](http://brew.sh/)
 * [macvim](https://code.google.com/p/macvim/)
 * [tmux-MacOSX-pasteboard](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard.git)
