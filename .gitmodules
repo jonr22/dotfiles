@@ -133,3 +133,6 @@
 [submodule "vim/bundle/vim-mustache-handlebars"]
 	path = vim/bundle/vim-mustache-handlebars
 	url = https://github.com/mustache/vim-mustache-handlebars
+[submodule "linux/gnome-terminal-solarized"]
+	path = linux/gnome-terminal-solarized
+	url = https://github.com/Anthony25/gnome-terminal-colors-solarized.git

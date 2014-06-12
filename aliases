@@ -1,0 +1,4 @@
+# Run local aliases if they exist
+if [ -f ~/.aliases.local ]; then
+    source ~/.aliases.local
+fi

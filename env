@@ -3,10 +3,6 @@ if [[ "$TERM" == "xterm" ]]; then
   TERM="xterm-256color"
 fi
 
-if [[ -d "$HOME/workspace/wordstream" ]]; then
-  export WS_REPO=$HOME/workspace/wordstream
-fi
-
 # Load RVM into a shell session as a function*
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   source "$HOME/.rvm/scripts/rvm"
@@ -84,4 +80,9 @@ fi
 if [ $(uname) = Darwin ]; then
   # set vim to always use mvim
   alias vim='mvim -v'
+fi
+
+# Run local env commands if they exist
+if [ -f ~/.env.local ]; then
+    source ~/.env.local
 fi
