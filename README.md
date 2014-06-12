@@ -4,8 +4,8 @@
 
 These are the dotfiles I set up on both OSX and linux machines. These configurations mostly apply to
 vim, tmux, and zsh, but I also have some bash configurations for the rare cases where I can't use zsh.
-A lot of the credit for these configuration is owed to [Square's](http://square.github.io/) [Maximum Awesome](https://github.com/square/maximum-awesome)
-and [Thoughtbot's](http://thoughtbot.com/) [dotfiles](https://github.com/thoughtbot/dotfiles).
+A lot of the credit for these configuration is owed to [Square's](http://square.github.io/) *[Maximum Awesome](https://github.com/square/maximum-awesome)*
+and [Thoughtbot's](http://thoughtbot.com/) *[dotfiles](https://github.com/thoughtbot/dotfiles)*.
 
 ##Install
 
@@ -50,7 +50,7 @@ All local customizations should be made in these files:
 ##Dependencies
 
 * [tmux 1.8](http://sourceforge.net/projects/tmux/files/tmux/tmux-1.8/) - to use tmux specific settings
-** with tmux on mac, `reattach-to-user-namespace` should be installed via brew and used in combinatiion with `tmux/tmux.conf.mac` in order to enable system wide copy/paste functionality
+  * with tmux on mac, `reattach-to-user-namespace` should be installed via brew and used in combinatiion with `tmux/tmux.conf.mac` in order to enable system wide copy/paste functionality
 * [rubocop](https://github.com/bbatsov/rubocop) - for ruby syntax validation (install via `gem` in `rvm`)
 * [jshint](http://www.jshint.com/) - for javascript syntax validation (install via `npm`)
 * [pyflakes](https://pypi.python.org/pypi/pyflakes) - for python syntax validation (install via `pip`)
