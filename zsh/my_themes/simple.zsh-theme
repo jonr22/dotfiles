@@ -19,5 +19,4 @@ PROMPT='
 %_$(prompt_char) '
 
 RPROMPT=''
-
-
+RPROMPT='$(virtualenv_prompt_info)'

@@ -38,7 +38,7 @@ ENABLE_CORRECTION="true"
 if [ $(uname) = Darwin ]; then
   plugins=(git rails ruby rvm bundler gem github tmux node npm python pip heroku vagrant osx brew)
 else
-  plugins=(git rails ruby rvm bundler gem github tmux node npm python pip nvm)
+  plugins=(git rails ruby rvm bundler gem github tmux node npm python pip nvm virtualenv virtualenvwrapper)
 fi
 
 source $ZSH/oh-my-zsh.sh
