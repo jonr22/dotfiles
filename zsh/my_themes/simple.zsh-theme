@@ -19,4 +19,4 @@ PROMPT='
 %_$(prompt_char) '
 
 RPROMPT=''
-RPROMPT='$(virtualenv_prompt_info)'
+RPROMPT='$(virtualenv_prompt_info)%{$reset_color%}'
