@@ -13,6 +13,20 @@ if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
   source "$HOME/.nvm/nvm.sh"
 fi
 
+# Load virtualenvwrapper
+if [[ -s "$HOME/usr/local/bin/virtualenvwrapper.sh" ]]; then
+  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+  source "$HOME/usr/local/bin/virtualenvwrapper.sh"
+
+  if [ -d "$HOME/.virtualenvs" ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+  fi
+
+  # if [[ -f "/usr/local/bin/python" ]]; then
+  #   export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+  # fi
+fi
+
 # Set env specific variables
 if [[ $(uname) = Darwin ]]; then
   HOMEBREW_PATH=/usr/local
