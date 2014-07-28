@@ -36,9 +36,9 @@ ENABLE_CORRECTION="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 if [ $(uname) = Darwin ]; then
-  plugins=(git rails ruby rvm bundler gem github tmux node npm python pip heroku vagrant osx brew virtualenv virtualenvwrapper)
+  plugins=(git rails ruby rbenv bundler gem github tmux node npm python pip heroku vagrant osx brew virtualenv virtualenvwrapper)
 else
-  plugins=(git rails ruby rvm bundler gem github tmux node npm python pip nvm virtualenv virtualenvwrapper)
+  plugins=(git rails ruby rbenv bundler gem github tmux node npm python pip nvm virtualenv virtualenvwrapper)
 fi
 
 source $ZSH/oh-my-zsh.sh

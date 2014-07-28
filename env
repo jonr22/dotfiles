@@ -1,16 +1,23 @@
+HOMEBREW_PATH=/usr/local
+RBENV_PATH=$HOME/.rbenv
+JAVA_HOME=/usr/local/java/jdk1.7.0_17
+HADOOP_INSTALL=$HOME/Developer/lib/hadoop-1.1.2
+HEROKU_PATH=/usr/local/heroku
+SBT_PATH=$HOME/Developer/lib/sbt
+NVM_PATH=/usr/local/share/npm
+
 # Set TERM (for tmux)
 if [[ "$TERM" == "xterm" ]]; then
   TERM="xterm-256color"
 fi
 
-# Load RVM into a shell session as a function*
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-  source "$HOME/.rvm/scripts/rvm"
-fi
-
 # Load NVM
 if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
   source "$HOME/.nvm/nvm.sh"
+fi
+if [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
+  export NVM_DIR=~/.nvm
+  source "/usr/local/opt/nvm/nvm.sh"
 fi
 
 # Load virtualenvwrapper
@@ -21,22 +28,6 @@ if [[ -s "$HOME/usr/local/bin/virtualenvwrapper.sh" ]]; then
   if [ -d "$HOME/.virtualenvs" ]; then
     export WORKON_HOME=$HOME/.virtualenvs
   fi
-
-  # if [[ -f "/usr/local/bin/python" ]]; then
-  #   export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-  # fi
-fi
-
-# Set env specific variables
-if [[ $(uname) = Darwin ]]; then
-  HOMEBREW_PATH=/usr/local
-  NPM_BIN=/usr/local/share/npm/bin
-else
-  JAVA_HOME=/usr/local/java/jdk1.7.0_17
-  HADOOP_INSTALL=$HOME/Developer/lib/hadoop-1.1.2
-  HEROKU_PATH=/usr/local/heroku
-  SBT_PATH=$HOME/Developer/lib/sbt
-  RVM_PATH=$HOME/.rvm
 fi
 
 # Build PATH
@@ -45,9 +36,17 @@ if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
   export PATH=$HOMEBREW_PATH/bin:$PATH
 fi
 
-# Binaries installed by NPM
-if [[ -n "$NPM_BIN" && -d "$NPM_BIN" ]]; then
-  export PATH=$PATH:$NPM_BIN
+# RBENV
+if [[ -n "$RBENV_PATH" && -d "$RBENV_PATH/bin" ]]; then
+  export PATH=$PATH:$RBENV_PATH/bin
+
+  # load rbenv
+  eval "$(rbenv init -)"
+fi
+
+# NPM
+if [[ -n "$NPM_PATH" && -d "$NPM_PATH/bin" ]]; then
+  export PATH=$PATH:$NPM_PATH/bin
 fi
 
 # Java
@@ -68,11 +67,6 @@ fi
 # Scala Build Tool
 if [[ -n "$SBT_PATH" && -d "$SBT_PATH/bin" ]]; then
   export PATH=$PATH:$SBT_PATH/bin
-fi
-
-# Add Ruby RVM
-if [[ -n "$RVM_PATH" && -d "$RVM_PATH/bin" ]]; then
-  export PATH=$PATH:$RVM_PATH/bin
 fi
 
 # personal bin
