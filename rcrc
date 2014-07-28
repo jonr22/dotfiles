@@ -1,2 +1,2 @@
-EXCLUDES="*.md tmux.conf.linux tmux.conf.mac *.local scripts rcrc"
-SYMLINK_DIRS="oh-my-zsh vim"
+EXCLUDES="*.md *.local scripts rcrc linux"
+SYMLINK_DIRS="oh-my-zsh vim fonts zsh_themes"

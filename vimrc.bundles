@@ -44,3 +44,5 @@ Plugin 'christoomey/vim-tmux-navigator'
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif
+
+call vundle#end()
