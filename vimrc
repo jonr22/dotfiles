@@ -1,8 +1,10 @@
 set nocompatible
 filetype plugin indent on
 
-" Pathogen
-execute pathogen#infect()
+" install Vundle bundles
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
 " GUI specific stuff
 if has("gui_running")
