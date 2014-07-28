@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="$HOME/.zsh_themes/simple"
+ZSH_THEME="../../.zsh_themes/simple"
 # ZSH_THEME="blinks"
 # ZSH_THEME="dst"
 # ZSH_THEME="tjkirch"
