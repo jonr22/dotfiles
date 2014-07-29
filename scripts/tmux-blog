@@ -1,0 +1,5 @@
+#!/bin/zsh
+SESSION="blog"
+SERVER1="rake preview"
+
+tmux_dev "$SESSION" "$SERVER1"
