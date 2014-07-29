@@ -114,7 +114,7 @@ nmap <leader>t :CtrlP .<CR>
 " fuzzy file searching in current buffers
 nmap <leader>b :CtrlPBuffer<CR>
 " clear fuzzy file searching cache
-nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP .<CR>
 " toggle ctag browser
 nmap <leader>] :TagbarToggle<CR>
 " toggle git diff markers in gutter
