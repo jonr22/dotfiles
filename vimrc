@@ -110,7 +110,7 @@ nmap <leader>d :NERDTreeToggle<CR>
 " find current file in file browser
 nmap <leader>f :NERDTreeFind<CR>
 " fuzzy file searching
-nmap <leader>t :CtrlP<CR>
+nmap <leader>t :CtrlP .<CR>
 " fuzzy file searching in current buffers
 nmap <leader>b :CtrlPBuffer<CR>
 " clear fuzzy file searching cache
