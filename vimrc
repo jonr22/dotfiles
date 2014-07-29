@@ -85,7 +85,7 @@ set incsearch   " show matches as search is being typed
 set ignorecase  " case-insensitive search
 set smartcase   " case-sensitive search if there are any caps
 " ctrl-N unhighlights
-nnoremap <silent> <C-N> :nohlsearch<CR><C-N>
+nnoremap <silent> <C-N> :nohlsearch<CR>
 
 " Keyboard shortcuts
 let mapleader = ','
