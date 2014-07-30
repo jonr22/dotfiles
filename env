@@ -21,9 +21,9 @@ if [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
 fi
 
 # Load virtualenvwrapper
-if [[ -s "$HOME/usr/local/bin/virtualenvwrapper.sh" ]]; then
-  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-  source "$HOME/usr/local/bin/virtualenvwrapper.sh"
+if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+  # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+  source "/usr/local/bin/virtualenvwrapper.sh"
 
   if [ -d "$HOME/.virtualenvs" ]; then
     export WORKON_HOME=$HOME/.virtualenvs
