@@ -387,9 +387,15 @@ windows = {
       }
     );
   };
-  9 = { name = "hilight"; sticky = "yes"; };
+  9 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#ubuntu";
+        tag = "freenode";
+      }
+    );
+  };
 };
-mainwindows = {
-  1 = { first_line = "6"; lines = "13"; };
-  9 = { first_line = "1"; lines = "5"; };
-};
+mainwindows = { 9 = { first_line = "1"; lines = "31"; }; };
