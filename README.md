@@ -12,7 +12,8 @@ and [Thoughtbot's](http://thoughtbot.com/) *[dotfiles](https://github.com/though
 It is highly recommended that you run [Laptop](https://github.com/jonr22/laptop) to setup and install these dotfiles on your machine. After running this script, you will still need to follow a few steps to take full advantage of these configurations:
 * install the fonts (details coming soon)
 * install the solarized colors in your terminal (details coming soon)
-* run `:PluginInstall` within vim to install the vim plugins.
+* run `:PluginInstall` within vim to install the vim plugins
+* add IRC_NICK and IRC_PASSWORD setting to .env.local if you want to use the irssi config
 
 ##Update
 
@@ -35,6 +36,7 @@ Alias| File | Description
 `.env` | `env` | Sets environment variables such as the PATH as well as RVM and NVM settings. It checks for certain files and folders and then adds them to the path if they exist. This is called by both zsh and bash. This also sources `.env.local`.
 `.gitconfig` | `gitconfig` | The git configuration file, it contains aliases (described below) and some other common settings. This sources `.gitconfig.local`.
 `.gitignore` | `gitignore` | Files that git should ignore globally.
+`.irssi` | `irssi` | Configuration for irssi IRC client (IRC_NICK and IRC_PASSWORD env variables need to be set).
 `.oh-my-zsh` | `oh-my-zsh` | The [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) package. This contains many aliases and other helpful settings.
 `.rcrc` | `rcrc` | The [rcm](https://github.com/thoughtbot/rcm) configuration.
 `.tmux.conf` | `tmux.conf` | Configuration settings for tmux. Some of these settings are described below. They are all platform independent. For OS X / linux specific settings (mainly for copy/paste) see the `tmux.conf.mac.local` and `tmux.conf.linux.local` files described below. This sources `.tmux.conf.local`
