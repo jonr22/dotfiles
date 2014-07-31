@@ -7,7 +7,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Define bundles via Github repos
 
-" Plugin 'rgarver/Kwbd.vim'
+Plugin 'rgarver/Kwbd.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
