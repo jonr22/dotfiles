@@ -109,7 +109,11 @@ channels = (
   { name = "silc"; chatnet = "silc"; autojoin = "No"; },
   { name = "#RubyOnRails"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#ruby"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#MacOSX"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#MacOSX"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "##javascript"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#html5"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#jquery"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#css"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -277,19 +281,115 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
+    awl_1 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_1 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 settings = {
   core = { real_name = "jon"; user_name = "jon"; nick = "jon"; };
   "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = { theme = "fear2"; };
+  "fe-common/core" = { theme = "xchat"; };
   "perl/core/scripts" = {
     awl_shared_sbar = "OFF";
     awl_viewer = "no";
     awl_block = "-15";
+    awl_sort = "refnum";
   };
 };
 hilights = (
-  { text = "jonr22"; nick = "yes"; word = "yes"; },
-  { text = "the"; nick = "yes"; word = "yes"; }
+  { text = "the"; nick = "yes"; word = "yes"; },
+  { text = "jonr22"; nick = "yes"; word = "yes"; }
 );
+ignores = (
+  { 
+    level = "JOINS PARTS QUITS NICKS";
+    channels = ( "#RubyOnRails" );
+  },
+  { level = "JOINS PARTS QUITS NICKS"; channels = ( "#ruby" ); },
+  { level = "JOINS PARTS QUITS NICKS"; channels = ( "#MacOSX" ); },
+  { level = "JOINS PARTS QUITS NICKS"; channels = ( "#javascript" ); },
+  { level = "JOINS PARTS QUITS NICKS"; }
+);
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#RubyOnRails";
+        tag = "freenode";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#ruby";
+        tag = "freenode";
+      }
+    );
+  };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#MacOSX";
+        tag = "freenode";
+      }
+    );
+  };
+  5 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "##javascript";
+        tag = "freenode";
+      }
+    );
+  };
+  6 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#html5";
+        tag = "freenode";
+      }
+    );
+  };
+  7 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#jquery";
+        tag = "freenode";
+      }
+    );
+  };
+  8 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#css";
+        tag = "freenode";
+      }
+    );
+  };
+  9 = { name = "hilight"; sticky = "yes"; };
+};
+mainwindows = {
+  1 = { first_line = "6"; lines = "13"; };
+  9 = { first_line = "1"; lines = "5"; };
+};
