@@ -1,4 +1,4 @@
-TMUX_SESSIONS=('terminal')
+TMUX_SESSIONS=('terminal' 'irssi')
 TMUX_SCRIPT_LOCATION=${TMUX_SCRIPT_LOCATION:-$TMUX_DEVELOPER_DIR/bin/tmux}
 
 ### Setup Sessions ###

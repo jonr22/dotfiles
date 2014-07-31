@@ -274,20 +274,6 @@ statusbar = {
         topicbarend = { priority = "100"; alignment = "right"; };
       };
     };
-    awl_0 = {
-      items = {
-        barstart = { priority = "100"; };
-        awl_0 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
-    awl_1 = {
-      items = {
-        barstart = { priority = "100"; };
-        awl_1 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
   };
 };
 settings = {
@@ -296,9 +282,11 @@ settings = {
   "fe-common/core" = { theme = "xchat"; };
   "perl/core/scripts" = {
     awl_shared_sbar = "OFF";
-    awl_viewer = "no";
+    awl_viewer = "yes";
     awl_block = "-15";
     awl_sort = "refnum";
+    nicklist_height = "17";
+    nicklist_width = "28";
   };
 };
 hilights = (
@@ -387,15 +375,5 @@ windows = {
       }
     );
   };
-  9 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#ubuntu";
-        tag = "freenode";
-      }
-    );
-  };
 };
-mainwindows = { 9 = { first_line = "1"; lines = "31"; }; };
+mainwindows = { 2 = { first_line = "1"; lines = "33"; }; };

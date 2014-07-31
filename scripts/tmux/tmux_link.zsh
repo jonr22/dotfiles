@@ -1,4 +1,4 @@
-TMUX_WINDOWS=('terminal:t1' 'terminal:t2')
+TMUX_WINDOWS=('terminal:t1' 'terminal:t2' 'irssi:irc')
 
 
 ### Link Windows ###
