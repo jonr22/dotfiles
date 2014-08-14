@@ -127,9 +127,9 @@ nnoremap <leader>c :Kwbd<CR>
 cnoremap w!! %!sudo tee > /dev/null %
 
 " rails naviagion
-nmap <leader>v :Eview<CR>
-nmap <leader>c :Econtroller<CR>
-nmap <leader>m :Emodel<CR>
+" nmap <leader>v :Eview<CR>
+" nmap <leader>c :Econtroller<CR>
+" nmap <leader>m :Emodel<CR>
 
 " set vimrc path appropriately, and set command to reload vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
