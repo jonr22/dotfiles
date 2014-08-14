@@ -1,0 +1,17 @@
+#!/bin/sh
+
+touch $HOME/.aliases.local
+touch $HOME/.env.local
+touch $HOME/.gitconfig.local
+touch $HOME/.tmux.conf.local
+touch $HOME/.vimrc.bundles.local
+touch $HOME/.vimrc.local
+
+cd $HOME/.dotfiles
+git submodule init
+git submodule update
+
+if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
+  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
+vim -u $HOME/.vimrc.bundles +PluginInstall +qa
