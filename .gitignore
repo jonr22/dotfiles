@@ -1,3 +1,4 @@
 vim/bundle/**
 weechat/logs
 weechat/weechat.log
+weechat/sec.conf

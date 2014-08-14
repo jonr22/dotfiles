@@ -1,2 +1,1 @@
 EXCLUDES="*.md *.local scripts rcrc colors"
-SYMLINK_DIRS="oh-my-zsh vim fonts weechat"
