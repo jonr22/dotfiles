@@ -7,7 +7,6 @@ endif
 
 filetype plugin indent on
 
-
 " GUI specific stuff
 if has("gui_running")
   set guioptions-=T " hide toolbar in gui
@@ -127,13 +126,10 @@ nnoremap <leader>c :Kwbd<CR>
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
 
-" hide *.pyc files in NERDTree
-let NERDTreeIgnore = ['\.pyc$']
-
 " rails naviagion
-" nmap <leader>v :Eview<CR>
-" nmap <leader>c :Econtroller<CR>
-" nmap <leader>m :Emodel<CR>
+nmap <leader>v :Eview<CR>
+nmap <leader>c :Econtroller<CR>
+nmap <leader>m :Emodel<CR>
 
 " set vimrc path appropriately, and set command to reload vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
@@ -152,7 +148,13 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 let g:jedi#goto_assignments_command = "<leader><leader>g"
 let g:jedi#goto_definitions_command = "<leader><leader>d"
-let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#default#section_truncate_width = {
+  \ 'warning': 120,
+  \ 'x': 100,
+  \ 'y': 80,
+  \ 'b': 60,
+  \ 'z': 40,
+  \ }
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
@@ -166,6 +168,9 @@ let g:airline_mode_map = {
     \ 'S'  : 'S',
     \ '' : 'S',
     \ }
+" hide *.pyc files in NERDTree
+let NERDTreeIgnore = ['\.pyc$']
+
 
 " use silver searcher, when available
 if executable('ag')
@@ -195,8 +200,6 @@ autocmd User Rails silent! Rnavcommand mediator       app/mediators             
 autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
 
 " Extra
-
-" autocmd BufEnter * Rvm
 
 " List chars
 if &listchars ==# 'eol:$'
