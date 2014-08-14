@@ -1,10 +1,8 @@
 HOMEBREW_PATH=/usr/local
 RBENV_PATH=$HOME/.rbenv
 JAVA_HOME=/usr/local/java/jdk1.7.0_17
-HADOOP_INSTALL=$HOME/Developer/lib/hadoop-1.1.2
 HEROKU_PATH=/usr/local/heroku
-SBT_PATH=$HOME/Developer/lib/sbt
-NVM_PATH=/usr/local/share/npm
+# NPM_PATH=/usr/local/share/npm
 
 # Set TERM (for tmux)
 if [[ "$TERM" == "xterm" ]]; then
@@ -22,7 +20,6 @@ fi
 
 # Load virtualenvwrapper
 if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-  # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
   source "/usr/local/bin/virtualenvwrapper.sh"
 
   if [ -d "$HOME/.virtualenvs" ]; then
@@ -54,19 +51,9 @@ if [[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]]; then
   export PATH=$PATH:$JAVA_HOME/bin
 fi
 
-# Hadoop
-if [[ -n "$HADOOP_INSTALL" && -d "$HADOOP_INSTALL/bin" && -d "$HADOOP_INSTALL/sbin" ]]; then
-  export PATH=$PATH:$HADOOP_INSTALL/bin:$HADOOP_INSTALL/sbin
-fi
-
 # Heroku
 if [[ -n "$HEROKU_PATH" && -d "$HEROKU_PATH/bin" ]]; then
   export PATH=$PATH:$HEROKU_PATH/bin
-fi
-
-# Scala Build Tool
-if [[ -n "$SBT_PATH" && -d "$SBT_PATH/bin" ]]; then
-  export PATH=$PATH:$SBT_PATH/bin
 fi
 
 # personal bin
