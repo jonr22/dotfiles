@@ -1,3 +1,9 @@
+alias tlf="tail -f"
+alias mkdir='mkdir -p'
+alias -g G='| grep'
+alias -g M='| less'
+alias -g L='| wc -l'
+
 # Run local aliases if they exist
 if [ -f ~/.aliases.local ]; then
     source ~/.aliases.local
