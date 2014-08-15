@@ -102,8 +102,13 @@ vmap <leader>l= :Tabularize /=<CR>
 nmap <leader>l: :Tabularize /:\zs<CR>
 vmap <leader>l: :Tabularize /:\zs<CR>
 
-" grep replacement
-nmap <leader>a :Ack
+" Ag command
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+" search project command
+nnoremap \ :Ag<SPACE>
+" grep
+nnoremap <leader>a :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " toggle file browser
 nmap <leader>d :NERDTreeToggle<CR>
 " find current file in file browser
@@ -114,8 +119,6 @@ nmap <leader>t :CtrlP .<CR>
 nmap <leader>b :CtrlPBuffer<CR>
 " clear fuzzy file searching cache
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP .<CR>
-" toggle ctag browser
-nmap <leader>] :TagbarToggle<CR>
 " toggle git diff markers in gutter
 nmap <leader>g :GitGutterToggle<CR>
 " update tags
@@ -143,6 +146,7 @@ let g:gitgutter_enabled=0                                " git gutter disabled b
 let g:syntastic_check_on_open=1                          " use syntastic to check file on open
 let g:syntastic_ruby_checkers = ['mri']                  " use mri and default for ruby
 let g:syntastic_python_checkers = ['python', 'pyflakes'] " use pyflakes and default for python
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:airline_powerline_fonts = 1
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
@@ -171,16 +175,16 @@ let g:airline_mode_map = {
 " hide *.pyc files in NERDTree
 let NERDTreeIgnore = ['\.pyc$']
 
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
 
 " use silver searcher, when available
 if executable('ag')
-  let g:ackprg = 'ag --nogroup --column'
-
   " use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
   " use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l -U --nocolor -g ""'
 endif
 
 " Autocommands
