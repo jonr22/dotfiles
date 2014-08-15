@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+WINDOW_SESSION='weechat'
+
+
+### Create Session ###
+echo "creating session (${WINDOW_SESSION})"
+
+tmux new-session -s ${WINDOW_SESSION} -d
+
+
+### weechat window ###
+echo "creating irc window (${WINDOW_SESSION})"
+
+tmux rename-window irc
+tmux send-keys "cd $HOME; clear"
+tmux clear-history
+tmux send-keys "weechat"

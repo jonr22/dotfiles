@@ -1,1 +1,1 @@
-EXCLUDES="*.md *.local scripts rcrc colors"
+EXCLUDES="*.md *.local rcrc colors"

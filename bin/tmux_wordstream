@@ -1,0 +1,6 @@
+#!/bin/zsh
+SESSION='wordstream'
+SERVER1="cd server/wordstream/src; clearpython server.py"
+SERVER2="cd client/manager/src; clearpython server.py"
+
+tmux_dev "$SESSION" "$SERVER1" "$SERVER2"
