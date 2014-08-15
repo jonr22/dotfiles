@@ -127,6 +127,8 @@ nmap <leader>g :GitGutterToggle<CR>
 nmap <leader>[ :!ctags -R .<CR>
 " properly delete buffer
 nnoremap <leader>c :Kwbd<CR>
+" vertical split
+nnoremap <leader>v :vsplit<CR>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
