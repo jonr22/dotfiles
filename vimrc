@@ -2,19 +2,19 @@ set nocompatible
 
 " install Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+source ~/.vimrc.bundles
 endif
 
 filetype plugin indent on
 
 " GUI specific stuff
 if has("gui_running")
-  set guioptions-=T " hide toolbar in gui
-  set guioptions+=b " show bottom scroll bar
+set guioptions-=T " hide toolbar in gui
+set guioptions+=b " show bottom scroll bar
 
-  " set window size
-  set lines=36
-  set columns=120
+" set window size
+set lines=36
+set columns=120
 endif
 
 " General
@@ -107,8 +107,10 @@ command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 " search project command
 nnoremap \ :Ag<SPACE>
-" grep
+" grep the current word
 nnoremap <leader>a :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" search the current word
+nnoremap <leader>w /<C-R><C-W><CR>
 " toggle file browser
 nmap <leader>d :NERDTreeToggle<CR>
 " find current file in file browser
