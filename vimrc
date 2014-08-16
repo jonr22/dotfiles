@@ -150,6 +150,7 @@ let g:gitgutter_enabled=0                                " git gutter disabled b
 let g:syntastic_check_on_open=1                          " use syntastic to check file on open
 let g:syntastic_ruby_checkers = ['mri']                  " use mri and default for ruby
 let g:syntastic_python_checkers = ['python', 'pyflakes'] " use pyflakes and default for python
+let g:syntastic_scss_checkers = ['scss_lint']            " use scss-lint for Sass files
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:airline_powerline_fonts = 1
 let g:SuperTabDefaultCompletionType = "context"
