@@ -24,7 +24,7 @@ ZSH_THEME="simple"
 
 # Uncomment following line if you want to disable command autocorrection
 # DISABLE_CORRECTION="true"
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -60,6 +60,11 @@ bindkey "[Z" reverse-menu-complete
 
 # use incremental search
 bindkey "^R" history-incremental-search-backward
+
+# Setup base16 colors
+if [ -f ~/.zsh-base16 ]; then
+  source ~/.zsh-base16
+fi
 
 # Run env commands if they exist
 if [ -f ~/.env ]; then
