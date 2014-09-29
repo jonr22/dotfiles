@@ -61,13 +61,12 @@ set smarttab      " <BS> will delete shiftwidth worth of space at start of line
 " set foldlevel=5
 
 " Theme
-syntax enable             " enable syntax highlighting
-set number                " show line numbers
-set nowrap                " don't wrap overflow text
-set background=dark       " background is dark
-let g:solarized_italic=0  " solarized italics don't look good
-colorscheme solarized     " use solarized colors
-call togglebg#map("<F9>") " Toggle light/dark colors with <leader>s
+syntax enable               " enable syntax highlighting
+set number                  " show line numbers
+set nowrap                  " don't wrap overflow text
+set background=dark         " background is dark
+let base16colorspace=256    " use 256 color palette
+colorscheme base16-tomorrow " set colortheme to tomorrow
 
 " open new split panes to right and bottom
 set splitbelow
@@ -127,8 +126,9 @@ nmap <leader>g :GitGutterToggle<CR>
 nmap <leader>[ :!ctags -R .<CR>
 " properly delete buffer
 nnoremap <leader>c :Kwbd<CR>
-" vertical split
+" splits
 nnoremap <leader>v :vsplit<CR>
+nnoremap <leader>h :split<CR>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
