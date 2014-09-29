@@ -2,22 +2,14 @@ set nocompatible
 
 " install Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
-source ~/.vimrc.bundles
+  source ~/.vimrc.bundles
 endif
 
 filetype plugin indent on
 
-" GUI specific stuff
-if has("gui_running")
-set guioptions-=T " hide toolbar in gui
-set guioptions+=b " show bottom scroll bar
 
-" set window size
-set lines=36
-set columns=120
-endif
 
-" General
+" General Settings
 set autoread          " reload files when changed on disk, i.e. via `git checkout`
 set history=1000      " remember commands
 set tabpagemax=50     " maximum number of tab pages
@@ -40,25 +32,27 @@ set complete-=i                 " ???
 set ttimeout
 set ttimeoutlen=50
 
+" enable mouse interaction
+set mouse=a
+set ttymouse=xterm2
+
 " no backup
 set nobackup
 set nowritebackup
 set noswapfile
 
-" Indenting
-set tabstop=2     " tab is 2 spaces
-set softtabstop=2 " insert mode tab and backspace use 2 spaces
-set shiftwidth=2  " auto-indent and >,< use 2 spaces
-set shiftround    " always round >,< tabs to shiftwidth location
-set expandtab     " expand tabs to spaces
-set autoindent    " automatically do indenting
-set smarttab      " <BS> will delete shiftwidth worth of space at start of line
+" List chars
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+  if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+  endif
+endif
 
-" Folding
-" set foldenable
-" set foldmethod=syntax
-" set foldcolumn=5
-" set foldlevel=5
+" allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux'
+  set t_Co=16
+endif
 
 " Theme
 syntax enable                   " enable syntax highlighting
@@ -67,7 +61,21 @@ set nowrap                      " don't wrap overflow text
 set background=dark             " background is dark
 let base16colorspace=256        " use 256 color palette
 colorscheme base16-tomorrow     " set colortheme to tomorrow
-let g:airline_theme='bubblegum' " set airline theme
+
+" indenting
+set tabstop=2     " tab is 2 spaces
+set softtabstop=2 " insert mode tab and backspace use 2 spaces
+set shiftwidth=2  " auto-indent and >,< use 2 spaces
+set shiftround    " always round >,< tabs to shiftwidth location
+set expandtab     " expand tabs to spaces
+set autoindent    " automatically do indenting
+set smarttab      " <BS> will delete shiftwidth worth of space at start of line
+
+" folding
+" set foldenable
+" set foldmethod=syntax
+" set foldcolumn=5
+" set foldlevel=5
 
 " open new split panes to right and bottom
 set splitbelow
@@ -83,17 +91,61 @@ set hlsearch    " highlight searches
 set incsearch   " show matches as search is being typed
 set ignorecase  " case-insensitive search
 set smartcase   " case-sensitive search if there are any caps
-" ctrl-N unhighlights
-nnoremap <silent> <C-N> :nohlsearch<CR>
+
+
 
 " Keyboard shortcuts
 let mapleader = ','
 
-" map easier window movement
+" Window Movement
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" make Y consistent with C and D
+nnoremap Y y$
+" repmap C-a as tmux steals it
+nnoremap <C-q> <C-a>
+
+" paste from clipboard
+vmap <leader>y "+y
+nmap <leader>p "+p
+
+" Searching
+" search project command
+nnoremap \ :Ag<SPACE>
+" grep the current word
+nnoremap <leader>a :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" search the current word
+nnoremap <leader>w /<C-R><C-W><CR>
+" fuzzy file searching
+nmap <leader>t :CtrlP .<CR>
+" fuzzy file searching in current buffers
+nmap <leader>b :CtrlPBuffer<CR>
+" clear fuzzy file searching cache
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP .<CR>
+" ctrl-N unhighlights search
+nnoremap <silent> <C-N> :nohlsearch<CR>
+
+" General mappings
+" toggle file browser
+nmap <leader>d :NERDTreeToggle<CR>
+" find current file in file browser
+nmap <leader>f :NERDTreeFind<CR>
+" toggle git diff markers in gutter
+nmap <leader>g :GitGutterToggle<CR>
+" update tags
+nmap <leader>[ :!ctags -R .<CR>
+" properly delete buffer
+nnoremap <leader>c :bd<CR>
+" splits
+nnoremap <leader>v :vsplit<CR>
+nnoremap <leader>h :split<CR>
+" strip whitespace
+nmap <leader><space> :call <SID>strip_trailing()<CR>
+" set vimrc path appropriately, and set command to reload vimrc
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " align text blocks on a symbol
 map <leader>l :Tabularize
@@ -101,70 +153,38 @@ nmap <leader>l= :Tabularize /=<CR>
 vmap <leader>l= :Tabularize /=<CR>
 nmap <leader>l: :Tabularize /:\zs<CR>
 vmap <leader>l: :Tabularize /:\zs<CR>
-
-" Ag command
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-
-" search project command
-nnoremap \ :Ag<SPACE>
-" grep the current word
-nnoremap <leader>a :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-" search the current word
-nnoremap <leader>w /<C-R><C-W><CR>
-" toggle file browser
-nmap <leader>d :NERDTreeToggle<CR>
-" find current file in file browser
-nmap <leader>f :NERDTreeFind<CR>
-" fuzzy file searching
-nmap <leader>t :CtrlP .<CR>
-" fuzzy file searching in current buffers
-nmap <leader>b :CtrlPBuffer<CR>
-" clear fuzzy file searching cache
-nmap <leader>T :CtrlPClearCache<CR>:CtrlP .<CR>
-" toggle git diff markers in gutter
-nmap <leader>g :GitGutterToggle<CR>
-" update tags
-nmap <leader>[ :!ctags -R .<CR>
-" properly delete buffer
-nnoremap <leader>c :Kwbd<CR>
-" splits
-nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>h :split<CR>
-
-" in case you forgot to sudo
-cnoremap w!! %!sudo tee > /dev/null %
+" cucumber bar/pipe align
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 " rails naviagion
 " nmap <leader>v :Eview<CR>
 " nmap <leader>c :Econtroller<CR>
 " nmap <leader>m :Emodel<CR>
 
-" set vimrc path appropriately, and set command to reload vimrc
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-nmap <leader><space> :call <SID>strip_trailing()<CR>
+" rspec / tslime
+map <leader>R :call RunAllSpecs()<CR>
+map <leader>r :call RunCurrentSpecFile()<CR>
+map <leader>s :call RunNearestSpec()<CR>
+" nmap <leader>b <Plug>SetTmuxVars
+
+
 
 " Plugin settings
-let g:ctrlp_match_window = 'order:ttb,max:20'            " ???
-let g:ctrlp_switch_buffer = 'H'                          " Open a new instance of a buffer unless <c-x> is pressed
-let g:NERDSpaceDelims=1                                  " ???
-let g:gitgutter_enabled=0                                " git gutter disabled by default
-let g:syntastic_check_on_open=1                          " use syntastic to check file on open
-let g:syntastic_ruby_checkers = ['mri']                  " use mri and default for ruby
-let g:syntastic_python_checkers = ['python', 'pyflakes'] " use pyflakes and default for python
-let g:syntastic_scss_checkers = ['scss_lint']            " use scss-lint for Sass files
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:airline_powerline_fonts = 1
-let g:SuperTabDefaultCompletionType = "context"
+let g:ctrlp_match_window = 'order:ttb,max:20'               " ???
+let g:ctrlp_switch_buffer = 'H'                             " Open a new instance of a buffer unless <c-x> is pressed
+let g:gitgutter_enabled=0                                   " git gutter disabled by default
+let g:html_indent_tags = 'li\|p'                            " Treat <li> and <p> tags like the block tags they are
+let NERDTreeIgnore = ['\.pyc$']                             " hide *.pyc files in NERDTree
+let g:NERDSpaceDelims=1                                     " ???
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")' " rspec / tslime
 let g:SuperTabClosePreviewOnPopupClose = 1
-let g:jedi#goto_assignments_command = "<leader><leader>g"
-let g:jedi#goto_definitions_command = "<leader><leader>d"
-let g:airline#extensions#default#section_truncate_width = {
-  \ 'warning': 120,
-  \ 'x': 100,
-  \ 'y': 80,
-  \ 'b': 60,
-  \ 'z': 40,
-  \ }
+let g:SuperTabDefaultCompletionType = "context"
+let g:syntastic_check_on_open=1                             " use syntastic to check file on open
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_ruby_checkers = ['mri']                     " use mri and default for ruby
+let g:syntastic_scss_checkers = ['scss_lint']               " use scss-lint for Sass files
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'                             " set airline theme
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
@@ -178,12 +198,13 @@ let g:airline_mode_map = {
     \ 'S'  : 'S',
     \ '' : 'S',
     \ }
-" hide *.pyc files in NERDTree
-let NERDTreeIgnore = ['\.pyc$']
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
+let g:airline#extensions#default#section_truncate_width = {
+  \ 'warning': 120,
+  \ 'x': 100,
+  \ 'y': 80,
+  \ 'b': 60,
+  \ 'z': 40,
+  \ }
 " use silver searcher, when available
 if executable('ag')
   " use Ag over Grep
@@ -192,6 +213,8 @@ if executable('ag')
   " use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l -U --nocolor -g ""'
 endif
+
+
 
 " Autocommands
 autocmd VimResized * :wincmd =      " automatically rebalance windows on vim resize
@@ -209,45 +232,13 @@ autocmd User Rails silent! Rnavcommand job            app/jobs                  
 autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
 autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
 
-" Extra
 
-" List chars
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-  if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
-  endif
-endif
 
-" allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^linux'
-  set t_Co=16
-endif
+" Functions / Commands
+" Ag command
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
-" make Y consistent with C and D
-nnoremap Y y$
-
-" enable mouse interaction
-set mouse=a
-set ttymouse=xterm2
-
-" repmap C-a as tmux steals it
-nnoremap <C-q> <C-a>
-
-" paste from clipboard
-vmap <leader>y "+y
-nmap <leader>p "+p
-
-" rspec / tslime
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
-map <leader>R :call RunAllSpecs()<CR>
-map <leader>r :call RunCurrentSpecFile()<CR>
-map <leader>s :call RunNearestSpec()<CR>
-" nmap <leader>b <Plug>SetTmuxVars
-
-" cucumber bar/pipe align
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
+" Align pipe seperated tables
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -269,6 +260,9 @@ function! s:strip_trailing()
   call cursor(previous_cursor_line, previous_cursor_column)
 endfunction
 
+
+
+" Load any local settings
 if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
+  source ~/.vimrc.local
 endif
