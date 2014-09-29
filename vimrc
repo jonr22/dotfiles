@@ -61,12 +61,13 @@ set smarttab      " <BS> will delete shiftwidth worth of space at start of line
 " set foldlevel=5
 
 " Theme
-syntax enable               " enable syntax highlighting
-set number                  " show line numbers
-set nowrap                  " don't wrap overflow text
-set background=dark         " background is dark
-let base16colorspace=256    " use 256 color palette
-colorscheme base16-tomorrow " set colortheme to tomorrow
+syntax enable                   " enable syntax highlighting
+set number                      " show line numbers
+set nowrap                      " don't wrap overflow text
+set background=dark             " background is dark
+let base16colorspace=256        " use 256 color palette
+colorscheme base16-tomorrow     " set colortheme to tomorrow
+let g:airline_theme='bubblegum' " set airline theme
 
 " open new split panes to right and bottom
 set splitbelow
