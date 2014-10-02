@@ -1,8 +1,37 @@
+# Push and pop directories on directory stack
+alias pu='pushd'
+alias po='popd'
+alias d='dirs -v | head -10'
+
+# Basic directory operations
+alias -- -='cd -'
+alias ...='cd ../..'
+alias ..='cd ..'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd/='cd /'
+
+# List direcory contents
+ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
+
+# Extras
 alias tlf="tail -f"
 alias mkdir='mkdir -p'
 alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
+
+# mac specific settings
+if [ $(uname) = Darwin ]; then
+  # set vim to always use mvim
+  alias vim='mvim -v'
+fi
 
 # Run local aliases if they exist
 if [ -f ~/.aliases.local ]; then

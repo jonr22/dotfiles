@@ -2,7 +2,10 @@ HOMEBREW_PATH=/usr/local
 RBENV_PATH=$HOME/.rbenv
 JAVA_HOME=/usr/local/java/jdk1.7.0_17
 HEROKU_PATH=/usr/local/heroku
-# NPM_PATH=/usr/local/share/npm
+
+# use vim as the visual editor
+export VISUAL=vim
+export EDITOR=$VISUAL
 
 # Set TERM (for tmux)
 if [[ "$TERM" == "xterm" ]]; then
@@ -41,11 +44,6 @@ if [[ -n "$RBENV_PATH" && -d "$RBENV_PATH/bin" ]]; then
   eval "$(rbenv init -)"
 fi
 
-# NPM
-if [[ -n "$NPM_PATH" && -d "$NPM_PATH/bin" ]]; then
-  export PATH=$PATH:$NPM_PATH/bin
-fi
-
 # Java
 if [[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]]; then
   export PATH=$PATH:$JAVA_HOME/bin
@@ -69,12 +67,6 @@ if [ -d "$HOME/.lib" ]; then
     LD_LIBRARY_PATH=$HOME/.lib
   fi
   export LD_LIBRARY_PATH
-fi
-
-# mac specific settings
-if [ $(uname) = Darwin ]; then
-  # set vim to always use mvim
-  alias vim='mvim -v'
 fi
 
 # Run local env commands if they exist
