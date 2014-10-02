@@ -104,6 +104,15 @@ alias -g L='| wc -l'
 
 
 
+### Local ###
+
+# Run local zshrc if it exists
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+
+
+
 ### Shared Settings ###
 
 # Run env commands if they exist
