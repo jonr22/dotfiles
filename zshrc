@@ -96,6 +96,14 @@ bindkey "[Z" reverse-menu-complete
 
 
 
+### ZSH Aliases ###
+
+alias -g G='| grep'
+alias -g M='| less'
+alias -g L='| wc -l'
+
+
+
 ### Shared Settings ###
 
 # Run env commands if they exist

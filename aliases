@@ -11,7 +11,6 @@ alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
 alias cd.....='cd ../../../..'
-alias cd/='cd /'
 
 # List direcory contents
 ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
@@ -20,12 +19,14 @@ alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
 
+# tmux
+alias ta='tmux attach -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+
 # Extras
 alias tlf="tail -f"
 alias mkdir='mkdir -p'
-alias -g G='| grep'
-alias -g M='| less'
-alias -g L='| wc -l'
 
 # mac specific settings
 if [ $(uname) = Darwin ]; then
