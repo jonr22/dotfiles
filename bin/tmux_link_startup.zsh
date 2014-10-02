@@ -1,4 +1,5 @@
-TMUX_SESSIONS=('terminal' 'weechat')
+TMUX_SESSIONS=('terminal')
+# TMUX_SESSIONS=('terminal' 'weechat')
 # TMUX_SCRIPT_LOCATION=${TMUX_SCRIPT_LOCATION:-$TMUX_BIN_DIR}
 
 ### Setup Sessions ###
