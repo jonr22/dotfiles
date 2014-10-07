@@ -28,8 +28,9 @@ if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
 fi
 
 # RBENV
-if [[ -n "$RBENV_PATH" && -d "$RBENV_PATH/bin" ]]; then
-  export PATH=$PATH:$RBENV_PATH/bin
+# if [[ -n "$RBENV_PATH" && -d "$RBENV_PATH/bin" ]]; then
+if [[ -n "$RBENV_PATH" ]]; then
+  # export PATH=$PATH:$RBENV_PATH/bin
 
   # load rbenv
   eval "$(rbenv init -)"
