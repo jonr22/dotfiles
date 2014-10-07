@@ -40,14 +40,15 @@ zstyle ':completion::complete:*' cache-path $ZSH/cache/
 
 ### Theme ###
 
-# prompt
-setopt promptsubst
-source "$ZSH/theme"
-
 # colors
 autoload -U colors
 colors
 # export CLICOLOR=1
+
+# prompt
+setopt multios
+setopt prompt_subst
+source "$ZSH/theme"
 
 # Setup base16 colors
 if [ -f ~/.zsh-base16 ]; then
