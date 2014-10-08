@@ -61,6 +61,9 @@ if [ -d "$HOME/.lib" ]; then
   export LD_LIBRARY_PATH
 fi
 
+# npm autocompletion
+. <(npm completion)
+
 # Run local env commands if they exist
 if [ -f ~/.env.local ]; then
     source ~/.env.local
