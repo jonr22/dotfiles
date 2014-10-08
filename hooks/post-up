@@ -3,9 +3,11 @@
 touch $HOME/.aliases.local
 touch $HOME/.env.local
 touch $HOME/.gitconfig.local
+touch $HOME/.psqlrc.local
 touch $HOME/.tmux.conf.local
 touch $HOME/.vimrc.bundles.local
 touch $HOME/.vimrc.local
+touch $HOME/.zshrc.local
 
 if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
