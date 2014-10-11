@@ -15,22 +15,30 @@ fi
 # Load NVM
 if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
   source "$HOME/.nvm/nvm.sh"
+
+  # npm autocompletion
+  . <(npm completion)
 fi
 if [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
   export NVM_DIR=~/.nvm
   source "/usr/local/opt/nvm/nvm.sh"
+
+  # npm autocompletion
+  . <(npm completion)
 fi
 
 # Build PATH
 # Homebrew
 if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
-  export PATH=$HOMEBREW_PATH/bin:$PATH
+  export PATH=$HOMEBREW_PATH/bin:$HOMEBREW_PATH/sbin:$PATH
 fi
 
 # RBENV
-# if [[ -n "$RBENV_PATH" && -d "$RBENV_PATH/bin" ]]; then
 if [[ -n "$RBENV_PATH" ]]; then
-  # export PATH=$PATH:$RBENV_PATH/bin
+  if [[ -d "$RBENV_PATH/bin" ]]; then
+    # path to rbenv on linux
+    export PATH=$PATH:$RBENV_PATH/bin
+  fi
 
   # load rbenv
   eval "$(rbenv init -)"
@@ -60,9 +68,6 @@ if [ -d "$HOME/.lib" ]; then
   fi
   export LD_LIBRARY_PATH
 fi
-
-# npm autocompletion
-. <(npm completion)
 
 # Run local env commands if they exist
 if [ -f ~/.env.local ]; then
