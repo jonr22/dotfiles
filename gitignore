@@ -6,4 +6,5 @@ Reimels*
 doc/tags
 .idea
 .tern-project
-
+.jshintrc
+.tern-port

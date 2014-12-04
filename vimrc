@@ -183,6 +183,7 @@ let g:syntastic_check_on_open=1                             " use syntastic to c
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_ruby_checkers = ['mri']                     " use mri and default for ruby
 let g:syntastic_scss_checkers = ['scss_lint']               " use scss-lint for Sass files
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']    " use jshint and jscs for javascript files
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'                             " set airline theme
 let g:airline_mode_map = {
