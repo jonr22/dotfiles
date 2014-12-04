@@ -1,0 +1,6 @@
+#!/bin/zsh
+SESSION="bellissimo_grande"
+SERVER1=""
+SERVER2=""
+
+tmux_dev "$SESSION" "$SERVER1" "$SERVER2"
