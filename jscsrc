@@ -45,7 +45,6 @@
         "beforeOpeningCurlyBrace": true
     },
     "disallowSpacesInCallExpression": true,
-    "requireMultipleVarDecl": "onevar",
     "requireBlocksOnNewline": 1,
     "disallowEmptyBlocks": true,
     "disallowSpacesInsideArrayBrackets": true,
@@ -88,6 +87,6 @@
     "requireDotNotation": true,
     "disallowNewlineBeforeBlockStatements": true,
     "validateQuoteMarks": { "mark": "'", "escape": true },
-    "validateIndentation": 4,
+    "validateIndentation": 2,
     "validateParameterSeparator": ", "
 }
