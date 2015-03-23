@@ -15,7 +15,7 @@ done
 ### Auto Complete ###
 
 # add a function path
-fpath=($ZSH/completions $fpath)
+fpath=($ZSH/completions /usr/local/share/zsh/site-functions $fpath)
 
 # load and run compinit
 autoload -U compinit

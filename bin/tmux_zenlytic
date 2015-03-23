@@ -1,0 +1,8 @@
+#!/bin/zsh
+SESSION="zenlytic"
+FOLDER1="frontend"
+FOLDER2="backend"
+SERVER1="cd frontend; cleargulp serve"
+SERVER2="cd backend; clearnpm start"
+
+tmux_dev_multi "$SESSION" "$FOLDER1" "$FOLDER2" "$SERVER1" "$SERVER2"
