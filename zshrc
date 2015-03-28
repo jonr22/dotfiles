@@ -4,11 +4,17 @@ ZSH=~/.zsh
 
 
 
-### Functions ###
+### Shared Settings ###
 
-for function in $ZSH/functions/*; do
-  source $function
-done
+# Run env commands if they exist
+if [ -f ~/.env ]; then
+  source ~/.env
+fi
+
+# Run alias commands if they exist
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
+fi
 
 
 
@@ -20,6 +26,18 @@ fpath=($ZSH/completions /usr/local/share/zsh/site-functions $fpath)
 # load and run compinit
 autoload -U compinit
 compinit
+
+
+
+### Functions ###
+
+for function in $ZSH/functions/*; do
+  source $function
+done
+
+
+
+### ZSH Options ###
 
 # selection options
 unsetopt menu_complete   # do not autoselect the first completion entry
@@ -110,18 +128,4 @@ alias -g L='| wc -l'
 # Run local zshrc if it exists
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
-fi
-
-
-
-### Shared Settings ###
-
-# Run env commands if they exist
-if [ -f ~/.env ]; then
-  source ~/.env
-fi
-
-# Run alias commands if they exist
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
 fi
