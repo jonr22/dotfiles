@@ -54,6 +54,10 @@ if &t_Co == 8 && $TERM !~# '^linux'
   set t_Co=16
 endif
 
+" turn off bells
+set vb
+set t_vb=
+
 " Theme
 syntax enable                   " enable syntax highlighting
 set number                      " show line numbers
