@@ -118,7 +118,7 @@ nnoremap \ :Ag<SPACE>
 " grep the current word
 nnoremap <leader>a :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " search the current word
-nnoremap <leader>w /<C-R><C-W><CR>
+" nnoremap <leader>w /<C-R><C-W><CR>
 " fuzzy file searching
 nmap <leader>t :CtrlP .<CR>
 " fuzzy file searching in current buffers
@@ -177,13 +177,14 @@ let g:html_indent_tags = 'li\|p'                            " Treat <li> and <p>
 let NERDTreeIgnore = ['\.pyc$']                             " hide *.pyc files in NERDTree
 let g:NERDSpaceDelims=1                                     " ???
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")' " rspec / tslime
-let g:SuperTabClosePreviewOnPopupClose = 1
-let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabClosePreviewOnPopupClose = 1
+" let g:SuperTabDefaultCompletionType = "context"
 let g:syntastic_check_on_open=1                             " use syntastic to check file on open
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_ruby_checkers = ['mri']                     " use mri and default for ruby
 let g:syntastic_scss_checkers = ['scss_lint']               " use scss-lint for Sass files
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']    " use jshint and jscs for javascript files
+let g:syntastic_aggregate_errors = 1                        " display results from all checkers
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'                             " set airline theme
 let g:airline_mode_map = {
@@ -234,7 +235,7 @@ autocmd User Rails silent! Rnavcommand mediator       app/mediators             
 autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
 
 " use omnifunc by default for css with supertab
-autocmd FileType css call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+" autocmd FileType css call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it for commit messages, when the position is invalid, or when
