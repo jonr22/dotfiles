@@ -1,0 +1,101 @@
+#!/bin/zsh
+
+### Config ###
+TMUX_SESSION=${1:-data_science}
+TMUX_FOLDER_1=${2:-frontend}
+TMUX_FOLDER_2=${3:-backend}
+SERVER1=$4
+SERVER2=$5
+
+TMUX_DEVELOPER_DIR=${TMUX_DEVELOPER_DIR:-$HOME/Developer}
+TMUX_BIN_DIR=${TMUX_BIN_DIR:-$HOME/.bin}
+TMUX_SCRIPT_LOCATION=${TMUX_SCRIPT_LOCATION:-$TMUX_BIN_DIR}
+TMUX_LINK_SCRIPT='tmux_link.zsh'
+TMUX_LINK_STARTUP_SCRIPT='tmux_link_startup.zsh'
+
+
+### Create Linked Sessions ###
+echo "Starting shared sessions (${TMUX_SESSION})"
+
+source "${TMUX_SCRIPT_LOCATION}/${TMUX_LINK_STARTUP_SCRIPT}"
+
+
+### Create Session ###
+echo "creating session (${TMUX_SESSION})"
+
+tmux new-session -s ${TMUX_SESSION} -d
+
+
+### folder 1 ###
+echo "creating $TMUX_FOLDER_1 window (${TMUX_SESSION})"
+
+tmux rename-window $TMUX_FOLDER_1
+tmux split-window -v -p 25
+tmux split-window -h
+
+tmux select-pane -t 0
+tmux send-keys "cd ${TMUX_DEVELOPER_DIR}/${TMUX_SESSION}/${TMUX_FOLDER_1}; clear"
+tmux clear-history
+tmux send-keys "vim ."
+
+tmux select-pane -t 1
+tmux send-keys "cd ${TMUX_DEVELOPER_DIR}/${TMUX_SESSION}/${TMUX_FOLDER_1}; clear"
+tmux clear-history
+
+tmux select-pane -t 2
+tmux send-keys "cd ${TMUX_DEVELOPER_DIR}/${TMUX_SESSION}/${TMUX_FOLDER_1}; clear"
+tmux clear-history
+
+tmux select-pane -t 0
+
+
+### folder 2 ###
+echo "creating $TMUX_FOLDER_2 window (${TMUX_SESSION})"
+
+tmux new-window -n $TMUX_FOLDER_2
+tmux split-window -v -p 25
+tmux split-window -h
+
+tmux select-pane -t 0
+tmux send-keys "cd ${TMUX_DEVELOPER_DIR}/${TMUX_SESSION}/${TMUX_FOLDER_2}; clear"
+tmux clear-history
+tmux send-keys "vim ."
+
+tmux select-pane -t 1
+tmux send-keys "cd ${TMUX_DEVELOPER_DIR}/${TMUX_SESSION}/${TMUX_FOLDER_2}; clear"
+tmux clear-history
+
+tmux select-pane -t 2
+tmux send-keys "cd ${TMUX_DEVELOPER_DIR}/${TMUX_SESSION}/${TMUX_FOLDER_2}; clear"
+tmux clear-history
+
+tmux select-pane -t 0
+
+
+### servers ###
+echo "creating servers window (${TMUX_SESSION})"
+
+tmux new-window -n servers
+tmux split-window -v
+
+tmux select-pane -t 0
+tmux send-keys "cd ${TMUX_DEVELOPER_DIR}/${TMUX_SESSION}; clear"
+tmux clear-history
+tmux send-keys "${SERVER1}"
+
+tmux select-pane -t 1
+tmux send-keys "cd ${TMUX_DEVELOPER_DIR}/${TMUX_SESSION}; clear"
+tmux clear-history
+tmux send-keys "${SERVER2}"
+
+tmux select-pane -t 0
+
+
+### Link Windows ###
+echo "linking shared windows (${TMUX_SESSION})"
+
+source "${TMUX_SCRIPT_LOCATION}/${TMUX_LINK_SCRIPT}"
+
+
+### Select Start Window ###
+tmux select-window -t 1

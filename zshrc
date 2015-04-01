@@ -4,6 +4,31 @@ ZSH=~/.zsh
 
 
 
+### Shared Settings ###
+
+# Run env commands if they exist
+if [ -f ~/.env ]; then
+  source ~/.env
+fi
+
+# Run alias commands if they exist
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
+fi
+
+
+
+### Auto Complete ###
+
+# add a function path
+fpath=($ZSH/completions /usr/local/share/zsh/site-functions $fpath)
+
+# load and run compinit
+autoload -U compinit
+compinit
+
+
+
 ### Functions ###
 
 for function in $ZSH/functions/*; do
@@ -12,14 +37,7 @@ done
 
 
 
-### Auto Complete ###
-
-# add a function path
-fpath=($ZSH/completions $fpath)
-
-# load and run compinit
-autoload -U compinit
-compinit
+### ZSH Options ###
 
 # selection options
 unsetopt menu_complete   # do not autoselect the first completion entry
@@ -27,6 +45,7 @@ unsetopt flowcontrol
 setopt auto_menu         # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
+setopt nobeep
 
 # highlight and select from colored menu
 zstyle ':completion:*:*:*:*:*' menu select
@@ -110,18 +129,4 @@ alias -g L='| wc -l'
 # Run local zshrc if it exists
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
-fi
-
-
-
-### Shared Settings ###
-
-# Run env commands if they exist
-if [ -f ~/.env ]; then
-  source ~/.env
-fi
-
-# Run alias commands if they exist
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
 fi
