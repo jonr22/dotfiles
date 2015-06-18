@@ -87,6 +87,6 @@
     "requireDotNotation": true,
     "disallowNewlineBeforeBlockStatements": true,
     "validateQuoteMarks": { "mark": "'", "escape": true },
-    "validateIndentation": 2,
+    "validateIndentation": 4,
     "validateParameterSeparator": ", "
 }
