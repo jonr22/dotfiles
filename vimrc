@@ -10,6 +10,7 @@ filetype plugin indent on
 
 
 " General Settings
+
 set autoread          " reload files when changed on disk, i.e. via `git checkout`
 set history=1000      " remember commands
 set tabpagemax=50     " maximum number of tab pages
@@ -41,7 +42,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" List chars
+" list chars
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
@@ -58,7 +59,7 @@ endif
 set vb
 set t_vb=
 
-" Theme
+" theme
 syntax enable                   " enable syntax highlighting
 set number                      " show line numbers
 set nowrap                      " don't wrap overflow text
@@ -90,7 +91,7 @@ set scrolloff=1       " always show a line above and below the cursor
 set sidescrolloff=5   " always show 5 colums to the right of the cursor
 set display+=lastline " ???
 
-" Searching
+" searching
 set hlsearch    " highlight searches
 set incsearch   " show matches as search is being typed
 set ignorecase  " case-insensitive search
@@ -99,81 +100,114 @@ set smartcase   " case-sensitive search if there are any caps
 
 
 " Keyboard shortcuts
+
 let mapleader = ','
 
-" Window Movement
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" save
+nnoremap <leader>w :w<CR>
+
+" toggle ignorecase
+nnoremap <leader>i :set ignorecase!<CR>
+
+" toggle relativenumber
+nnoremap <leader>n :set relativenumber!<CR>
 
 " make Y consistent with C and D
 nnoremap Y y$
-" repmap C-a as tmux steals it
-nnoremap <C-q> <C-a>
+
+" remap C-a as tmux steals it
+nnoremap <C-i> <C-a>
 
 " paste from clipboard
-vmap <leader>y "+y
-nmap <leader>p "+p
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
 
-" Searching
 " search project command
 nnoremap \ :Ag<SPACE>
+
 " grep the current word
 nnoremap <leader>a :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-" search the current word
-nnoremap <leader>w /<C-R><C-W><CR>
+
+" replace the current word
+nnoremap <leader>r :%s/<C-R><C-W>/
+
 " fuzzy file searching
-nmap <leader>t :CtrlP .<CR>
+nnoremap <leader>t :CtrlP .<CR>
+
 " fuzzy file searching in current buffers
-nmap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+
 " clear fuzzy file searching cache
-nmap <leader>T :CtrlPClearCache<CR>:CtrlP .<CR>
+nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP .<CR>
+
 " ctrl-N unhighlights search
 nnoremap <silent> <C-N> :nohlsearch<CR>
 
-" General mappings
 " toggle file browser
-nmap <leader>d :NERDTreeToggle<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
+
 " find current file in file browser
-nmap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+
 " toggle git diff markers in gutter
-nmap <leader>g :GitGutterToggle<CR>
+nnoremap <leader>g :GitGutterToggle<CR>
+
 " update tags
-nmap <leader>[ :!ctags -R .<CR>
+nnoremap <leader>[ :!ctags -R .<CR>
+
 " properly delete buffer
 nnoremap <leader>c :Bclose<CR>
+
 " splits
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>h :split<CR>
+
 " strip whitespace
-nmap <leader><space> :call <SID>strip_trailing()<CR>
-" set vimrc path appropriately, and set command to reload vimrc
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+nnoremap <leader><space> :call <SID>strip_trailing()<CR>
 
 " align text blocks on a symbol
-map <leader>l :Tabularize
-nmap <leader>l= :Tabularize /=<CR>
-vmap <leader>l= :Tabularize /=<CR>
-nmap <leader>l: :Tabularize /:\zs<CR>
-vmap <leader>l: :Tabularize /:\zs<CR>
+noremap <leader>l :Tabularize
+nnoremap <leader>l= :Tabularize /=<CR>
+vnoremap <leader>l= :Tabularize /=<CR>
+nnoremap <leader>l: :Tabularize /:\zs<CR>
+vnoremap <leader>l: :Tabularize /:\zs<CR>
+
 " cucumber bar/pipe align
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
-" rails naviagion
-" nmap <leader>v :Eview<CR>
-" nmap <leader>c :Econtroller<CR>
-" nmap <leader>m :Emodel<CR>
-
 " rspec / tslime
-map <leader>R :call RunAllSpecs()<CR>
-map <leader>r :call RunCurrentSpecFile()<CR>
-map <leader>s :call RunNearestSpec()<CR>
-" nmap <leader>b <Plug>SetTmuxVars
+" noremap <leader>R :call RunAllSpecs()<CR>
+" noremap <leader>r :call RunCurrentSpecFile()<CR>
+" noremap <leader>s :call RunNearestSpec()<CR>
+" nnoremap <leader>b <Plug>SetTmuxVars
+
+" edit / source vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>el :vsplit $MYVIMRC.local<CR>
+nnoremap <leader>eb :vsplit $MYVIMRC.bundles<CR>
+nnoremap <leader>elb :vsplit $MYVIMRC.bundles.local<CR>
+noremap <leader>sv :source $MYVIMRC<CR>
+" noremap <silent> <leader>sv :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+
+
+" Navigation
+
+" window movement
+" noremap <C-h> <C-w>h
+" noremap <C-j> <C-w>j
+" noremap <C-k> <C-w>k
+" noremap <C-l> <C-w>l
+
+" rails navigation
+" nnoremap <leader>v :Eview<CR>
+" nnoremap <leader>c :Econtroller<CR>
+" nnoremap <leader>m :Emodel<CR>
 
 
 
 " Plugin settings
+
 let g:ctrlp_match_window = 'order:ttb,max:20'               " ???
 let g:ctrlp_switch_buffer = 'H'                             " Open a new instance of a buffer unless <c-x> is pressed
 let g:gitgutter_enabled=0                                   " git gutter disabled by default
@@ -188,6 +222,7 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_ruby_checkers = ['mri']                     " use mri and default for ruby
 let g:syntastic_scss_checkers = ['scss_lint']               " use scss-lint for Sass files
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']    " use jshint and jscs for javascript files
+let g:syntastic_aggregate_errors = 1                        " display results from all checkers
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'                             " set airline theme
 let g:airline_mode_map = {
@@ -210,6 +245,7 @@ let g:airline#extensions#default#section_truncate_width = {
   \ 'b': 60,
   \ 'z': 40,
   \ }
+
 " use silver searcher, when available
 if executable('ag')
   " use Ag over Grep
@@ -222,39 +258,59 @@ endif
 
 
 " Autocommands
-autocmd VimResized * :wincmd =      " automatically rebalance windows on vim resize
-autocmd BufWritePre * call <SID>strip_trailing() " Cleanup trailing whitespace on save
+
+augroup window_sizing
+  autocmd!
+  autocmd VimResized * :wincmd =      " automatically rebalance windows on vim resize
+augroup END
+
+augroup whitespace
+  autocmd!
+  autocmd BufWritePre * call <SID>strip_trailing() " Cleanup trailing whitespace on save
+augroup END
 
 " add filetype mappings
-autocmd BufRead,BufNewFile *.fdoc set filetype=yaml   " fdoc is yaml
-autocmd BufRead,BufNewFile *.md set filetype=markdown " md is markdown
+augroup filetypes
+  autocmd!
+  autocmd BufRead,BufNewFile *.fdoc set filetype=yaml   " fdoc is yaml
+  autocmd BufRead,BufNewFile *.md set filetype=markdown " md is markdown
+augroup END
 
 " extra rails.vim help
-autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
-autocmd User Rails silent! Rnavcommand observer       app/observers             -glob=**/* -suffix=_observer.rb
-autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
-autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
-autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
-autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
+augroup rails_helpers
+  autocmd!
+  autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
+  autocmd User Rails silent! Rnavcommand observer       app/observers             -glob=**/* -suffix=_observer.rb
+  autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
+  autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
+  autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
+  autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
+augroup END
 
 " use omnifunc by default for css with supertab
-autocmd FileType css call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+augroup css_completion
+  autocmd!
+  autocmd FileType css call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+augroup END
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it for commit messages, when the position is invalid, or when
 " inside an event handler (happens when dropping a file on gvim).
-autocmd BufReadPost *
-  \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
-
+augroup file_location
+  autocmd!
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+augroup END
 
 
 " Functions / Commands
-" Ag command
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
-" Align pipe seperated tables
+" Ag command
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+" align pipe seperated tables
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -266,7 +322,7 @@ function! s:align()
   endif
 endfunction
 
-" Strip trailing whitespace
+" strip trailing whitespace
 function! s:strip_trailing()
   let previous_search=@/
   let previous_cursor_line=line('.')
@@ -275,7 +331,7 @@ function! s:strip_trailing()
   let @/=previous_search
   call cursor(previous_cursor_line, previous_cursor_column)
 endfunction
-"
+
 " Delete buffer while keeping window layout (don't close buffer's windows).
 " Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
 let bclose_multiple = 1
