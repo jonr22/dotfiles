@@ -224,8 +224,6 @@ let g:html_indent_tags = 'li\|p'                            " Treat <li> and <p>
 let NERDTreeIgnore = ['\.pyc$']                             " hide *.pyc files in NERDTree
 let g:NERDSpaceDelims=1                                     " ???
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")' " rspec / tslime
-" let g:SuperTabClosePreviewOnPopupClose = 1
-" let g:SuperTabDefaultCompletionType = "context"
 let g:syntastic_check_on_open=1                             " use syntastic to check file on open
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_ruby_checkers = ['mri']                     " use mri and default for ruby
@@ -294,12 +292,6 @@ augroup END
 "   autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
 "   autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
 "   autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
-" augroup END
-
-" use omnifunc by default for css with supertab
-" augroup css_completion
-"   autocmd!
-"   autocmd FileType css call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 " augroup END
 
 " When editing a file, always jump to the last known cursor position.
