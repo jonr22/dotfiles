@@ -122,11 +122,15 @@ nnoremap <C-i> <C-a>
 vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 
+" show file path
+nnoremap <leader>P :echom @%<cr>
+
 " search project command
 nnoremap \ :Ag<SPACE>
 
 " grep the current word
 nnoremap <leader>a :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap <leader>A :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:cw<cr>
 
 " replace the current word
 nnoremap <leader>r :%s/<C-R><C-W>/
@@ -192,6 +196,11 @@ noremap <leader>sv :source $MYVIMRC<CR>
 
 
 " Navigation
+
+" window size management
+" nnoremap <leader>. <C-w>>
+" nnoremap <leader>, <C-w><
+" nnoremap <leader>= <C-w>=
 
 " window movement
 " noremap <C-h> <C-w>h
