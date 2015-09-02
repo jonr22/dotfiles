@@ -17,14 +17,14 @@ if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
   source "$HOME/.nvm/nvm.sh"
 
   # npm autocompletion
-  . <(npm completion)
+  # . <(npm completion)
 fi
 if [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
   export NVM_DIR=~/.nvm
   source "/usr/local/opt/nvm/nvm.sh"
 
   # npm autocompletion
-  . <(npm completion)
+  # . <(npm completion)
 fi
 
 # Build PATH
