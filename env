@@ -55,6 +55,15 @@ if [[ -n "$JENV_PATH" ]]; then
   eval "$(jenv init -)"
 fi
 
+# Load virtualenvwrapper
+if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+  source "/usr/local/bin/virtualenvwrapper.sh"
+
+  if [ -d "$HOME/.virtualenvs" ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+  fi
+fi
+
 # Heroku
 if [[ -n "$HEROKU_PATH" && -d "$HEROKU_PATH/bin" ]]; then
   export PATH=$PATH:$HEROKU_PATH/bin
@@ -63,6 +72,11 @@ fi
 # personal bin
 if [ -d "$HOME/.bin" ]; then
   export PATH=$PATH:$HOME/.bin
+fi
+
+# wordstream repo
+if [ -d "$HOME/Developer/wordstream" ]; then
+  export WS_REPO=$HOME/Developer/wordstream
 fi
 
 # add personal lib

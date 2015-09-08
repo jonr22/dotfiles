@@ -221,23 +221,24 @@ noremap <leader>sv :source $MYVIMRC<CR>
 
 " Plugin settings
 
-let g:ctrlp_match_window = 'order:ttb,max:20'               " ???
-let g:ctrlp_switch_buffer = 'H'                             " Open a new instance of a buffer unless <c-x> is pressed
-let g:gitgutter_enabled=0                                   " git gutter disabled by default
-let g:html_indent_tags = 'li\|p'                            " Treat <li> and <p> tags like the block tags they are
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}       " use cmatcher with ctrlp
-let NERDTreeIgnore = ['\.pyc$']                             " hide *.pyc files in NERDTree
-let g:NERDSpaceDelims=1                                     " ???
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")' " rspec / tslime
-let g:syntastic_check_on_open=1                             " use syntastic to check file on open
+let g:ctrlp_match_window = 'order:ttb,max:20'                       " ???
+let g:ctrlp_switch_buffer = 'H'                                     " Open a new instance of a buffer unless <c-x> is pressed
+let g:gitgutter_enabled=0                                           " git gutter disabled by default
+let g:html_indent_tags = 'li\|p'                                    " Treat <li> and <p> tags like the block tags they are
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}               " use cmatcher with ctrlp
+let NERDTreeIgnore = ['\.pyc$']                                     " hide *.pyc files in NERDTree
+let g:NERDSpaceDelims=1                                             " ???
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'         " rspec / tslime
+let g:syntastic_check_on_open=1                                     " use syntastic to check file on open
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_ruby_checkers = ['mri']                     " use mri and default for ruby
-let g:syntastic_scss_checkers = ['scss_lint']               " use scss-lint for Sass files
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']    " use jshint and jscs for javascript files
-let g:syntastic_aggregate_errors = 1                        " display results from all checkers
-let g:ycm_autoclose_preview_window_after_insertion = 1      " auto close preview window with ycm
+let g:syntastic_ruby_checkers = ['mri']                             " use mri and default for ruby
+let g:syntastic_scss_checkers = ['scss_lint']                       " use scss-lint for Sass files
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']            " use jshint and jscs for javascript files
+let g:syntastic_aggregate_errors = 1                                " display results from all checkers
+let g:ycm_autoclose_preview_window_after_insertion = 1              " auto close preview window with ycm
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force editorconfig to place nice with fugitive
 let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'                             " set airline theme
+let g:airline_theme='bubblegum'                                     " set airline theme
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
