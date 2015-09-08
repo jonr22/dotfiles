@@ -221,6 +221,8 @@ noremap <leader>sv :source $MYVIMRC<CR>
 
 " Plugin settings
 
+let g:used_javascript_libs = 'jquery'                               " set jquery in the list of used libraries
+let python_version_2 = 1                                            " python syntax settings
 let g:ctrlp_match_window = 'order:ttb,max:20'                       " ???
 let g:ctrlp_switch_buffer = 'H'                                     " Open a new instance of a buffer unless <c-x> is pressed
 let g:gitgutter_enabled=0                                           " git gutter disabled by default
@@ -234,6 +236,7 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_ruby_checkers = ['mri']                             " use mri and default for ruby
 let g:syntastic_scss_checkers = ['scss_lint']                       " use scss-lint for Sass files
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']            " use jshint and jscs for javascript files
+let g:syntastic_python_checkers = ['python', 'pyflakes']            " use pyflakes and default for python
 let g:syntastic_aggregate_errors = 1                                " display results from all checkers
 let g:ycm_autoclose_preview_window_after_insertion = 1              " auto close preview window with ycm
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force editorconfig to place nice with fugitive
