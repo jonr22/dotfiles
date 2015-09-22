@@ -15,16 +15,10 @@ fi
 # Load NVM
 if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
   source "$HOME/.nvm/nvm.sh"
-
-  # npm autocompletion
-  # . <(npm completion)
 fi
 if [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
   export NVM_DIR=~/.nvm
   source "/usr/local/opt/nvm/nvm.sh"
-
-  # npm autocompletion
-  # . <(npm completion)
 fi
 
 # Build PATH
@@ -37,7 +31,7 @@ fi
 if [[ -n "$RBENV_PATH" ]]; then
   if [[ -d "$RBENV_PATH/bin" ]]; then
     # path to rbenv on linux
-    export PATH=$PATH:$RBENV_PATH/bin
+    export PATH=$RBENV_PATH/bin:$PATH
   fi
 
   # load rbenv
@@ -59,7 +53,7 @@ fi
 if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
   source "/usr/local/bin/virtualenvwrapper.sh"
 
-  if [ -d "$HOME/.virtualenvs" ]; then
+  if [[ -d "$HOME/.virtualenvs" ]]; then
     export WORKON_HOME=$HOME/.virtualenvs
   fi
 fi
@@ -71,12 +65,13 @@ fi
 
 # personal bin
 if [ -d "$HOME/.bin" ]; then
-  export PATH=$PATH:$HOME/.bin
+  export PATH=$HOME/.bin:$PATH
 fi
 
 # wordstream repo
 if [ -d "$HOME/Developer/wordstream" ]; then
   export WS_REPO=$HOME/Developer/wordstream
+  export PYTHONPATH=$PYTHONPATH:$WS_REPO/python_shared/wsframework/src:$WS_REPO/python_shared/webapp_framework/src:$WS_REPO/client/manager/src:$WS_REPO/server/wordstream/src:$WS_REPO/server/tag_manager/src
 fi
 
 # add personal lib
