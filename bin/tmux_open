@@ -1,4 +1,0 @@
-#!/bin/zsh
-SESSION="open_source"
-
-tmux_dev "$SESSION"

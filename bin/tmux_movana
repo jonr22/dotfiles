@@ -1,6 +1,0 @@
-#!/bin/zsh
-SESSION="movana"
-SERVER1="foreman start"
-SERVER2="guard start"
-
-tmux_dev "$SESSION" "$SERVER1" "$SERVER2"
