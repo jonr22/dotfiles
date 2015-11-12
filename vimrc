@@ -105,6 +105,7 @@ let mapleader = ','
 
 " save
 nnoremap <leader>w :w<CR>
+cmap w!! w !sudo tee >/dev/null %
 
 " toggle ignorecase
 nnoremap <leader>i :set ignorecase!<CR>

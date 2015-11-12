@@ -64,4 +64,3 @@ if [ $(uname) = Darwin ]; then
         source /usr/share/git-core/git-completion.bash
     fi
 fi
-
