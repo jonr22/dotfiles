@@ -40,6 +40,7 @@ windows:
         - #empty
         - #empty
   - scratch:
+      root: ~/
       layout: main-horizontal
       panes:
         - #empty

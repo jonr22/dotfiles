@@ -31,12 +31,12 @@ windows:
   - t1:
       layout: main-horizontal
       panes:
-        -
-        -
-        -
+        - #empty
+        - #empty
+        - #empty
   - t2:
       layout: main-horizontal
       panes:
-        -
-        -
-        -
+        - #empty
+        - #empty
+        - #empty

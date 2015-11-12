@@ -40,6 +40,7 @@ windows:
         - foreman start
         - guard start
   - scratch:
+      root: ~/
       layout: main-horizontal
       panes:
         - #empty

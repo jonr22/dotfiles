@@ -39,6 +39,7 @@ windows:
       panes:
         - rake preview
   - scratch:
+      root: ~/
       layout: main-horizontal
       panes:
         - #empty

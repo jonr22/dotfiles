@@ -48,6 +48,7 @@ windows:
         - cd frontend; gulp serve
         - cd backend; node-inspector -p 8888 &; nodemon --debug ./bin/www
   - scratch:
+      root: ~/
       layout: main-horizontal
       panes:
         - #empty

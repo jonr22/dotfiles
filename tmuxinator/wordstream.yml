@@ -31,16 +31,17 @@ windows:
   - editor:
       layout: 2bd9,202x61,0,0[202x45,0,0,0,202x15,0,46{101x15,0,46,4,100x15,102,46,5}]
       panes:
-        - vim .
-        - #empty
-        - #empty
+        - cd .; vim .
+        - cd .
+        - cd .
   - servers:
       layout: even-vertical
       panes:
-        - cd server/wordstream/src; workon wordstream; python server.py
-        - cd server/tag_manager/src; workon wordstream; python server.py
-        - cd client/manager/src; workon wordstream; python server.py
+        - cd server/wordstream/src; python server.py
+        - cd server/tag_manager/src; python server.py
+        - cd client/manager/src; python server.py
   - scratch:
+      root: ~/
       layout: main-horizontal
       panes:
         - #empty
