@@ -7,6 +7,22 @@ HEROKU_PATH=/usr/local/heroku
 export VISUAL=vim
 export EDITOR=$VISUAL
 
+add_to_path() {
+  atp_path="$1"
+  atp_dir="$2"
+
+  if [[ -z "$atp_path" ]]; then
+    echo "$atp_dir"
+  elif [[ "$atp_path" =~ "$atp_dir" ]]; then
+    echo "$atp_path"
+  else
+    echo "$atp_dir:$atp_path"
+  fi
+
+  unset atp_path
+  unset atp_dir
+}
+
 # Set TERM (for tmux)
 if [[ "$TERM" == "xterm" ]]; then
   TERM="xterm-256color"
@@ -16,22 +32,22 @@ fi
 if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
   source "$HOME/.nvm/nvm.sh"
 fi
+
 if [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
   export NVM_DIR=~/.nvm
   source "/usr/local/opt/nvm/nvm.sh"
 fi
 
-# Build PATH
 # Homebrew
 if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
-  export PATH=$HOMEBREW_PATH/bin:$HOMEBREW_PATH/sbin:$PATH
+  PATH=$(add_to_path "$PATH" "$HOMEBREW_PATH/bin")
 fi
 
 # RBENV
 if [[ -n "$RBENV_PATH" ]]; then
   if [[ -d "$RBENV_PATH/bin" ]]; then
     # path to rbenv on linux
-    export PATH=$RBENV_PATH/bin:$PATH
+    PATH=$(add_to_path "$PATH" "$RBENV_PATH/bin")
   fi
 
   # load rbenv
@@ -42,7 +58,7 @@ fi
 if [[ -n "$JENV_PATH" ]]; then
   if [[ -d "$JENV_PATH/bin" ]]; then
     # path to jenv on linux
-    export PATH=$JENV_PATH/bin:$PATH
+    PATH=$(add_to_path "$PATH" "$JENV_PATH/bin")
   fi
 
   # load jenv
@@ -60,27 +76,32 @@ fi
 
 # Heroku
 if [[ -n "$HEROKU_PATH" && -d "$HEROKU_PATH/bin" ]]; then
-  export PATH=$PATH:$HEROKU_PATH/bin
+  PATH=$(add_to_path "$PATH" "$HEROKU_PATH/bin")
 fi
 
 # personal bin
 if [ -d "$HOME/.bin" ]; then
-  export PATH=$HOME/.bin:$PATH
+  PATH=$(add_to_path "$PATH" "$HOME/.bin")
 fi
+
+export PATH
 
 # wordstream repo
 if [ -d "$HOME/Developer/wordstream" ]; then
   export WS_REPO=$HOME/Developer/wordstream
-  export PYTHONPATH=$PYTHONPATH:$WS_REPO/python_shared/wsframework/src:$WS_REPO/python_shared/webapp_framework/src:$WS_REPO/client/manager/src:$WS_REPO/server/wordstream/src:$WS_REPO/server/tag_manager/src
+
+  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/python_shared/wsframework/src")
+  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/python_shared/webapp_framework/src")
+  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/client/manager/src")
+  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/server/wordstream/src")
+  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/server/tag_manager/src")
+
+  export PYTHONPATH
 fi
 
 # add personal lib
 if [ -d "$HOME/.lib" ]; then
-  if [ -n "$LD_LIBRARY_PATH" ]; then
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.lib
-  else
-    LD_LIBRARY_PATH=$HOME/.lib
-  fi
+  LD_LIBRARY_PATH=$(add_to_path "$LD_LIBRARY_PATH" "$HOME/.lib")
   export LD_LIBRARY_PATH
 fi
 

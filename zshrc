@@ -119,8 +119,8 @@ bindkey "[Z" reverse-menu-complete
 ### ZSH Aliases ###
 
 alias -g G='| grep'
-alias -g M='| less'
-alias -g L='| wc -l'
+alias -g L='| less'
+alias -g C='| wc -l'
 
 
 

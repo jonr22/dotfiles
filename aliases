@@ -19,6 +19,9 @@ alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
 
+# pretty print the path
+alias path='echo -e ${PATH//:/"\n"}'
+
 # tmux
 alias ta='tmux attach -t'
 alias ts='tmux new-session -s'
