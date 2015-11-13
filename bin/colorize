@@ -1,0 +1,61 @@
+#!/bin/sh
+
+default="[0m"
+bold="[1m"
+underline="[4m"
+blink="[5m"
+reverse="[7m"
+concealed="[8m"
+
+dark="[2m"
+italic="[3m"
+rapidblink="[6m"
+strikethrough="[9m"
+
+black="[30m",
+red="[31m"
+green="[32m"
+yellow="[33m"
+blue="[34m"
+magenta="[35m"
+cyan="[36m"
+white="[37m"
+
+on_black="[40m",
+on_red="[41m"
+on_green="[42m"
+on_yellow="[43m"
+on_blue="[44m"
+on_magenta="[45m"
+on_cyan="[46m"
+on_white="[47m"
+
+
+bright_black="[30;90m"
+bright_red="[31;91m"
+bright_green="[32;92m"
+bright_yellow="[33;93m"
+bright_blue="[34;94m"
+bright_magenta="[35;95m"
+bright_cyan="[36;96m"
+bright_white="[37;97m"
+
+on_bright_black="[40;100m",
+on_bright_red="[41;101m"
+on_bright_green="[42;102m"
+on_bright_yellow="[43;103m"
+on_bright_blue="[44;104m"
+on_bright_magenta="[45;105m"
+on_bright_cyan="[46;106m"
+on_bright_white="[47;107m"
+
+beep="\007"
+
+while read LOGLINE; do
+  printf "$LOGLINE" | sed "s/^[0-9][^ ]*/${cyan}\0${default}/" | sed "s/INFO/${blue}INFO/" | sed "s/DEBUG/${magenta}DEBUG/" | sed "s/ERROR/${red}ERROR/" | sed "s/WARNING/${yellow}WARNING/"
+  printf "$default\n"
+
+  if echo "$LOGLINE" | grep -Fqs 'ERROR'; then
+    echo "$beep"
+  fi
+done
