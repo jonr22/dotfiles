@@ -134,13 +134,19 @@ nnoremap <leader>P :echom @%<cr>
 " search project command (i.e. better grep)
 nnoremap \ :Ag<SPACE>
 
-" grep the current word
-nnoremap <silent> <leader>A :silent execute "Ag " . shellescape(expand("<cWORD>")) . " ."<cr>
+" grep a selection (or current word)
 nnoremap <silent> <leader>a :set operatorfunc=<SID>GrepOperator<cr>g@
 vnoremap <silent> <leader>a :<c-u>call <SID>GrepOperator(visualmode())<cr>
+nnoremap <silent> <leader>A :silent execute "Ag " . shellescape(expand("<cWORD>")) . " ."<cr>
 
-" replace the current word
-" nnoremap <leader>r :%s/<C-R><C-W>/
+" replace a selection (or the current word)
+nnoremap <silent> <leader>r :set operatorfunc=<SID>ReplaceOperator<cr>g@
+vnoremap <silent> <leader>r :<c-u>call <SID>ReplaceOperator(visualmode())<cr>
+nnoremap <leader>R :%s/<C-R><C-W>/
+
+" add a selection to the search register
+nnoremap <silent> <leader>s :set operatorfunc=<SID>SearchOperator<cr>g@
+vnoremap <silent> <leader>s :<c-u>call <SID>SearchOperator(visualmode())<cr>
 
 " fuzzy file searching
 nnoremap <leader>t :CtrlP .<CR>
@@ -417,14 +423,6 @@ function! s:Bclose(bang, buffer)
   execute wcurrent.'wincmd w'
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
-
-" nnoremap <leader>r :%s/<C-R><C-W>/
-" vnoremap <leader>r :%s/<C-R><C-W>/
-nnoremap <silent> <leader>r :set operatorfunc=<SID>ReplaceOperator<cr>g@
-vnoremap <silent> <leader>r :<c-u>call <SID>ReplaceOperator(visualmode())<cr>
-
-nnoremap <silent> <leader>s :set operatorfunc=<SID>SearchOperator<cr>g@
-vnoremap <silent> <leader>s :<c-u>call <SID>SearchOperator(visualmode())<cr>
 
 function! s:GetSelection(type)
   let saved_unnamed_register = @@
