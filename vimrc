@@ -455,6 +455,9 @@ endfunction
 
 function! s:SearchOperator(type)
   let @/ = s:GetSelection(a:type)
+  " let text = s:GetSelection(a:type)
+  " call search(text)
+  " call matchadd('Search', text)
 endfunction
 
 function! s:SystemCopyOperator(type)
@@ -463,8 +466,9 @@ endfunction
 
 function! s:ReplaceOperator(type)
   let text = s:GetSelection(a:type)
+  let replace = input("Replace [" . text . "] with: ")
 
-  execute "normal! :%s/" . text . "/woah/g"
+  execute "%s/" . text . "/" . replace . "/g"
 endfunction
 
 
