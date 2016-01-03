@@ -103,8 +103,12 @@ set smartcase   " case-sensitive search if there are any caps
 
 let mapleader = ','
 
-" save
+" save / quit
 nnoremap <leader>w :w<CR>
+nnoremap <leader>wq :wq<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qall<CR>
 cmap w!! w !sudo tee >/dev/null %
 
 " toggle ignorecase
@@ -119,22 +123,30 @@ nnoremap Y y$
 " remap C-a as tmux steals it
 nnoremap <C-i> <C-a>
 
-" paste from clipboard
-vnoremap <leader>y "+y
+" copy / paste system clipboard
 nnoremap <leader>p "+p
+nnoremap <silent> <leader>y :set operatorfunc=<SID>SystemCopyOperator<cr>g@
+vnoremap <silent> <leader>y :<c-u>call <SID>SystemCopyOperator(visualmode())<cr>
 
 " show file path
 nnoremap <leader>P :echom @%<cr>
 
-" search project command
+" search project command (i.e. better grep)
 nnoremap \ :Ag<SPACE>
 
-" grep the current word
-nnoremap <leader>a :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-nnoremap <leader>A :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:cw<cr>
+" grep a selection (or current word)
+nnoremap <silent> <leader>a :set operatorfunc=<SID>GrepOperator<cr>g@
+vnoremap <silent> <leader>a :<c-u>call <SID>GrepOperator(visualmode())<cr>
+nnoremap <silent> <leader>A :silent execute "Ag " . shellescape(expand("<cWORD>")) . " ."<cr>
 
-" replace the current word
-nnoremap <leader>r :%s/<C-R><C-W>/
+" replace a selection (or the current word)
+nnoremap <silent> <leader>r :set operatorfunc=<SID>ReplaceOperator<cr>g@
+vnoremap <silent> <leader>r :<c-u>call <SID>ReplaceOperator(visualmode())<cr>
+nnoremap <leader>R :%s/<C-R><C-W>/
+
+" add a selection to the search register
+nnoremap <silent> <leader>s :set operatorfunc=<SID>SearchOperator<cr>g@
+vnoremap <silent> <leader>s :<c-u>call <SID>SearchOperator(visualmode())<cr>
 
 " fuzzy file searching
 nnoremap <leader>t :CtrlP .<CR>
@@ -195,8 +207,9 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>el :vsplit $MYVIMRC.local<CR>
 nnoremap <leader>eb :vsplit $MYVIMRC.bundles<CR>
 nnoremap <leader>elb :vsplit $MYVIMRC.bundles.local<CR>
-noremap <leader>sv :source $MYVIMRC<CR>
-" noremap <silent> <leader>sv :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+noremap <silent> <leader>es :source $MYVIMRC<CR>:execute ":echo 'vimrc reloaded'"<CR>
+noremap <leader>eu :PluginUpdate<CR>
+noremap <leader>ei :PluginInstall<CR>
 
 
 
@@ -317,6 +330,7 @@ augroup file_location
 augroup END
 
 
+
 " Functions / Commands
 
 " Ag command
@@ -409,6 +423,51 @@ function! s:Bclose(bang, buffer)
   execute wcurrent.'wincmd w'
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
+
+function! s:GetSelection(type)
+  let saved_unnamed_register = @@
+
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'V'
+    normal! `<V`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+
+  let tmp = @@
+  let @@ = saved_unnamed_register
+
+  return tmp
+endfunction
+
+function! s:GrepOperator(type)
+  let text = s:GetSelection(a:type)
+
+  silent execute "grep! -R " . shellescape(text) . " ."
+  copen
+  redraw!
+endfunction
+
+function! s:SearchOperator(type)
+  let @/ = s:GetSelection(a:type)
+  " let text = s:GetSelection(a:type)
+  " call search(text)
+  " call matchadd('Search', text)
+endfunction
+
+function! s:SystemCopyOperator(type)
+  let @+ = s:GetSelection(a:type)
+endfunction
+
+function! s:ReplaceOperator(type)
+  let text = s:GetSelection(a:type)
+  let replace = input("Replace [" . text . "] with: ")
+
+  execute "%s/" . text . "/" . replace . "/g"
+endfunction
 
 
 
