@@ -42,7 +42,7 @@
 URxvt*termName:     xterm-256color
 URxvt*saveLines:    2048
 URxvt*scrollBar:    false
-URxvt*font:         xft:Meslo LG S for Powerline:size=9
+URxvt*font:         xft:Meslo LG S for Powerline:size=10
 URxvt*letterSpace:  -2
 
 !! perl extensions

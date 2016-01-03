@@ -59,10 +59,10 @@ if [[ -n "$JENV_PATH" ]]; then
   if [[ -d "$JENV_PATH/bin" ]]; then
     # path to jenv on linux
     PATH=$(add_to_path "$PATH" "$JENV_PATH/bin")
-  fi
 
-  # load jenv
-  eval "$(jenv init -)"
+    # load jenv
+    eval "$(jenv init -)"
+  fi
 fi
 
 # Load virtualenvwrapper
