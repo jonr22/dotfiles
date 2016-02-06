@@ -463,8 +463,12 @@ function! s:SystemCopyOperator(type)
 endfunction
 
 function! s:ReplaceOperator(type)
+  call inputsave()
+
   let text = s:GetSelection(a:type)
-  let replace = input("Replace [" . text . "] with: ")
+  let replace = input("Replace [" . text . "] with: ", text)
+
+  call inputrestore()
 
   execute "%s/" . text . "/" . replace . "/g"
 endfunction
