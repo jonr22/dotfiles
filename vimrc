@@ -250,12 +250,14 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_ruby_checkers = ['mri']                             " use mri and default for ruby
 let g:syntastic_scss_checkers = ['scss_lint']                       " use scss-lint for Sass files
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']            " use jshint and jscs for javascript files
+let g:syntastic_html_checkers = []                                  " no html checking
 let g:syntastic_python_checkers = ['python', 'pyflakes']            " use pyflakes and default for python
 let g:syntastic_aggregate_errors = 1                                " display results from all checkers
 let g:ycm_autoclose_preview_window_after_insertion = 1              " auto close preview window with ycm
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force editorconfig to place nice with fugitive
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'                                     " set airline theme
+" let g:airline_theme='base16_tomorrow'                               " set airline theme
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
