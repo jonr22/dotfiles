@@ -1,6 +1,7 @@
+[init]
+  templatedir = ~/.git_template
 [core]
 	excludesfile = ~/.gitignore
-	editor = vim
 [push]
 	default = simple
 [color]
@@ -12,10 +13,10 @@
 	ci = commit
 	cim = commit -m
 	d = diff
-    dc = diff --cached
+  dc = diff --cached
 	b = branch
 	ba = branch -a
 	logb = log --first-parent
 	lgb = log --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [include]
-    path = .gitconfig.local
+  path = ~/.gitconfig.local
