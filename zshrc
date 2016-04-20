@@ -18,14 +18,6 @@ fi
 
 
 
-### Functions ###
-
-for function in $ZSH/functions/*; do
-  source $function
-done
-
-
-
 ### Configs ###
 
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
@@ -63,6 +55,14 @@ _load_settings() {
   fi
 }
 _load_settings "$ZSH/configs"
+
+
+
+### Functions ###
+
+for function in $ZSH/functions/*; do
+  source $function
+done
 
 
 
