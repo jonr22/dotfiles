@@ -1,6 +1,6 @@
 ### Vars ###
 
-ZSH="$HOME/.zsh"
+export ZSH="$HOME/.zsh"
 
 
 
@@ -15,17 +15,6 @@ fi
 if [ -f ~/.aliases ]; then
   source ~/.aliases
 fi
-
-
-
-### Auto Complete ###
-
-# add a function path
-fpath=($ZSH/completions /usr/local/share/zsh/site-functions $fpath)
-
-# load and run compinit
-autoload -U compinit
-compinit
 
 
 
