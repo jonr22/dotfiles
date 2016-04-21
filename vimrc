@@ -1,5 +1,8 @@
 set nocompatible
 
+" Leader
+let mapleader = ','
+
 " install Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
@@ -28,6 +31,7 @@ set wildmenu          " show command line completion
 
 set backspace=indent,eol,start  " ???
 set complete-=i                 " ???
+set complete+=kspell  " Autocomplete with dictionary words when spell check is on
 
 " wait 50ms for keycodes
 set ttimeout
@@ -101,12 +105,9 @@ set smartcase   " case-sensitive search if there are any caps
 
 " Keyboard shortcuts
 
-let mapleader = ','
-
 " save / quit
 nnoremap <leader>w :w<CR>
 nnoremap <leader>wq :wq<CR>
-nnoremap <leader>q :q<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qall<CR>
 cmap w!! w !sudo tee >/dev/null %
@@ -170,7 +171,7 @@ nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
 
 " update tags
-nnoremap <leader>[ :!ctags -R .<CR>
+" nnoremap <leader>[ :!ctags -R .<CR>
 
 " properly delete buffer
 nnoremap <leader>c :Bclose<CR>
@@ -241,21 +242,27 @@ let g:ctrlp_match_window = 'order:ttb,max:20'                       " ???
 let g:ctrlp_switch_buffer = 'H'                                     " Open a new instance of a buffer unless <c-x> is pressed
 let g:gitgutter_enabled=0                                           " git gutter disabled by default
 let g:html_indent_tags = 'li\|p'                                    " Treat <li> and <p> tags like the block tags they are
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}               " use cmatcher with ctrlp
+" let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}               " use cmatcher with ctrlp
 let NERDTreeIgnore = ['\.pyc$']                                     " hide *.pyc files in NERDTree
 let g:NERDSpaceDelims=1                                             " ???
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'         " rspec / tslime
+let g:ycm_autoclose_preview_window_after_insertion = 1              " auto close preview window with ycm
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force editorconfig to place nice with fugitive
+
+" syntastic configruation
 let g:syntastic_check_on_open=1                                     " use syntastic to check file on open
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_ruby_checkers = ['mri']                             " use mri and default for ruby
 let g:syntastic_scss_checkers = ['scss_lint']                       " use scss-lint for Sass files
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']            " use jshint and jscs for javascript files
+let g:syntastic_html_checkers = []                                  " no html checking
 let g:syntastic_python_checkers = ['python', 'pyflakes']            " use pyflakes and default for python
 let g:syntastic_aggregate_errors = 1                                " display results from all checkers
-let g:ycm_autoclose_preview_window_after_insertion = 1              " auto close preview window with ycm
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force editorconfig to place nice with fugitive
+
+" airline configuration
 let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'                                     " set airline theme
+let g:airline_theme='bubblegum'
+" let g:airline_theme='base16_tomorrow'
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
@@ -276,6 +283,21 @@ let g:airline#extensions#default#section_truncate_width = {
   \ 'b': 60,
   \ 'z': 40,
   \ }
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+
+  " unicode symbols
+  let g:airline_left_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+endif
 
 " use silver searcher, when available
 if executable('ag')
@@ -303,8 +325,9 @@ augroup END
 " add filetype mappings
 augroup filetypes
   autocmd!
-  autocmd BufRead,BufNewFile *.fdoc set filetype=yaml   " fdoc is yaml
-  autocmd BufRead,BufNewFile *.md set filetype=markdown " md is markdown
+  autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
 augroup END
 
 " extra rails.vim help
@@ -463,8 +486,12 @@ function! s:SystemCopyOperator(type)
 endfunction
 
 function! s:ReplaceOperator(type)
+  call inputsave()
+
   let text = s:GetSelection(a:type)
-  let replace = input("Replace [" . text . "] with: ")
+  let replace = input("Replace [" . text . "] with: ", text)
+
+  call inputrestore()
 
   execute "%s/" . text . "/" . replace . "/g"
 endfunction

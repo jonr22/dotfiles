@@ -1,6 +1,6 @@
 ### Vars ###
 
-ZSH=~/.zsh
+export ZSH="$HOME/.zsh"
 
 
 
@@ -18,14 +18,43 @@ fi
 
 
 
-### Auto Complete ###
+### Configs ###
 
-# add a function path
-fpath=($ZSH/completions /usr/local/share/zsh/site-functions $fpath)
+# extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
+# these are loaded first, second, and third, respectively.
+_load_settings() {
+  _dir="$1"
+  if [ -d "$_dir" ]; then
+    if [ -d "$_dir/pre" ]; then
+      for config in "$_dir"/pre/**/*(N-.); do
+        . $config
+      done
+    fi
 
-# load and run compinit
-autoload -U compinit
-compinit
+    for config in "$_dir"/**/*(N-.); do
+      case "$config" in
+        "$_dir"/pre/*)
+          :
+          ;;
+        "$_dir"/post/*)
+          :
+          ;;
+        *)
+          if [ -f $config ]; then
+            . $config
+          fi
+          ;;
+      esac
+    done
+
+    if [ -d "$_dir/post" ]; then
+      for config in "$_dir"/post/**/*(N-.); do
+        . $config
+      done
+    fi
+  fi
+}
+_load_settings "$ZSH/configs"
 
 
 
@@ -34,94 +63,6 @@ compinit
 for function in $ZSH/functions/*; do
   source $function
 done
-
-
-
-### ZSH Options ###
-
-# selection options
-unsetopt menu_complete   # do not autoselect the first completion entry
-unsetopt flowcontrol
-setopt auto_menu         # show completion menu on succesive tab press
-setopt complete_in_word
-setopt always_to_end
-setopt nobeep
-
-# highlight and select from colored menu
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*' list-colors ''
-
-# Use caching so that commands like apt and dpkg complete are useable
-zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion::complete:*' cache-path $ZSH/cache/
-
-
-
-### Theme ###
-
-# colors
-autoload -U colors
-colors
-# export CLICOLOR=1
-
-# prompt
-setopt multios
-setopt prompt_subst
-source "$ZSH/theme"
-
-# Setup base16 colors
-if [ -f ~/.zsh-base16 ]; then
-  source ~/.zsh-base16
-fi
-
-
-
-### History ###
-
-setopt hist_ignore_all_dups inc_append_history
-HISTFILE=~/.zhistory
-HISTSIZE=4096
-SAVEHIST=4096
-
-
-
-### CD Behavior ###
-
-setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
-DIRSTACKSIZE=5
-
-# Enable extended globbing
-setopt extendedglob
-
-# Allow [ or ] whereever you want
-unsetopt nomatch
-
-
-
-### Bindings ###
-
-# vi mode
-bindkey -v
-bindkey "^F" vi-cmd-mode
-
-# handy keybindings
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
-bindkey "^R" history-incremental-search-backward
-bindkey "^P" history-search-backward
-bindkey "^Y" accept-and-hold
-bindkey "^N" insert-last-word
-bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
-bindkey "[Z" reverse-menu-complete
-
-
-
-### ZSH Aliases ###
-
-alias -g G='| grep'
-alias -g L='| less'
-alias -g C='| wc -l'
-alias -g S='| sort'
 
 
 

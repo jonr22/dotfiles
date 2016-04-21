@@ -28,7 +28,7 @@ alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'
 
 # Extras
-alias tlf="tail -f"
+alias tlf='tail -f'
 alias mkdir='mkdir -p'
 
 # mac specific settings
@@ -55,7 +55,7 @@ alias perf-db3='ssh jreimels@perf-db3.wordstream.com'
 alias perf2='ssh jreimels@aws-perf2.wordstream.com'
 alias perf3='ssh jreimels@aws-perf3.wordstream.com'
 alias tags='git for-each-ref --format="%(taggerdate): %(refname)" --sort=-taggerdate --count=10 refs/tags'
-alias build_flex='if [ -z "$VIRTUAL_ENV" ]; then echo "You need to activate your virtualenv: \`workon wordstream\`"; else jenv shell 1.6;temp_dir_var=`pwd`; cd $WS_REPO/client/explorer; ./build-dev.sh; cd $temp_dir_var; unset temp_dir_var; jenv shell system; fi;'
+alias build_flex='if [ -z "$VIRTUAL_ENV" ]; then echo "You need to activate your virtualenv: \`workon wordstream\`"; else jenv local 1.6;temp_dir_var=`pwd`; cd $WS_REPO/client/explorer; ./build-dev.sh; cd $temp_dir_var; unset temp_dir_var; jenv local system; fi;'
 
 # Run local aliases if they exist
 if [ -f ~/.aliases.local ]; then

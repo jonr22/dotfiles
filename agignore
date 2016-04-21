@@ -1,8 +1,14 @@
 log
 tags
 tmp
+vendor
+.git/
+bower_components/
+node_modules/
 graphics
 *.pyc
 *.swp
 *.bak
 *.min*
+
+
