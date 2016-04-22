@@ -20,10 +20,15 @@ class Repo
   end
 end
 
+class ::String
+  def is_comment?
+    self.strip.start_with? "#"
+  end
+end
+
 class RepoMan
   attr_accessor :options
 
-  COMMENT = "#"
   DEFAULT_CONFIG = "#{Dir.home}/.repoman"
   SSH_PREFIX = "git@github.com:"
   HTTP_PREFIX = "https://github.com/"
@@ -80,13 +85,13 @@ class RepoMan
   def add_repo(repo)
     File.open(config, 'a') do |f|
       log "Adding to #{config}: #{repo} ..."
-      f << repo
+      f << "\n#{repo}"
     end
   end
 
   def repos
     File.open(config).each do |line|
-      yield Repo.new(*line.split) unless line.start_with? COMMENT
+      yield Repo.new(*line.split) unless line.is_comment? || line.strip.empty?
     end
   end
 
@@ -183,7 +188,13 @@ case cmd
     repo_man.clone
 
   when "add"
-    repo_man.add
+    if ARGV.length == 1 then
+      repo_man.add ARGV.shift
+    elsif ARGV.length == 0 then
+      repo_man.add
+    else
+      help
+    end
 
   else
     help
