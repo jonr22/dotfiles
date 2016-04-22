@@ -76,15 +76,22 @@ class RepoMan
   end
 
   def clean(path)
-    if File.exists?(path) && @options[:force] then
-      log "Deleting #{path} ..."
-      FileUtils.rm_rf(path)
+    if File.exists?(path) then
+      if @options[:force] then
+        log "Deleting #{path} ..."
+        FileUtils.rm_rf path
+      end
+    else
+      FileUtils.mkdir_p path
+      FileUtils.rm_rf path
     end
   end
 
   def add_repo(repo)
     File.open(config, 'a') do |f|
       log "Adding to #{config}: #{repo} ..."
+
+      # TODO: cleanup new lines
       f << "\n#{repo}"
     end
   end
@@ -140,6 +147,8 @@ class RepoMan
     end
   end
 end
+
+# TODO: move option parsing and command parsing inside repoman class
 
 options = {}
 OptionParser.new do |opts|
