@@ -1,0 +1,7 @@
+git@github.com:jonr22/laptop.git /Users/jreimels/Developer/open_source/laptop
+git@github.com:jonr22/netrunner.git /Users/jreimels/Developer/open_source/netrunner
+git@github.com:git/git.git /Users/jreimels/Developer/open_source/git
+ssh://jreimels@git.wordstream.com/srv/git/wordstream.git /Users/jreimels/Developer/wordstream stable_db_migration
+ssh://jreimels@git.wordstream.com/srv/git/wsautomation.git /Users/jreimels/Developer/wsautomation staging
+ssh://jreimels@git.wordstream.com/srv/git/sysadmin.git /Users/jreimels/Developer/sysadmin
+git@github.com:git/git.git /Users/jreimels/Developer/open_source/git
