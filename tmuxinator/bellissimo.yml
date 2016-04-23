@@ -1,7 +1,7 @@
 # ~/.tmuxinator/bellissimo.yml
 
 name: bellissimo
-root: ~/Developer/bellissimo_grande
+root: ~/Developer/consulting/bellissimo_grande
 
 # Optional tmux socket
 # socket_name: foo
