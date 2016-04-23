@@ -1,0 +1,41 @@
+#compdef repoman
+#autoload
+
+local -a _1st_arguments
+
+_1st_arguments=(
+  'clone:Clone repos'
+  'add:Add a new repo and clone it'
+)
+
+_arguments \
+  '(-v --verbose)'{-v,--verbose}'[give more output]' \
+  '(-s --ssh)'{-s,--ssh}'[use ssh url for github short urls]' \
+  '(-c --config)'{-c,--config}'[use a different config file]:path:_files' \
+  '(-f --force)'{-f,--force}'[overwrite existing repo]' \
+  '*:: :->subcmds' && return 0
+
+if (( CURRENT == 1 )); then
+  _describe -t commands "repoman subcommand" _1st_arguments
+  return
+fi
+
+case "$words[1]" in
+  clone)
+    _arguments \
+      '(-v --verbose)'{-v,--verbose}'[give more output]' \
+      '(-s --ssh)'{-s,--ssh}'[use ssh url for github short urls]' \
+      '(-c --config)'{-c,--config}'[use a different config file]:path:_files' \
+      '(-f --force)'{-f,--force}'[overwrite existing repo]' ;;
+  add)
+    _arguments \
+      '(-v --verbose)'{-v,--verbose}'[give more output]' \
+      '(-s --ssh)'{-s,--ssh}'[use ssh url for github short urls]' \
+      '(-d --dir)'{-d,--dir}'[use dir for repo location]:directory:_files' \
+      '(-b --branch)'{-b,--branch}'[use branch for repo]:groups' \
+      '(-c --config)'{-c,--config}'[use a different config file]:path:_files' \
+      '(-f --force)'{-f,--force}'[overwrite existing repo]' ;;
+esac
+
+
+  # opts.on("-b", "--branch BRANCH", "use branch instead of master") do |b|

@@ -16,7 +16,11 @@ fi
 
 vim -u "$HOME"/.vimrc.bundles +PlugInstall +PlugClean! +qa
 
-"$HOME"/.vim/bundle/YouCompleteMe/install.py --clang-completer --gocode-completer --tern-completer
+if ! $(python "$HOME/.vim/bundle/YouCompleteMe/third_party/ycmd/check_core_version.py"); then
+  "$HOME"/.vim/bundle/YouCompleteMe/install.py --clang-completer --gocode-completer --tern-completer
+fi
+
+repoman clone -v
 
 # export CFLAGS=-Qunused-arguments
 # export CPPFLAGS=-Qunused-arguments

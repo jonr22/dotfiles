@@ -1,0 +1,212 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'fileutils'
+
+class Repo
+  attr_reader :url, :path, :branch
+
+  def initialize(url, path, branch=nil)
+    @url = url
+    @path = File.expand_path path
+    @branch = branch
+  end
+
+  def to_s
+    str = "#{@url} #{@path}"
+    str << " #{@branch}" if @branch
+
+    str
+  end
+end
+
+class ::String
+  def is_comment?
+    self.strip.start_with? "#"
+  end
+end
+
+class RepoMan
+  attr_accessor :options
+
+  DEFAULT_CONFIG = "#{Dir.home}/.repoman"
+  SSH_PREFIX = "git@github.com:"
+  HTTP_PREFIX = "https://github.com/"
+  POSTFIX = ".git"
+
+  def initialize(options)
+    # TODO: default options
+    @options = options || {}
+  end
+
+  def clone
+    repos do |r|
+      clone_command r
+    end
+  end
+
+  def add(url=git_origin)
+    return nil unless url
+
+    repo = Repo.new(
+      url,
+      @options[:dir] || git_dir,
+      @options[:branch] || git_branch
+    )
+
+    add_repo repo
+    clone_command repo
+  end
+
+  private
+
+  def clone_command(repo)
+    clean repo.path
+    return log "Skipping #{repo.url} ..." if File.exists?(repo.path)
+
+    cmd = "git clone #{create_url repo.url} #{repo.path}"
+    cmd << " --branch #{repo.branch}" if repo.branch
+
+    run_command cmd
+  end
+
+  def run_command(cmd)
+    cmd << " 1>/dev/null 2>&1" unless @options[:verbose]
+    `#{cmd}`
+  end
+
+  def clean(path)
+    if File.exists?(path) then
+      if @options[:force] then
+        log "Deleting #{path} ..."
+        FileUtils.rm_rf path
+      end
+    else
+      FileUtils.mkdir_p path
+      FileUtils.rm_rf path
+    end
+  end
+
+  def add_repo(repo)
+    File.open(config, 'a') do |f|
+      log "Adding to #{config}: #{repo} ..."
+
+      # TODO: cleanup new lines
+      f << "\n#{repo}"
+    end
+  end
+
+  def repos
+    File.open(config).each do |line|
+      yield Repo.new(*line.split) unless line.is_comment? || line.strip.empty?
+    end
+  end
+
+  def log(msg)
+    puts msg if @options[:verbose]
+  end
+
+  def config
+    options[:config] ? options[:config] : DEFAULT_CONFIG
+  end
+
+  def is_repo?
+    system "git rev-parse 1>/dev/null 2>&1"
+  end
+
+  def git_dir
+    return Dir.pwd unless is_repo?
+    dir = `git rev-parse --show-toplevel`.chomp
+    File.expand_path dir
+  end
+
+  def git_origin
+    return nil unless is_repo?
+    `git remote get-url origin`.chomp
+  end
+
+  def git_branch
+    return nil unless is_repo?
+    branch = `git rev-parse --abbrev-ref HEAD`.chomp
+    if branch == 'master' then nil else branch end
+  end
+
+  def github_prefix
+    if @options[:ssh] then
+      SSH_PREFIX
+    else
+      HTTP_PREFIX
+    end
+  end
+
+  def create_url(url)
+    if url.include? ":" then
+      url
+    else
+      "#{github_prefix}#{url}#{POSTFIX}"
+    end
+  end
+end
+
+# TODO: move option parsing and command parsing inside repoman class
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: repoman [--ssh]"
+
+  opts.on("-s", "--ssh", "use ssh URL for any short style github listings") do |s|
+    options[:ssh] = s
+  end
+
+  opts.on("-f", "--force", "overwrite existing repos") do |f|
+    options[:force] = f
+  end
+
+  opts.on("-b", "--branch BRANCH", "use BRANCH instead of master") do |b|
+    options[:branch] = b
+  end
+
+  opts.on("-d", "--dir DIR", "use DIR instead of the default of current repo root / current dir") do |d|
+    options[:dir] = d
+  end
+
+  opts.on("-c", "--config CONFIG", "use CONFIG instead of the default of ~/.repoman") do |c|
+    options[:config] = File.expand_path c
+  end
+
+  opts.on("-v", "--verbose", "use verbose messaging") do |v|
+    options[:verbose] = v
+  end
+end.parse!
+
+cmd = ARGV.shift
+
+def help
+  puts "Usage: repoman CMD [OPTIONS]"
+  exit 1
+end
+
+repo_man = RepoMan.new options
+
+case cmd
+  when "clone"
+    if ARGV.length != 0 then
+      help
+    end
+
+    repo_man.clone
+
+  when "add"
+    if ARGV.length == 1 then
+      repo_man.add ARGV.shift
+    elsif ARGV.length == 0 then
+      repo_man.add
+    else
+      help
+    end
+
+  else
+    help
+end
+
+exit 0
