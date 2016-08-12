@@ -41,6 +41,7 @@ fi
 # Homebrew
 if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
   PATH=$(add_to_path "$PATH" "$HOMEBREW_PATH/bin")
+  PATH=$(add_to_path "$PATH" "$HOMEBREW_PATH/sbin")
 fi
 
 # RBENV
