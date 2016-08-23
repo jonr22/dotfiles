@@ -7,6 +7,7 @@
 [color]
 	ui = auto
 [alias]
+  a = add
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	st = status -sb
 	co = checkout
@@ -18,5 +19,6 @@
 	ba = branch -a
 	logb = log --first-parent
 	lgb = log --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  u = diff --name-status --diff-filter=U
 [include]
   path = ~/.gitconfig.local
