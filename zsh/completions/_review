@@ -10,18 +10,51 @@ __review_git_command_successful () {
   return 0
 }
 
+(( $+functions[__review_get_usernames] )) ||
+__review_get_usernames () {
+  _values -s , 'users' $(rbt api-get /users/ | python -c 'import sys, json; print "\n".join(u[u"username"] for u in json.load(sys.stdin)[u"users"])')
+}
+
 (( $+functions[__review_git_branch_names] )) ||
 __review_git_branch_names () {
   local expl
   declare -a branch_names
 
-  branch_names=(${${(f)"$(_call_program branchrefs git for-each-ref --format='"%(refname)"' refs/heads 2>/dev/null)"}#refs/heads/})
+  branch_names=(${${(f)"$(_call_program branchrefs git for-each-ref --format='"%(upstream:short)"' refs/heads 2>/dev/null)"}#refs/heads/})
   __review_git_command_successful $pipestatus || return 1
 
   _wanted branch-names expl branch-name compadd $* - $branch_names
 }
 
 _arguments -C \
-   '--tracking-branch=[parent branch to diff against]: :__review_git_branch_names' \
-  '-r[review number to re-use]'
+  '--tracking-branch=[Tracking branch from which your branch is derived (git only, defaults to origin/master)]: :__review_git_branch_names' \
+  '(-r --review-request-id)'{-r,--review-request-id}'[existing review request ID to update]:review_id' \
+  '(-p --publish)'{-p,--publish}'[publish the review request immediately after submitting]' \
+  '(-o --open)'{-o,--open}'[open a web browser to the review request page]' \
+  '(-n --output-diff)'{-n,--output-diff}'[outputs a diff to the console and exits. Does not post]' \
+  '--server[specify a different Review Board server to use]:server' \
+  '--diff-only[uploads a new diff, but does not update info from changelist]' \
+  '--reopen[reopen discarded review request after update]' \
+  '--target-groups[names of the groups who will perform the review]:groups' \
+  '--target-people[names of the people who will perform the review]:users:__review_get_usernames' \
+  '--summary[summary of the review]:summary' \
+  '--description[description of the review]:description' \
+  '--description-file[text file containing a description of the review]:description_file' \
+  '--guess-summary[guess summary from the latest commit (git/hg/hgsubversion only)]' \
+  '--guess-description[guess description based on commits on this branch (git/hg/hgsubversion only)]' \
+  '--testing-done[text file containing details of testing done details of testing done]:testing_description' \
+  '--branch[affected branch]:branch' \
+  '--bugs-closed[list of bugs closed]:bugs' \
+  '--revision-range[generate the diff for review based on given revision range]:revision_range' \
+  '--submit-as[user name to be recorded as the author of the review request, instead of the logged in user]:submitter' \
+  '--change-only[updates info from changelist, but does not upload a new diff (only available if your repository supports changesets)]' \
+  '--p4-client[the Perforce client name that the review is in]:p4_client' \
+  '--p4-port[the Perforce servers IP address that the review is on]:p4_port' \
+  '--p4-passwd[the Perforce password or ticket of the user in the P4USER environment variable]:p4_password' \
+  '--svn-changelist[generate the diff for review based on a local SVN changelist]:svn_changelist' \
+  '--repository-url[the url for a repository for creating a diff outside of a working copy, this specifies the origin url of the current repository overriding the origin url supplied by the git client]:repo_url' \
+  '(-d --debug)'{-d,--debug}'[display debug output]' \
+  '--diff-filename[upload an existing diff file, instead of generating a new diff]:diff_file' \
+  '--http-username[username for HTTP Basic authentication]:username' \
+  '--http-password[password for HTTP Basic authentication]:password'
 
