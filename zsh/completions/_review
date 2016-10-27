@@ -1,0 +1,27 @@
+#compdef review
+#autoload
+
+(( $+functions[__review_git_command_successful] )) ||
+__review_git_command_successful () {
+  if (( ${#*:#0} > 0 )); then
+    _message 'not a git repository'
+    return 1
+  fi
+  return 0
+}
+
+(( $+functions[__review_git_branch_names] )) ||
+__review_git_branch_names () {
+  local expl
+  declare -a branch_names
+
+  branch_names=(${${(f)"$(_call_program branchrefs git for-each-ref --format='"%(refname)"' refs/heads 2>/dev/null)"}#refs/heads/})
+  __review_git_command_successful $pipestatus || return 1
+
+  _wanted branch-names expl branch-name compadd $* - $branch_names
+}
+
+_arguments -C \
+   '--tracking-branch=[parent branch to diff against]: :__review_git_branch_names' \
+  '-r[review number to re-use]'
+

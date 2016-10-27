@@ -1,7 +1,7 @@
 # ~/.tmuxinator/setup.yml
 
 name: setup
-root: ~/Developer/scratch/wordstream_setup
+root: ~/Developer/wordstream_setup
 
 
 # Optional tmux socket

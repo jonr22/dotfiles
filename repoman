@@ -17,3 +17,5 @@ git@github.com:jonr22/wedding.git ~/Developer/wedding
 ssh://jreimels@git.wordstream.com/srv/git/wordstream.git ~/Developer/wordstream stable_db_migration
 ssh://jreimels@git.wordstream.com/srv/git/wsautomation.git ~/Developer/wsautomation staging
 ssh://jreimels@git.wordstream.com/srv/git/sysadmin.git ~/Developer/sysadmin
+
+ssh://jreimels@git.wordstream.com/srv/git/env_setup.git /Users/jreimels/Developer/wordstream_setup

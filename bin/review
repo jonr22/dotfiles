@@ -1,0 +1,4 @@
+#!/bin/sh
+
+python "$WS_REPO/utils/review.py" $@
+
