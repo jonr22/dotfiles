@@ -1,12 +1,11 @@
 *.o
 *.sw[nop]
-Reimels*
 .DS_Store
 .netrwhist
 .idea
 .bundle
 .env
-db/*.sqlite3
-log/*.log
+*.sqlite3
+*.log
 tags
 *.pyc
