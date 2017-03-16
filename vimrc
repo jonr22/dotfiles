@@ -69,7 +69,7 @@ set number                      " show line numbers
 set nowrap                      " don't wrap overflow text
 set background=dark             " background is dark
 let base16colorspace=256        " use 256 color palette
-colorscheme base16-tomorrow     " set colortheme to tomorrow
+colorscheme base16-tomorrow-night     " set colortheme
 
 " indenting
 set tabstop=2     " tab is 2 spaces

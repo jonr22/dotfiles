@@ -33,18 +33,23 @@ PS1='\w\$ '
 
 # Run bash specific aliases if they exist
 if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+  source ~/.bash_aliases
 fi
 
 # Run aliases if they exist
 if [ -f ~/.aliases ]; then
-    source ~/.aliases
+  source ~/.aliases
 fi
 
 # Run env commands if they exist
 if [ -f ~/.env ]; then
-    source ~/.env
+  source ~/.env
 fi
+
+# Set color theme
+# if [ -f $BASE16_THEME_FILE ]; then
+#   source $BASE16_THEME_FILE
+# fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -59,8 +64,9 @@ fi
 
 # mac specific settings
 if [ $(uname) = Darwin ]; then
-    # git completion
-    if [ -f /usr/share/git-core/git-completion.bash ]; then
-        source /usr/share/git-core/git-completion.bash
-    fi
+  # git completion
+  if [ -f /usr/share/git-core/git-completion.bash ]; then
+    source /usr/share/git-core/git-completion.bash
+  fi
 fi
+
