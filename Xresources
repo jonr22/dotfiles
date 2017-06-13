@@ -43,8 +43,10 @@ URxvt*termName:     xterm-256color
 URxvt*saveLines:    2048
 URxvt*scrollBar:    false
 URxvt*font:         xft:Meslo LG S for Powerline:size=10
-URxvt*letterSpace:  -2
+URxvt*letterSpace:  0
 URxvt*internalBorder: 0
+URxvt*iconFile: /usr/share/icons/Numix-Circle/48/apps/terminal.svg
+
 
 !! perl extensions
 URxvt.perl-ext: default,url-select,clipboard
