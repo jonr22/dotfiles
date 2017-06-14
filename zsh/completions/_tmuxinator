@@ -19,7 +19,7 @@ _tmuxinator() {
   return
 }
 
-_tmuxinator
+alias mux="tmuxinator"
 
 # Local Variables:
 # mode: Shell-Script
