@@ -1,0 +1,72 @@
+conky.config = {
+  alignment = 'top_right',
+  background = true,
+  border_inner_margin = 10,
+  border_outer_margin = 0,
+  cpu_avg_samples = 2,
+  default_color = 'white',
+  double_buffer = true,
+  draw_borders = false,
+  draw_graph_borders = false,
+  draw_outline = false,
+  draw_shades = true,
+  font = 'DejaVu Sans Mono:size=12',
+  gap_x = 50,
+  gap_y = 50,
+  imlib_cache_size = 0,
+  minimum_height = 0,
+  minimum_width = 0,
+  net_avg_samples = 2,
+  no_buffers = true,
+  out_to_console = false,
+  out_to_stderr = false,
+  override_utf8_locale = true,
+  own_window = true,
+  own_window_argb_value = 120,
+  own_window_argb_visual = true,
+  own_window_colour = '#6c6c6c',
+  own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager,below',
+  own_window_type = 'normal',
+  update_interval = 1.5,
+  uppercase = false,
+  use_xft = true,
+  xftalpha = 0.8
+}
+
+--${color #DD3A21}${nodename}${color}${goto 200}${font FontAwesome}${font}${voffset -2} ${time %d/%m/%y}  ${font FontAwesome}${font}${voffset -2} ${time %H:%M}
+
+conky.text = [[
+${goto 20}${color #002c6f}${nodename}${color}
+
+${goto 20}${font FontAwesome}${font} ${uptime}${goto 202}${font FontAwesome}${font} ${kernel}
+${hr}
+${font FontAwesome}${font}${voffset -2}
+
+${goto 20}${font FontAwesome}${font}${voffset -2} ${addrs ens33}
+${goto 20}${downspeedgraph ens33 30,175 FFFF00 DD3A21}${goto 202}${upspeedgraph ens33 30,178 06E9F8 2104FA}
+${font FontAwesome}${goto 20}${font} ${downspeed ens33}${font FontAwesome}${goto 202}${font} ${upspeed ens33}
+${hr}
+${font FontAwesome}${font}${voffset -2}
+
+${goto 20}${fs_used} / ${fs_size /} ${fs_bar 6 /}
+${goto 20}${diskiograph_read 30,178 06E9F8 2104FA}${goto 202}${diskiograph_write 30,175 FFFF00 DD3A21}
+${font FontAwesome}${goto 20}${font} ${diskio_read}${font FontAwesome}${goto 202}${font} ${diskio_write}
+${hr}
+${font FontAwesome}${font}${voffset -2}
+
+${goto 20}${mem} / ${memmax} (${memperc}%) | swap: ${swapperc}%
+${goto 20}${memgraph 30,355 AAF5D0 00B35B}
+${hr}
+${font FontAwesome}${font}${voffset -2}
+
+${goto 20}cpu 0: ${cpu cpu0}%${goto 100}${cpubar 7,80 cpu0}${goto 222}cpu 1: ${cpu cpu1}%${goto 302}${cpubar 7,80 cpu1}
+${hr}
+${font FontAwesome}${font}${voffset -2}
+
+${color #002c6f}${goto 20}name ${goto 200}pid${goto 255}cpu%${goto 310}mem%${color}
+${goto 20}${top name 1} ${goto 180}${top pid 1}${goto 235}${top cpu 1}${goto 290}${top mem 1}
+${goto 20}${top name 2} ${goto 180}${top pid 2}${goto 235}${top cpu 2}${goto 290}${top mem 2}
+${goto 20}${top name 3} ${goto 180}${top pid 3}${goto 235}${top cpu 3}${goto 290}${top mem 3}
+${goto 20}${top name 4} ${goto 180}${top pid 4}${goto 235}${top cpu 4}${goto 290}${top mem 4}
+${goto 20}${top name 5} ${goto 180}${top pid 5}${goto 235}${top cpu 5}${goto 290}${top mem 5}
+]];

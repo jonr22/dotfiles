@@ -43,7 +43,8 @@ URxvt*termName: xterm-256color
 URxvt*saveLines: 2048
 URxvt*scrollBar: false
 URxvt*font: xft:Monaco:size=10, \
-xft:Monospace:size=10
+xft:Monospace:size=10, \
+xft:Unifont:size=10
 URxvt*letterSpace: 0
 URxvt*internalBorder: 0
 !URxvt*externalBorder: 0
