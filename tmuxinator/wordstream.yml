@@ -37,8 +37,10 @@ windows:
   - servers:
       layout: even-vertical
       panes:
-        - cd server/wordstream/src; python server.py
         - cd server/tag_manager/src; python server.py
+        - cd server/wordstream/src; python server.py
+        - cd server/wordstream/src; env no_proxy='*' python swf.py conf/ ADWORDS_QUICKSTART DECIDER 1
+        - cd server/wordstream/src; env no_proxy='*' python swf.py conf/ ADWORDS_QUICKSTART ACTIVITY_WORKER 2
         - cd client/manager/src; python server.py
   - scratch:
       root: ~/
