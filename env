@@ -1,6 +1,4 @@
 HOMEBREW_PATH=/usr/local
-RBENV_PATH=$HOME/.rbenv
-JENV_PATH=$HOME/.jenv
 HEROKU_PATH=/usr/local/heroku
 
 BASE16_COLOR_THEME="base16-tomorrow-night"
@@ -30,42 +28,15 @@ if [[ "$TERM" == "xterm" ]]; then
   TERM="xterm-256color"
 fi
 
-# Load NVM
-if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
-  source "$HOME/.nvm/nvm.sh"
-fi
-
-if [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
-  export NVM_DIR=~/.nvm
-  source "/usr/local/opt/nvm/nvm.sh"
+# ASDF
+if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
+  source "$HOME/.asdf/asdf.sh"
 fi
 
 # Homebrew
 if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
   PATH=$(add_to_path "$PATH" "$HOMEBREW_PATH/bin")
   PATH=$(add_to_path "$PATH" "$HOMEBREW_PATH/sbin")
-fi
-
-# RBENV
-if [[ -n "$RBENV_PATH" ]]; then
-  if [[ -d "$RBENV_PATH/bin" ]]; then
-    # path to rbenv on linux
-    PATH=$(add_to_path "$PATH" "$RBENV_PATH/bin")
-  fi
-
-  # load rbenv
-  eval "$(rbenv init -)"
-fi
-
-# JENV
-if [[ -n "$JENV_PATH" ]]; then
-  if [[ -d "$JENV_PATH/bin" ]]; then
-    # path to jenv on linux
-    PATH=$(add_to_path "$PATH" "$JENV_PATH/bin")
-
-    # load jenv
-    eval "$(jenv init -)"
-  fi
 fi
 
 # Load virtualenvwrapper
@@ -90,8 +61,8 @@ fi
 export PATH
 
 # wordstream repo
-if [ -d "$HOME/Developer/wordstream" ]; then
-  export WS_REPO=$HOME/Developer/wordstream
+if [ -d "$HOME/Developer/ws/wordstream" ]; then
+  export WS_REPO=$HOME/Developer/ws/wordstream
 
   PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/python_shared/wsframework/src")
   PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/python_shared/webapp_framework/src")

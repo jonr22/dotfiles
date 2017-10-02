@@ -33,8 +33,6 @@ alias mkdir='mkdir -p'
 
 # mac specific settings
 if [ $(uname) = Darwin ]; then
-  # set vim to always use mvim
-  alias vim='mvim -v'
 
   alias post_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
   alias post_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
@@ -45,7 +43,6 @@ fi
 
 # WordStream aliases
 alias migrate_dbs='if [ -z "$VIRTUAL_ENV" ]; then echo "You need to activate your virtualenv: \`workon wordstream\`"; else python $WS_REPO/server/wordstream/src/migrate_db.py upgrade --all; fi'
-alias build_flex='if [ -z "$VIRTUAL_ENV" ]; then echo "You need to activate your virtualenv: \`workon wordstream\`"; else temp_dir_var=`pwd`; cd $WS_REPO/client/explorer; ./build-dev.sh; cd $temp_dir_var; unset temp_dir_var; fi;'
 alias flush_memcached='echo ''''flush_all'''' | nc localhost 11211'
 alias pyc_clean="find $WS_REPO -name '*.pyc' -delete"
 alias remove_locks='rm /var/lib/wordstream/data/**/*.lock.lock'
@@ -55,7 +52,6 @@ alias perf-db3='ssh jreimels@perf-db3.wordstream.com'
 alias perf2='ssh jreimels@aws-perf2.wordstream.com'
 alias perf3='ssh jreimels@aws-perf3.wordstream.com'
 alias tags='git for-each-ref --format="%(taggerdate): %(refname)" --sort=-taggerdate --count=10 refs/tags'
-alias build_flex='if [ -z "$VIRTUAL_ENV" ]; then echo "You need to activate your virtualenv: \`workon wordstream\`"; else jenv local 1.6;temp_dir_var=`pwd`; cd $WS_REPO/client/explorer; ./build-dev.sh; cd $temp_dir_var; unset temp_dir_var; jenv local system; fi;'
 
 # Fun
 alias weather='curl wttr.in/Boston'
