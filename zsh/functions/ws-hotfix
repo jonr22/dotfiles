@@ -1,0 +1,19 @@
+ws-hotfix() {
+    case "$3" in
+	"manager")
+	    SERVER_PATH="wordstream_manager"
+	    ;;
+	"pages")
+	    SERVER_PATH="wordstream_pages"
+	    ;;
+	*)
+	    SERVER_PATH="wordstream"
+	    ;;
+    esac
+    { git diff --no-ext-diff $1 $2 | perl -p -e \
+	'BEGIN {$server_path=shift @ARGV;}
+         s@(?<=[ab])/server/([^/]+)/src@/opt/\1@g;
+	 s@(?<=[ab])/client/(manager|pages)/src@/opt/wordstream_\1@g;
+	 s@(?<=[ab])/python_shared/(wsframework|webapp_framework)/src@/opt/$server_path@g;' -- $SERVER_PATH
+    } > /tmp/patch_file_$(date +"%Y%m%d").patch
+}
