@@ -170,9 +170,6 @@ nnoremap <leader>f :NERDTreeFind<CR>
 " toggle git diff markers in gutter
 nnoremap <leader>g :GitGutterToggle<CR>
 
-" update tags
-" nnoremap <leader>[ :!ctags -R .<CR>
-
 " properly delete buffer
 nnoremap <leader>c :Bclose<CR>
 
