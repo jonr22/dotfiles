@@ -1,7 +1,7 @@
 # ~/.tmuxinator/movana.yml
 
 name: movana
-root: ~/Developer/movana
+root: ~/Developer/projects/movana
 
 # Optional tmux socket
 # socket_name: foo

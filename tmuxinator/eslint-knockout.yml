@@ -1,7 +1,7 @@
 # ~/.tmuxinator/setup.yml
 
 name: eslint-knockout
-root: ~/Developer/eslint-plugin-knockout
+root: ~/Developer/ws/eslint-plugin-knockout
 
 
 # Optional tmux socket

@@ -1,7 +1,7 @@
 # ~/.tmuxinator/curability.yml
 
 name: curability
-root: ~/Developer/curability
+root: ~/Developer/projects/curability
 
 # Optional tmux socket
 # socket_name: foo

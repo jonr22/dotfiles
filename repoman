@@ -1,24 +1,25 @@
 git@github.com:jonr22/jonr22.github.io.git ~/Developer/blog source
+
 git@github.com:jonr22/laptop.git ~/Developer/open_source/laptop
 git@github.com:jonr22/shoelaces.git ~/Developer/open_source/shoelaces
 git@github.com:git/git.git ~/Developer/open_source/git
 git@github.com:jonr22/netrunner.git ~/Developer/open_source/netrunner
 
-git@gitlab.com:mshump/appraisal_db.git ~/Developer/appraisal_db
-git@gitlab.com:jonr22/arby.git ~/Developer/arby
+git@gitlab.com:mshump/appraisal_db.git ~/Developer/projects/appraisal_db
+git@gitlab.com:jonr22/arby.git ~/Developer/projects/arby
 git@bitbucket.org:jonr22/bellissimo_grande.git ~/Developer/consulting/bellissimo_grande
-git@bitbucket.org:jonr22/zenlytic_be.git ~/Developer/zenlytic/backend
-git@bitbucket.org:jonr22/zenlytic_fe.git ~/Developer/zenlytic/frontend
-git@bitbucket.org:jonr22/zenlytic_docs.git ~/Developer/zenlytic/docs
-git@bitbucket.org:jonr22/zenlytic_docs.git/wiki ~/Developer/zenlytic/wiki
-git@bitbucket.org:jonr22/curability.git ~/Developer/curability
-git@bitbucket.org:jonr22/movana.git ~/Developer/movana new_styling
+git@bitbucket.org:jonr22/zenlytic_be.git ~/Developer/projects/zenlytic/backend
+git@bitbucket.org:jonr22/zenlytic_fe.git ~/Developer/projects/zenlytic/frontend
+git@bitbucket.org:jonr22/zenlytic_docs.git ~/Developer/projects/zenlytic/docs
+git@bitbucket.org:jonr22/zenlytic_docs.git/wiki ~/Developer/projects/zenlytic/wiki
+git@bitbucket.org:jonr22/curability.git ~/Developer/projects/curability
+git@bitbucket.org:jonr22/movana.git ~/Developer/projects/movana new_styling
 
-git@github.com:jonr22/wedding.git ~/Developer/wedding
+git@github.com:jonr22/wedding.git ~/Developer/projects/wedding
 
-ssh://jreimels@git.wordstream.com/srv/git/wordstream.git ~/Developer/wordstream stable_db_migration
-ssh://jreimels@git.wordstream.com/srv/git/wsautomation.git ~/Developer/wsautomation staging
-ssh://jreimels@git.wordstream.com/srv/git/sysadmin.git ~/Developer/sysadmin
-ssh://jreimels@git.wordstream.com/srv/git/eslint-plugin-knockout.git ~/Developer/eslint-plugin-knockout
-ssh://jreimels@git.wordstream.com/srv/git/env_setup.git ~/Developer/wordstream_setup
+ssh://jreimels@git.wordstream.com/srv/git/wordstream.git ~/Developer/ws/wordstream stable_db_migration
+ssh://jreimels@git.wordstream.com/srv/git/wsautomation.git ~/Developer/ws/wsautomation staging
+ssh://jreimels@git.wordstream.com/srv/git/sysadmin.git ~/Developer/ws/sysadmin
+ssh://jreimels@git.wordstream.com/srv/git/eslint-plugin-knockout.git ~/Developer/ws/eslint-plugin-knockout
+ssh://jreimels@git.wordstream.com/srv/git/env_setup.git ~/Developer/ws/wordstream_setup
 

@@ -1,7 +1,7 @@
 # ~/.tmuxinator/arby.yml
 
 name: arby
-root: ~/Developer/arby
+root: ~/Developer/projects/arby
 
 # Optional tmux socket
 # socket_name: foo
