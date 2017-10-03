@@ -1,0 +1,4 @@
+_git_co ()
+{
+  __gitcomp "$(__git_heads)"
+}
