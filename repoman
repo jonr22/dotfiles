@@ -3,6 +3,9 @@ git@github.com:jonr22/laptop.git ~/Developer/open_source/laptop
 git@github.com:jonr22/shoelaces.git ~/Developer/open_source/shoelaces
 git@github.com:git/git.git ~/Developer/open_source/git
 git@github.com:jonr22/netrunner.git ~/Developer/open_source/netrunner
+git@github.com:jonr22/CryodexSource.git ~/Developer/open_source/CryodexSource
+git@github.com:jonr22/eslint.git ~/Developer/open_source/eslint
+git@github.com:chriskempson/base16-shell.git ~/Developer/open_source/base16-shell
 
 git@gitlab.com:mshump/appraisal_db.git ~/Developer/appraisal_db
 git@gitlab.com:jonr22/arby.git ~/Developer/arby
@@ -17,8 +20,9 @@ git@bitbucket.org:jonr22/movana.git ~/Developer/movana new_styling
 git@github.com:jonr22/wedding.git ~/Developer/wedding
 
 ssh://jreimels@git.wordstream.com/srv/git/wordstream.git ~/Developer/wordstream stable_db_migration
+ssh://jreimels@git.wordstream.com/srv/git/env_setup.git ~/Developer/wordstream_setup
+ssh://jreimels@git.wordstream.com/srv/git/eslint-plugin-knockout.git ~/Developer/eslint-plugin-knockout
+ssh://jreimels@git.wordstream.com/srv/git/eslint-plugin-wordstream.git ~/Developer/eslint-plugin-wordstream
 ssh://jreimels@git.wordstream.com/srv/git/wsautomation.git ~/Developer/wsautomation staging
 ssh://jreimels@git.wordstream.com/srv/git/sysadmin.git ~/Developer/sysadmin
-ssh://jreimels@git.wordstream.com/srv/git/eslint-plugin-knockout.git ~/Developer/eslint-plugin-knockout
-ssh://jreimels@git.wordstream.com/srv/git/env_setup.git ~/Developer/wordstream_setup
-
+ssh://jreimels@git.wordstream.com/srv/git/datasync.git ~/Developer/datasync
