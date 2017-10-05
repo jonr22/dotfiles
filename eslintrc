@@ -1,131 +1,20 @@
 {
   "env": {
-    "browser": true
+    "node": true,
+    "es6": true,
+    "mocha": true
   },
-  "plugins": [],
-  "globals": {
-    "$": false
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
   },
+  "extends": "eslint:recommended",
   "rules": {
-    "no-cond-assign": 1,
-    "no-constant-condition": 1,
-    "no-control-regex": 1,
-    "no-debugger": 2,
-    "no-dupe-args": 1,
-    "no-dupe-keys": 1,
-    "no-duplicate-case": 1,
-    "no-empty-character-class": 1,
-    "no-ex-assign": 1,
-    "no-extra-boolean-cast": 1,
-    "no-extra-semi": 1,
-    "no-case-declarations": 2,
-    "no-extra-bind": 1,
-    "no-fallthrough": 1,
-    "no-floating-decimal": 2,
-    "no-global-assign": 2,
-    "no-implicit-globals": 1,
-    "no-lone-blocks": 1,
-    "no-multi-spaces": 1,
-    "semi": 2,
-    "semi-spacing": 1,
-    "no-func-assign": 1,
-    "no-inner-declarations": 1,
-    "no-invalid-regexp": 2,
-    "no-obj-calls": 1,
-    "no-sparse-arrays": 1,
-    "no-array-constructor": 2,
-    "no-unexpected-multiline": 1,
-    "no-unreachable": 1,
-    "no-unsafe-finally": 1,
-    "no-unsafe-negation": 1,
-    "use-isnan": 2,
-    "valid-typeof": 2,
-    "no-alert": 2,
-    "camelcase": [2, {"properties": "never"}],
-    "curly": [2, "all"],
-    "object-curly-spacing": [2, "never"],
-    "object-property-newline": [2, {"allowMultiplePropertiesPerLine": true}],
-    "eqeqeq": 2,
-    "guard-for-in": 2,
-    "wrap-iife": [1, "inside"],
-    "new-cap": 2,
-    "new-parens": 2,
-    "no-caller": 2,
-    "no-irregular-whitespace": 1,
-    "no-whitespace-before-property": 1,
-    "no-new": 1,
-    "no-new-wrappers": 1,
-    "no-unused-vars": 2,
-    "no-unused-expressions": 2,
-    "no-loop-func": 2,
-    "no-octal": 2,
-    "no-redeclare": 2,
-    "no-sequences": 1,
-    "no-throw-literal": 2,
-    "no-useless-call": 1,
-    "func-call-spacing": [2, "never"],
-    "func-style": [2, "expression"],
-    "keyword-spacing": [
-      2,
-      {
-        "overrides": {
-          "else": {
-            "before": true
-          },
-          "while": {
-            "before": true
-          },
-          "catch": {
-            "before": true
-          }
-        }
-      }
-    ],
-    "space-before-blocks": [2, "always"],
-    "no-empty": [2, {"allowEmptyCatch": true}],
-    "array-bracket-spacing": [2, "never", {}],
-    "space-in-parens": [2, "never"],
-    "block-spacing": 1,
-    "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
-    "comma-style": [2, "last"],
-    "space-unary-ops": [2, {"words": false, "nonwords": false}],
-    "linebreak-style": [2, "unix"],
-    "space-infix-ops": 2,
-    "computed-property-spacing": [2, "never"],
-    "consistent-this": [2, "self"],
-    "no-multiple-empty-lines": 2,
-    "no-with": 2,
-    "no-mixed-spaces-and-tabs": 2,
-    "no-trailing-spaces": 2,
-    "no-shadow-restricted-names": 2,
-    "no-undef": 2,
-    "no-unneeded-ternary": 1,
-    "comma-dangle": [2, "never"],
-    "comma-spacing": [2, {"before": false, "after": true}],
-    "brace-style": [2, "1tbs", {"allowSingleLine": true}],
-    "eol-last": 2,
-    "dot-notation": 2,
-    "quotes": [2, "single", {"avoidEscape": true}],
-    "quote-props": [2, "consistent-as-needed"],
-    "indent": [2, 4, {"SwitchCase": 1}],
-    "no-console": 2,
-    "dot-location": [2, "object"],
-    "no-eval": 2,
-    "no-implied-eval": 2,
-    "no-magic-numbers": [2, {"ignore": [0, 1], "ignoreArrayIndexes": true}],
-    "no-useless-concat": 2,
-    "no-useless-escape": 2,
-    "no-shadow": 2,
-    "no-use-before-define": 2,
-    "max-len": [2, {"code": 120, "ignoreRegExpLiterals": true, "ignoreUrls": true}],
-    "no-bitwise": 2,
-    "no-lonely-if": 2,
-    "no-mixed-operators": 2,
-    "no-tabs": 2,
-    "operator-linebreak": [2, "after"],
-    "strict": [2, "safe"],
-    "lines-around-directive": [2, "always"],
-    "object-curly-newline": [2, {"consistent": true}]
+    "indent": ["error", 2],
+    "max-len": ["error", 120],
+    "object-curly-newline": ["error", {"consistent": true}]
   }
 }
-

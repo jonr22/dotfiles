@@ -24,3 +24,24 @@
   u = diff --name-status --diff-filter=U
 [include]
   path = ~/.gitconfig.local
+[mergetool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[mergetool "p4merge"]
+  cmd = p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+  keepBackups = false
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
+[merge]
+	tool = Kaleidoscope
+[difftool]
+	prompt = false
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool "p4merge"]
+  cmd = p4merge \"$REMOTE\" \"$LOCAL\"
+[diff]
+	tool = Kaleidoscope

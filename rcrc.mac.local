@@ -1,1 +1,1 @@
-EXCLUDES="*.md *.local colors xbindkeysrc conkyrc Xresources i3 fonts"
+EXCLUDES="*.md *.local colors xbindkeysrc conkyrc Xresources i3 fonts xinitrc"
