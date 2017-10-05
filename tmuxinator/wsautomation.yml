@@ -1,7 +1,7 @@
 # ~/.tmuxinator/wsautomation.yml
 
 name: wsautomation
-root: ~/Developer/wsautomation
+root: ~/Developer/ws/wsautomation
 
 # Optional tmux socket
 # socket_name: foo

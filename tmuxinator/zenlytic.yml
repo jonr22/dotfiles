@@ -1,7 +1,7 @@
 # ~/.tmuxinator/zenlytic.yml
 
 name: zenlytic
-root: ~/Developer/zenlytic
+root: ~/Developer/projects/zenlytic
 
 # Optional tmux socket
 # socket_name: foo
@@ -29,14 +29,14 @@ root: ~/Developer/zenlytic
 
 windows:
   - frontend:
-      root: ~/Developer/zenlytic/frontend
+      root: ~/Developer/projects/zenlytic/frontend
       layout: 2bd9,202x61,0,0[202x45,0,0,0,202x15,0,46{101x15,0,46,4,100x15,102,46,5}]
       panes:
         - vim .
         - #empty
         - #empty
   - backend:
-      root: ~/Developer/zenlytic/backend
+      root: ~/Developer/projects/zenlytic/backend
       layout: 2bd9,202x61,0,0[202x45,0,0,0,202x15,0,46{101x15,0,46,4,100x15,102,46,5}]
       panes:
         - vim .

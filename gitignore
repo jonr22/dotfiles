@@ -10,3 +10,4 @@
 tags
 *.pyc
 .venv
+node_modules/

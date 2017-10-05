@@ -170,9 +170,6 @@ nnoremap <leader>f :NERDTreeFind<CR>
 " toggle git diff markers in gutter
 nnoremap <leader>g :GitGutterToggle<CR>
 
-" update tags
-" nnoremap <leader>[ :!ctags -R .<CR>
-
 " properly delete buffer
 nnoremap <leader>c :Bclose<CR>
 
@@ -244,7 +241,7 @@ let g:ctrlp_match_window = 'order:ttb,max:20'                       " ???
 let g:ctrlp_switch_buffer = 'H'                                     " Open a new instance of a buffer unless <c-x> is pressed
 let g:gitgutter_enabled=0                                           " git gutter disabled by default
 let g:html_indent_tags = 'li\|p'                                    " Treat <li> and <p> tags like the block tags they are
-" let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}               " use cmatcher with ctrlp
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}               " use cmatcher with ctrlp
 let NERDTreeIgnore = ['\.pyc$']                                     " hide *.pyc files in NERDTree
 let g:NERDSpaceDelims=1                                             " ???
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'         " rspec / tslime
@@ -253,14 +250,14 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force editorconfig to place nice with fugitive
 
 " syntastic configruation
-let g:syntastic_check_on_open=1                                     " use syntastic to check file on open
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_ruby_checkers = ['mri']                             " use mri and default for ruby
-let g:syntastic_scss_checkers = ['scss_lint']                       " use scss-lint for Sass files
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']            " use jshint and jscs for javascript files
-let g:syntastic_html_checkers = []                                  " no html checking
-let g:syntastic_python_checkers = ['python', 'pyflakes']            " use pyflakes and default for python
-let g:syntastic_aggregate_errors = 1                                " display results from all checkers
+" let g:syntastic_check_on_open=1                                     " use syntastic to check file on open
+" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+" let g:syntastic_ruby_checkers = ['mri']                             " use mri and default for ruby
+" let g:syntastic_scss_checkers = ['scss_lint']                       " use scss-lint for Sass files
+" let g:syntastic_javascript_checkers = ['jshint', 'jscs']            " use jshint and jscs for javascript files
+" let g:syntastic_html_checkers = []                                  " no html checking
+" let g:syntastic_python_checkers = ['python', 'pyflakes']            " use pyflakes and default for python
+" let g:syntastic_aggregate_errors = 1                                " display results from all checkers
 
 " airline configuration
 let g:airline_powerline_fonts = 1
@@ -333,17 +330,6 @@ augroup filetypes
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
 augroup END
 
-" extra rails.vim help
-" augroup rails_helpers
-"   autocmd!
-"   autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
-"   autocmd User Rails silent! Rnavcommand observer       app/observers             -glob=**/* -suffix=_observer.rb
-"   autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
-"   autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
-"   autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
-"   autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
-" augroup END
-
 " When editing a file, always jump to the last known cursor position.
 " Don't do it for commit messages, when the position is invalid, or when
 " inside an event handler (happens when dropping a file on gvim).
@@ -355,7 +341,19 @@ augroup file_location
     \ endif
 augroup END
 
+if g:has_async
+  set updatetime=1000
+  let g:ale_lint_on_text_changed = 0
 
+  augroup linting
+    autocmd CursorHold * call ale#Lint()
+    autocmd CursorHoldI * call ale#Lint()
+    autocmd InsertEnter * call ale#Lint()
+    autocmd InsertLeave * call ale#Lint()
+  augroup END
+else
+  echoerr "dotfiles require NeoVim or Vim >= 8"
+endif
 
 " Functions / Commands
 

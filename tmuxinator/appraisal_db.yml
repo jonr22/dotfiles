@@ -1,7 +1,7 @@
 # ~/.tmuxinator/appraisal_db.yml
 
 name: appraisal_db
-root: ~/Developer/appraisal_db
+root: ~/Developer/projects/appraisal_db
 
 # Optional tmux socket
 # socket_name: foo

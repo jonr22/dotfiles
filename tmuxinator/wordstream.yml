@@ -1,7 +1,7 @@
 # ~/.tmuxinator/wordstream.yml
 
 name: wordstream
-root: ~/Developer/wordstream
+root: ~/Developer/ws/wordstream
 
 # Optional tmux socket
 # socket_name: foo
@@ -39,8 +39,8 @@ windows:
       panes:
         - cd server/tag_manager/src; python server.py
         - cd server/wordstream/src; python server.py
-        - cd server/wordstream/src; env no_proxy='*' python swf.py conf/ ADWORDS_QUICKSTART DECIDER 1
-        - cd server/wordstream/src; env no_proxy='*' python swf.py conf/ ADWORDS_QUICKSTART ACTIVITY_WORKER 2
+        - cd server/wordstream/src; env no_proxy='*' python swf.py conf/ QUICKSTART DECIDER 1
+        - cd server/wordstream/src; env no_proxy='*' python swf.py conf/ QUICKSTART ACTIVITY_WORKER 2
         - cd client/manager/src; python server.py
   - scratch:
       root: ~/
