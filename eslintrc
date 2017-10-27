@@ -12,7 +12,10 @@
       "modules": true
     }
   },
-  "extends": "eslint:recommended",
+  "plugins": [
+    "react"
+  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
     "indent": ["error", 2],
     "max-len": ["error", 120],
