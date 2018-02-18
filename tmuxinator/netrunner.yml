@@ -1,4 +1,4 @@
-# ~/.tmuxinator/wordstream.yml
+# ~/.tmuxinator/netrunner.yml
 
 name: netrunner
 root: ~/Developer/open_source/netrunner
@@ -25,7 +25,7 @@ root: ~/Developer/open_source/netrunner
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t wordstream
+# post: tmux -CC attach -t netrunner
 
 windows:
   - editor:

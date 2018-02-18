@@ -21,11 +21,3 @@ git@github.com:jonr22/eslint.git ~/Developer/open_source/eslint
 git@github.com:chriskempson/base16-shell.git ~/Developer/open_source/base16-shell
 
 git@bitbucket.org:jonr22/bellissimo_grande.git ~/Developer/consulting/bellissimo_grande
-
-ssh://jreimels@git.wordstream.com/srv/git/wordstream.git ~/Developer/ws/wordstream stable_db_migration
-ssh://jreimels@git.wordstream.com/srv/git/env_setup.git ~/Developer/ws/wordstream_setup
-ssh://jreimels@git.wordstream.com/srv/git/eslint-plugin-knockout.git ~/Developer/ws/eslint-plugin-knockout
-ssh://jreimels@git.wordstream.com/srv/git/eslint-plugin-wordstream.git ~/Developer/ws/eslint-plugin-wordstream
-ssh://jreimels@git.wordstream.com/srv/git/wsautomation.git ~/Developer/ws/wsautomation staging
-ssh://jreimels@git.wordstream.com/srv/git/sysadmin.git ~/Developer/ws/sysadmin
-ssh://jreimels@git.wordstream.com/srv/git/datasync.git ~/Developer/ws/datasync

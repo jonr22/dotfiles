@@ -60,19 +60,6 @@ fi
 
 export PATH
 
-# wordstream repo
-if [ -d "$HOME/Developer/ws/wordstream" ]; then
-  export WS_REPO=$HOME/Developer/ws/wordstream
-
-  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/python_shared/wsframework/src")
-  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/python_shared/webapp_framework/src")
-  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/client/manager/src")
-  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/server/wordstream/src")
-  PYTHONPATH=$(add_to_path "$PYTHONPATH" "$WS_REPO/server/tag_manager/src")
-
-  export PYTHONPATH
-fi
-
 # add personal lib
 if [ -d "$HOME/.lib" ]; then
   LD_LIBRARY_PATH=$(add_to_path "$LD_LIBRARY_PATH" "$HOME/.lib")
