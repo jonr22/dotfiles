@@ -125,11 +125,13 @@ nnoremap Y y$
 nnoremap <C-i> <C-a>
 
 " copy / paste system clipboard
+" TODO: nnoremap <leader>P "+P
 nnoremap <leader>p "+p
 nnoremap <silent> <leader>y :set operatorfunc=<SID>SystemCopyOperator<cr>g@
 vnoremap <silent> <leader>y :<c-u>call <SID>SystemCopyOperator(visualmode())<cr>
 
 " show file path
+" TODO: change from P to something else
 nnoremap <leader>P :echom @%<cr>
 
 " search project command (i.e. better grep)
@@ -152,11 +154,14 @@ vnoremap <silent> <leader>s :<c-u>call <SID>SearchOperator(visualmode())<cr>
 " fuzzy file searching
 nnoremap <leader>t :CtrlP .<CR>
 
+" clear fuzzy file searching cache
+nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP .<CR>
+
 " fuzzy file searching in current buffers
 nnoremap <leader>b :CtrlPBuffer<CR>
 
-" clear fuzzy file searching cache
-nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP .<CR>
+" fuzzy file searching in most recently used files
+nnoremap <leader>B :CtrlPMRUFiles<CR>
 
 " ctrl-N unhighlights search
 nnoremap <silent> <C-N> :nohlsearch<CR>
@@ -189,7 +194,6 @@ vnoremap <leader>l: :Tabularize /:\zs<CR>
 
 " YCM and Tern GoTo Def shortcuts
 nnoremap <leader>] :YcmCompleter GoTo<CR>
-nnoremap <leader>} :TernDef<CR>
 
 " cucumber bar/pipe align
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -258,6 +262,11 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force edit
 " let g:syntastic_html_checkers = []                                  " no html checking
 " let g:syntastic_python_checkers = ['python', 'pyflakes']            " use pyflakes and default for python
 " let g:syntastic_aggregate_errors = 1                                " display results from all checkers
+
+" ale configuration
+let g:ale_linters = {
+\ 'typescript': ['tslint'],
+\}
 
 " airline configuration
 let g:airline_powerline_fonts = 1
