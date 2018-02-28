@@ -269,9 +269,9 @@ let g:ale_linters = {
 \}
 
 " airline configuration
-let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'
-" let g:airline_theme='base16_tomorrow'
+let g:airline_powerline_fonts = 0
+" let g:airline_theme='bubblegum'
+let g:airline_theme='base16_tomorrow'
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
@@ -296,16 +296,26 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 
   " unicode symbols
+  " let g:airline_left_sep = '»'
+  " let g:airline_left_sep = '▶'
+  " let g:airline_right_sep = '«'
+  " let g:airline_right_sep = '◀'
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
-  let g:airline_symbols.linenr = '␊'
-  let g:airline_symbols.linenr = '␤'
-  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.linenr = '☰'
+  " let g:airline_symbols.linenr = '␊'
+  " let g:airline_symbols.linenr = '␤'
+  " let g:airline_symbols.linenr = '¶'
   let g:airline_symbols.branch = '⎇'
-  let g:airline_symbols.paste = 'ρ'
-  let g:airline_symbols.paste = 'Þ'
+  " let g:airline_symbols.paste = 'ρ'
+  " let g:airline_symbols.paste = 'Þ'
   let g:airline_symbols.paste = '∥'
   let g:airline_symbols.whitespace = 'Ξ'
+  let g:airline_symbols.notexists = '∄'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.maxlinenr = ''
+  " let g:airline_symbols.maxlinenr = '㏑'
 endif
 
 " use silver searcher, when available
