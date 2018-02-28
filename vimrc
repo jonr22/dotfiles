@@ -270,8 +270,8 @@ let g:ale_linters = {
 
 " airline configuration
 let g:airline_powerline_fonts = 0
-" let g:airline_theme='bubblegum'
-let g:airline_theme='base16_tomorrow'
+let g:airline_theme='bubblegum'
+" let g:airline_theme='base16_tomorrow'
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
