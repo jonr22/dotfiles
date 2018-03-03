@@ -9,24 +9,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 virtualenvwrapper='virtualenvwrapper.sh'
 
-if (( $+commands[$virtualenvwrapper] )); then
-  function {
-    setopt local_options
-    unsetopt equals
-    source ${${virtualenvwrapper}:c}
-  }
-elif [[ -f "/etc/bash_completion.d/virtualenvwrapper" ]]; then
-  function {
-    setopt local_options
-    unsetopt equals
-    virtualenvwrapper="/etc/bash_completion.d/virtualenvwrapper"
-    source "/etc/bash_completion.d/virtualenvwrapper"
-  }
-else
-  print "virtualenv plugin: Cannot find ${virtualenvwrapper}.\n"\
-        "Please install with \`pip install virtualenvwrapper\`" >&2
+if ! (( $+commands[$virtualenvwrapper] )); then
   return
 fi
+
 if ! type workon &>/dev/null; then
   print "virtualenvwrapper plugin: shell function 'workon' not defined.\n"\
         "Please check ${virtualenvwrapper}" >&2
