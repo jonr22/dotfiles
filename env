@@ -42,7 +42,7 @@ fi
 # Load virtualenvwrapper
 if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
   source "/usr/local/bin/virtualenvwrapper.sh"
-elif [ -x "$(command -v asdf)" ] && asdf list python | grep -Fq 2; then
+elif [ -x "$(command -v asdf)" ] && asdf list python 2>/dev/null | grep -Fq 2 && [ -f "$(asdf where python $(asdf current python))/bin/virtualenvwrapper.sh" ]; then
   source $(asdf where python $(asdf current python))/bin/virtualenvwrapper.sh
 fi
 
