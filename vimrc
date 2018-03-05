@@ -192,8 +192,9 @@ vnoremap <leader>l= :Tabularize /=<CR>
 nnoremap <leader>l: :Tabularize /:\zs<CR>
 vnoremap <leader>l: :Tabularize /:\zs<CR>
 
-" YCM and Tern GoTo Def shortcuts
+" Code completion
 nnoremap <leader>] :YcmCompleter GoTo<CR>
+nnoremap <leader>[ :TsuImport<CR>
 
 " cucumber bar/pipe align
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -210,10 +211,6 @@ nnoremap <leader>el :vsplit $MYVIMRC.local<CR>
 nnoremap <leader>eb :vsplit $MYVIMRC.bundles<CR>
 nnoremap <leader>elb :vsplit $MYVIMRC.bundles.local<CR>
 noremap <silent> <leader>es :source $MYVIMRC<CR>:execute ":echo 'vimrc reloaded'"<CR>
-noremap <leader>eu :PluginUpdate<CR>
-noremap <leader>ei :PluginInstall<CR>
-
-
 
 " Navigation
 nmap <leader>m ]m
@@ -252,6 +249,7 @@ let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'         " rspec / ts
 let g:ycm_autoclose_preview_window_after_insertion = 1              " auto close preview window with ycm
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force editorconfig to place nice with fugitive
+let g:tsuquyomi_shortest_import_path = 1
 
 " syntastic configruation
 " let g:syntastic_check_on_open=1                                     " use syntastic to check file on open
