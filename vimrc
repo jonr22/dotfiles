@@ -66,6 +66,7 @@ set t_vb=
 " theme
 syntax enable                   " enable syntax highlighting
 set number                      " show line numbers
+set relativenumber              " show relative linenumbers
 set nowrap                      " don't wrap overflow text
 set background=dark             " background is dark
 let base16colorspace=256        " use 256 color palette
