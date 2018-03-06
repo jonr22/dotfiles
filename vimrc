@@ -71,6 +71,7 @@ set nowrap                      " don't wrap overflow text
 set background=dark             " background is dark
 let base16colorspace=256        " use 256 color palette
 colorscheme base16-tomorrow-night     " set colortheme
+hi MatchParen cterm=none ctermbg=none ctermfg=04
 
 " indenting
 set tabstop=2     " tab is 2 spaces
@@ -126,14 +127,13 @@ nnoremap Y y$
 nnoremap <C-i> <C-a>
 
 " copy / paste system clipboard
-" TODO: nnoremap <leader>P "+P
 nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 nnoremap <silent> <leader>y :set operatorfunc=<SID>SystemCopyOperator<cr>g@
 vnoremap <silent> <leader>y :<c-u>call <SID>SystemCopyOperator(visualmode())<cr>
 
 " show file path
-" TODO: change from P to something else
-nnoremap <leader>P :echom @%<cr>
+nnoremap <leader>z :let @+ = expand("%")<cr>:echom @%<cr>
 
 " search project command (i.e. better grep)
 nnoremap \ :Ag<SPACE>
