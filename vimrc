@@ -71,7 +71,7 @@ set nowrap                      " don't wrap overflow text
 set background=dark             " background is dark
 let base16colorspace=256        " use 256 color palette
 colorscheme base16-tomorrow-night     " set colortheme
-hi MatchParen cterm=none ctermbg=none ctermfg=04
+hi MatchParen cterm=none ctermbg=04 ctermfg=0E
 
 " indenting
 set tabstop=2     " tab is 2 spaces
