@@ -132,7 +132,7 @@ nnoremap <leader>P "+P
 nnoremap <silent> <leader>y :set operatorfunc=<SID>SystemCopyOperator<cr>g@
 vnoremap <silent> <leader>y :<c-u>call <SID>SystemCopyOperator(visualmode())<cr>
 
-" show file path
+" copy and show file path
 nnoremap <leader>z :let @+ = expand("%")<cr>:echom @%<cr>
 
 " search project command (i.e. better grep)
@@ -264,8 +264,11 @@ let g:tsuquyomi_shortest_import_path = 1
 
 " ale configuration
 let g:ale_linters = {
-\ 'typescript': ['tslint'],
+\ 'typescript': ['tslint', 'tsserver'],
 \}
+
+" disable tsuquyomi error checking/linting
+let g:tsuquyomi_disable_quickfix = 1
 
 " airline configuration
 let g:airline_powerline_fonts = 0

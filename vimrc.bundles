@@ -18,6 +18,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular' " Maybe remove
 Plug 'hdima/python-syntax'
+Plug 'kchmck/vim-coffee-script'
 Plug 'leafgarland/typescript-vim'
 Plug 'othree/html5.vim' " Investigate
 Plug 'othree/javascript-libraries-syntax.vim' " Investigate
