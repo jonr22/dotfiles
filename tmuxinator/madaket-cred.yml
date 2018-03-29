@@ -42,10 +42,11 @@ windows:
         - #empty
         - #empty
   - servers:
+      root: /madaket/workspace/cred/scripts
       layout: even-vertical
       panes:
-        - cd scripts; ./watch_angular.sh
-        - cd cred-web; ./rerun.sh
+        - ./watch_angular.sh
+        - ./compile_war_and_start_server.sh
   - scratch:
       root: /madaket
       layout: main-horizontal
