@@ -10,4 +10,5 @@
 tags
 *.pyc
 .venv
+*.jar
 node_modules/

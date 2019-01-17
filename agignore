@@ -2,8 +2,9 @@ log
 tags
 tmp
 .git/
-/bower_components/
-/node_modules/
+bower_components/
+node_modules/
+dist/
 graphics
 *.pyc
 *.swp

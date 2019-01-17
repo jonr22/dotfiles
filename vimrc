@@ -71,7 +71,7 @@ set nowrap                      " don't wrap overflow text
 set background=dark             " background is dark
 let base16colorspace=256        " use 256 color palette
 colorscheme base16-tomorrow-night     " set colortheme
-hi MatchParen cterm=none ctermbg=04 ctermfg=0E
+hi MatchParen cterm=none ctermbg=0E ctermfg=04
 
 " indenting
 set tabstop=2     " tab is 2 spaces
@@ -195,7 +195,7 @@ vnoremap <leader>l: :Tabularize /:\zs<CR>
 
 " Code completion
 nnoremap <leader>] :YcmCompleter GoTo<CR>
-nnoremap <leader>[ :TsuImport<CR>
+" nnoremap <leader>[ :TsuImport<CR>
 
 " cucumber bar/pipe align
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -263,12 +263,22 @@ let g:tsuquyomi_shortest_import_path = 1
 " let g:syntastic_aggregate_errors = 1                                " display results from all checkers
 
 " ale configuration
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
+let g:ale_set_highlights = 0
+" let g:ale_linters = {
+" \ 'typescript': ['tsserver'],
+" \}
+" let g:ale_linters_ignore = {
+" \ 'typescript': ['tslint']
+" \}
 let g:ale_linters = {
 \ 'typescript': ['tslint', 'tsserver'],
 \}
 
 " disable tsuquyomi error checking/linting
-let g:tsuquyomi_disable_quickfix = 1
+" let g:tsuquyomi_disable_quickfix = 1
+
 
 " airline configuration
 let g:airline_powerline_fonts = 0

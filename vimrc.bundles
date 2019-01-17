@@ -7,8 +7,8 @@ let g:has_async = v:version >= 800 || has('nvim')
 call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
-Plug 'JazzCore/ctrlp-cmatcher'
-Plug 'Quramy/tsuquyomi'
+Plug 'JazzCore/ctrlp-cmatcher' " Investigate
+" Plug 'Quramy/tsuquyomi'
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
