@@ -54,24 +54,24 @@ if &listchars ==# 'eol:$'
   endif
 endif
 
-" allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^linux'
-  set t_Co=16
-endif
-
 " turn off bells
 set vb
 set t_vb=
 
 " theme
-syntax enable                   " enable syntax highlighting
+syntax on                   " enable syntax highlighting
 set number                      " show line numbers
 set relativenumber              " show relative linenumbers
 set nowrap                      " don't wrap overflow text
-set background=dark             " background is dark
-let base16colorspace=256        " use 256 color palette
-colorscheme base16-tomorrow-night     " set colortheme
-hi MatchParen cterm=none ctermbg=0E ctermfg=04
+let g:dracula_italic = 0
+color dracula
+
+" fix for tmux
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " indenting
 set tabstop=2     " tab is 2 spaces
@@ -243,7 +243,7 @@ let g:ctrlp_match_window = 'order:ttb,max:20'                       " ???
 let g:ctrlp_switch_buffer = 'H'                                     " Open a new instance of a buffer unless <c-x> is pressed
 let g:gitgutter_enabled=0                                           " git gutter disabled by default
 let g:html_indent_tags = 'li\|p'                                    " Treat <li> and <p> tags like the block tags they are
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}               " use cmatcher with ctrlp
+" let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}               " use cmatcher with ctrlp
 let NERDTreeIgnore = ['\.pyc$']                                     " hide *.pyc files in NERDTree
 let g:NERDSpaceDelims=1                                             " ???
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'         " rspec / tslime
@@ -266,12 +266,6 @@ let g:tsuquyomi_shortest_import_path = 1
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
-" let g:ale_linters = {
-" \ 'typescript': ['tsserver'],
-" \}
-" let g:ale_linters_ignore = {
-" \ 'typescript': ['tslint']
-" \}
 let g:ale_linters = {
 \ 'typescript': ['tslint', 'tsserver'],
 \}
@@ -282,8 +276,7 @@ let g:ale_linters = {
 
 " airline configuration
 let g:airline_powerline_fonts = 0
-let g:airline_theme='bubblegum'
-" let g:airline_theme='base16_tomorrow'
+let g:airline_theme='dracula'
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
