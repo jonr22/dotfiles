@@ -249,6 +249,7 @@ let g:NERDSpaceDelims=1                                             " ???
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'         " rspec / tslime
 let g:ycm_autoclose_preview_window_after_insertion = 1              " auto close preview window with ycm
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_enable_diagnostic_signs = 0
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force editorconfig to place nice with fugitive
 let g:tsuquyomi_shortest_import_path = 1
 

@@ -8,9 +8,9 @@ call plug#begin('~/.vim/bundle')
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-" Define bundles via Github repos
+
+
 Plug 'JazzCore/ctrlp-cmatcher' " Investigate
-" Plug 'Quramy/tsuquyomi'
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
