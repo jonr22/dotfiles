@@ -1,5 +1,3 @@
-git@gitlab.com:jonr22/voting.git ~/Developer/scratch/voting
-
 git@gitlab.com:mshump/appraisal_db.git ~/Developer/projects/appraisal_db
 git@gitlab.com:jonr22/arby.git ~/Developer/projects/arby
 git@bitbucket.org:jonr22/zenlytic_be.git ~/Developer/projects/zenlytic/backend
@@ -7,17 +5,17 @@ git@bitbucket.org:jonr22/zenlytic_fe.git ~/Developer/projects/zenlytic/frontend
 git@bitbucket.org:jonr22/zenlytic_docs.git ~/Developer/projects/zenlytic/docs
 git@bitbucket.org:jonr22/zenlytic_docs.git/wiki ~/Developer/projects/zenlytic/wiki
 git@bitbucket.org:jonr22/curability.git ~/Developer/projects/curability
-git@bitbucket.org:jonr22/movana.git ~/Developer/projects/movana new_styling
 git@github.com:jonr22/wedding.git ~/Developer/projects/wedding
 
-git@github.com:jonr22/jonr22.github.io.git ~/Developer/blog source
-
 git@github.com:jonr22/laptop.git ~/Developer/open_source/laptop
-git@github.com:jonr22/shoelaces.git ~/Developer/open_source/shoelaces
 git@github.com:git/git.git ~/Developer/open_source/git
-git@github.com:jonr22/netrunner.git ~/Developer/open_source/netrunner
-git@github.com:jonr22/CryodexSource.git ~/Developer/open_source/CryodexSource
-git@github.com:jonr22/eslint.git ~/Developer/open_source/eslint
-git@github.com:chriskempson/base16-shell.git ~/Developer/open_source/base16-shell
+
+git@github.com:jonr22/jonr22.github.io.git ~/Developer/blog source
+git@gitlab.com:jonr22/voting.git ~/Developer/scratch/voting
 
 git@bitbucket.org:jonr22/bellissimo_grande.git ~/Developer/consulting/bellissimo_grande
+
+git@bitbucket.org:madaket/common-ui.git ~/Developer/madaket/common-ui
+git@bitbucket.org:madaket/auth-lib.git ~/Developer/madaket/stem/auth-lib
+git@bitbucket.org:madaket/stem-ux.git ~/Developer/madaket/stem/stem-ux
+git@bitbucket.org:madaket/work-queue-feature.git ~/Developer/madaket/stem/work-queue-feature
