@@ -24,6 +24,12 @@
   u = diff --name-status --diff-filter=U
 [include]
   path = ~/.gitconfig.local
+[include]
+  path = ~/.gitconfig.default
+[includeIf "gitdir:**/madaket/"]
+  path = ~/.gitconfig.madaket
+[includeIf "gitdir:/madaket/"]
+  path = ~/.gitconfig.madaket
 [mergetool]
 	prompt = false
 [mergetool "Kaleidoscope"]
