@@ -16,6 +16,14 @@ git@gitlab.com:jonr22/voting.git ~/Developer/scratch/voting
 git@bitbucket.org:jonr22/bellissimo_grande.git ~/Developer/consulting/bellissimo_grande
 
 git@bitbucket.org:madaket/common-ui.git ~/Developer/madaket/common-ui
+git@bitbucket.org:madaket/docker-images.git ~/Developer/madaket/docker-images
+git@bitbucket.org:madaket/madabot.git ~/Developer/madaket/madabot
+git@bitbucket.org:madaket/enroll-app.git ~/Developer/madaket/enroll/enroll-app
+git@bitbucket.org:madaket/enroll-import.git ~/Developer/madaket/enroll/enroll-import
 git@bitbucket.org:madaket/auth-lib.git ~/Developer/madaket/stem/auth-lib
 git@bitbucket.org:madaket/stem-ux.git ~/Developer/madaket/stem/stem-ux
 git@bitbucket.org:madaket/work-queue-feature.git ~/Developer/madaket/stem/work-queue-feature
+git@bitbucket.org:madaket/site-management-feature.git ~/Developer/madaket/stem/site-management-feature
+git@bitbucket.org:madaket/stem-app.git ~/Developer/madaket/stem/stem-app
+git@bitbucket.org:madaket/stem-reports.git ~/Developer/madaket/stem/stem-reports
+git@bitbucket.org:madaket/tzapigee-sync-web.git ~/Developer/madaket/stem/tzapigee-sync-web
