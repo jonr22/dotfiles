@@ -1,5 +1,7 @@
 tags
 node_modules/
+target/
+classes/
 .DS_Store
 .netrwhist
 .idea
