@@ -12,7 +12,6 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'JazzCore/ctrlp-cmatcher' " Investigate
 Plug 'Quramy/vim-js-pretty-template'
-Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'christoomey/vim-tmux-navigator'
@@ -41,6 +40,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/matchit.zip'
+Plug 'ycm-core/YouCompleteMe'
 " Plug 'christoomey/vim-run-interactive'
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'jgdavey/tslime.vim'

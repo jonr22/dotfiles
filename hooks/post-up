@@ -16,9 +16,7 @@ fi
 
 vim -u "$HOME"/.vimrc.bundles +PlugInstall +PlugClean! +qa
 
-if ! $(python "$HOME/.vim/bundle/YouCompleteMe/third_party/ycmd/check_core_version.py"); then
-  "$HOME"/.vim/bundle/YouCompleteMe/install.py --clang-completer --java-completer --js-completer --gocode-completer
-fi
+"$HOME"/.vim/bundle/YouCompleteMe/install.py --clang-completer --java-completer
 
 cd "$HOME/.vim/bundle/ctrlp-cmatcher"
 CFLAGS=-Qunused-arguments \
