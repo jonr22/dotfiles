@@ -37,11 +37,5 @@ windows:
   - servers:
       layout: even-vertical
       panes:
-        - ng serve
-        - #empty
-  - scratch:
-      root: /madaket/workspace/stem
-      layout: main-horizontal
-      panes:
-        - #empty
+        - yarn build --watch
         - #empty

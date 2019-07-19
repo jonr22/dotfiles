@@ -39,9 +39,3 @@ windows:
       panes:
         - #empty
         - #empty
-  - scratch:
-      root: /madaket
-      layout: main-horizontal
-      panes:
-        - #empty
-        - #empty

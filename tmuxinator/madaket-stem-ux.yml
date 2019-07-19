@@ -39,9 +39,3 @@ windows:
       panes:
         - ng serve
         - #empty
-  - scratch:
-      root: /madaket/workspace/stem
-      layout: main-horizontal
-      panes:
-        - #empty
-        - #empty

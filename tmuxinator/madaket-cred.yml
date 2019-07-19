@@ -47,9 +47,3 @@ windows:
       panes:
         - ./watch_angular.sh
         - ./compile_war_and_start_server.sh
-  - scratch:
-      root: /madaket
-      layout: main-horizontal
-      panes:
-        - #empty
-        - #empty
