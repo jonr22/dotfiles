@@ -30,7 +30,7 @@ fi
 
 # ASDF
 if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
-  source "$HOME/.asdf/asdf.sh"
+  . "$HOME/.asdf/asdf.sh"
 fi
 
 # Homebrew
