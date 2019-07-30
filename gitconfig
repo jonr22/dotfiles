@@ -22,6 +22,11 @@
 	logb = log --first-parent
 	lgb = log --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   u = diff --name-status --diff-filter=U
+  hide = update-index --assume-unchanged
+  unhide = update-index --no-assume-unchanged
+  unhide-all = update-index --really-refresh
+  hidden = !git ls-files -v | grep "^[[:lower:]]"
+  ignored = !git status -s --ignored | grep \"^!!\"
 [include]
   path = ~/.gitconfig.local
 [include]
