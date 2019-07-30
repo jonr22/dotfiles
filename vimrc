@@ -243,7 +243,6 @@ let g:ctrlp_match_window = 'order:ttb,max:20'                       " ???
 let g:ctrlp_switch_buffer = 'H'                                     " Open a new instance of a buffer unless <c-x> is pressed
 let g:gitgutter_enabled=0                                           " git gutter disabled by default
 let g:html_indent_tags = 'li\|p'                                    " Treat <li> and <p> tags like the block tags they are
-" let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}               " use cmatcher with ctrlp
 let NERDTreeIgnore = ['\.pyc$']                                     " hide *.pyc files in NERDTree
 let g:NERDSpaceDelims=1                                             " ???
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'         " rspec / tslime

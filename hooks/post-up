@@ -22,11 +22,6 @@ if [ $? -ne 0 ]; then
   "$HOME"/.vim/bundle/YouCompleteMe/install.py --clang-completer --java-completer
 fi
 
-# cd "$HOME/.vim/bundle/ctrlp-cmatcher"
-# CFLAGS=-Qunused-arguments \
-# CPPFLAGS=-Qunused-arguments \
-# ./install.sh
-
 repoman clone -v
 
 # detect old OS X broken /etc/zshenv and suggest rename

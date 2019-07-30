@@ -10,7 +10,6 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 
-Plug 'JazzCore/ctrlp-cmatcher' " Investigate
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', { 'as': 'dracula' }
