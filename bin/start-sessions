@@ -1,0 +1,12 @@
+#!/bin/bash
+
+tmuxinator start --no-attach dotfiles
+tmuxinator start --no-attach laptop
+tmuxinator start --no-attach madaket-auth-lib
+tmuxinator start --no-attach madaket-common-ui
+tmuxinator start --no-attach madaket-enroll-app
+tmuxinator start --no-attach madaket-site-management-feature
+tmuxinator start --no-attach madaket-stem-app
+tmuxinator start --no-attach madaket-stem-ux
+tmuxinator start --no-attach madaket-work-queue-feature
+tmuxinator start --no-attach scratch

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Adding SSH Keys..."
+addkeys
+
+echo "Starting tmux sessions..."
+start-sessions
+
+echo "Startup complete."
