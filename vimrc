@@ -371,10 +371,10 @@ if g:has_async
   let g:ale_lint_on_text_changed = 0
 
   augroup linting
-    autocmd CursorHold * call ale#Lint()
-    autocmd CursorHoldI * call ale#Lint()
-    autocmd InsertEnter * call ale#Lint()
-    autocmd InsertLeave * call ale#Lint()
+    autocmd CursorHold * call ale#Queue(0)
+    autocmd CursorHoldI * call ale#Queue(0)
+    autocmd InsertEnter * call ale#Queue(0)
+    autocmd InsertLeave * call ale#Queue(0)
   augroup END
 else
   echoerr "dotfiles require NeoVim or Vim >= 8"
