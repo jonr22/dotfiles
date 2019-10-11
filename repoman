@@ -15,23 +15,23 @@ git@gitlab.com:jonr22/voting.git ~/Developer/scratch/voting
 
 git@bitbucket.org:jonr22/bellissimo_grande.git ~/Developer/consulting/bellissimo_grande
 
-git@bitbucket.org:madaket/common-ui.git /madaket/workspace/common-ui
-git@bitbucket.org:madaket/cred.git /madaket/workspace/cred
-git@bitbucket.org:madaket/enroll-app.git /madaket/workspace/enroll/enroll-app
-git@bitbucket.org:madaket/enroll-import.git /madaket/workspace/enroll/enroll-import
-git@bitbucket.org:madaket/docker-images.git /madaket/workspace/madaket/docker-images
-git@bitbucket.org:madaket/madabot.git /madaket/workspace/madaket/madabot
-git@bitbucket.org:madaket/authz.git /madaket/workspace/micro-services/authz
-git@bitbucket.org:madaket/msmanage.git /madaket/workspace/micro-services/msmanage
-git@bitbucket.org:madaket/practice.git /madaket/workspace/micro-services/practice
-git@bitbucket.org:madaket/provider.git /madaket/workspace/micro-services/provider
-git@bitbucket.org:madaket/common-jars.git /madaket/workspace/platform/common-jars
-git@bitbucket.org:madaket/server-operations.git /madaket/workspace/server-operations
-git@bitbucket.org:madaket/auth-lib.git /madaket/workspace/stem/auth-lib
-git@bitbucket.org:madaket/site-management-feature.git /madaket/workspace/stem/site-management-feature
-git@bitbucket.org:madaket/stem-app.git /madaket/workspace/stem/stem-app
-git@bitbucket.org:madaket/stem-reports.git /madaket/workspace/stem/stem-reports
-git@bitbucket.org:madaket/stem-ux.git /madaket/workspace/stem/stem-ux
-git@bitbucket.org:madaket/tzapigee-sync-web.git /madaket/workspace/stem/tzapigee-sync-web
-git@bitbucket.org:madaket/work-queue-feature.git /madaket/workspace/stem/work-queue-feature
+git@bitbucket.org:madaket/common-ui.git ~/Developer/madaket/workspace/common-ui
+git@bitbucket.org:madaket/cred.git ~/Developer/madaket/workspace/cred
+git@bitbucket.org:madaket/enroll-app.git ~/Developer/madaket/workspace/enroll/enroll-app
+git@bitbucket.org:madaket/enroll-import.git ~/Developer/madaket/workspace/enroll/enroll-import
+git@bitbucket.org:madaket/docker-images.git ~/Developer/madaket/workspace/madaket/docker-images
+git@bitbucket.org:madaket/madabot.git ~/Developer/madaket/workspace/madaket/madabot
+git@bitbucket.org:madaket/authz.git ~/Developer/madaket/workspace/micro-services/authz
+git@bitbucket.org:madaket/msmanage.git ~/Developer/madaket/workspace/micro-services/msmanage
+git@bitbucket.org:madaket/practice.git ~/Developer/madaket/workspace/micro-services/practice
+git@bitbucket.org:madaket/provider.git ~/Developer/madaket/workspace/micro-services/provider
+git@bitbucket.org:madaket/common-jars.git ~/Developer/madaket/workspace/platform/common-jars
+git@bitbucket.org:madaket/server-operations.git ~/Developer/madaket/workspace/server-operations
+git@bitbucket.org:madaket/auth-lib.git ~/Developer/madaket/workspace/stem/auth-lib
+git@bitbucket.org:madaket/site-management-feature.git ~/Developer/madaket/workspace/stem/site-management-feature
+git@bitbucket.org:madaket/stem-app.git ~/Developer/madaket/workspace/stem/stem-app
+git@bitbucket.org:madaket/stem-reports.git ~/Developer/madaket/workspace/stem/stem-reports
+git@bitbucket.org:madaket/stem-ux.git ~/Developer/madaket/workspace/stem/stem-ux
+git@bitbucket.org:madaket/tzapigee-sync-web.git ~/Developer/madaket/workspace/stem/tzapigee-sync-web
+git@bitbucket.org:madaket/work-queue-feature.git ~/Developer/madaket/workspace/stem/work-queue-feature
 
