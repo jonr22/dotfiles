@@ -46,6 +46,7 @@ fi
 
 # Fun
 alias weather='curl wttr.in/Boston'
+alias myip='curl https://ipinfo.io/ip'
 
 # Run local aliases if they exist
 if [ -f ~/.aliases.local ]; then

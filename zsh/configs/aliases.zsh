@@ -1,4 +1,5 @@
 alias -g G='| grep'
+alias -g GV='| grep -v'
 alias -g L='| less'
 alias -g LL="2>&1 | less"
 alias -g C='| wc -l'
