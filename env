@@ -1,8 +1,6 @@
 HOMEBREW_PATH=/usr/local
 HEROKU_PATH=/usr/local/heroku
 
-BASE16_COLOR_THEME="base16-tomorrow-night"
-
 # use vim as the visual editor
 export VISUAL=vim
 export EDITOR=$VISUAL
