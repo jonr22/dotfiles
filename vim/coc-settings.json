@@ -1,0 +1,9 @@
+{
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  },
+  "python.jediEnabled": false,
+  "prettier.singleQuote": true,
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "javascriptreact", "typescript", "typescriptreact", "json"]
+}
