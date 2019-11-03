@@ -17,10 +17,10 @@ fi
 vim -u "$HOME"/.vimrc.bundles +PlugInstall +PlugClean! +qa
 reset -Q
 
-ycm_check
-if [ $? -ne 0 ]; then
-  "$HOME"/.vim/bundle/YouCompleteMe/install.py --clang-completer --java-completer
-fi
+# ycm_check
+# if [ $? -ne 0 ]; then
+#   "$HOME"/.vim/bundle/YouCompleteMe/install.py --clang-completer --java-completer
+# fi
 
 repoman clone -v
 

@@ -152,29 +152,18 @@ nnoremap <leader>R :%s/<C-R><C-W>/
 nnoremap <silent> <leader>s :set operatorfunc=<SID>SearchOperator<cr>g@
 vnoremap <silent> <leader>s :<c-u>call <SID>SearchOperator(visualmode())<cr>
 
-" fuzzy file searching
-nnoremap <leader>t :CtrlP .<CR>
-
-" clear fuzzy file searching cache
-nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP .<CR>
-
-" fuzzy file searching in current buffers
-nnoremap <leader>b :CtrlPBuffer<CR>
-
-" fuzzy file searching in most recently used files
-nnoremap <leader>B :CtrlPMRUFiles<CR>
-
 " ctrl-N unhighlights search
 nnoremap <silent> <C-N> :nohlsearch<CR>
+
+" FZF
+nnoremap <leader>t :Files<cr>
+nnoremap <leader>b :Buffers<cr>
 
 " toggle file browser
 nnoremap <leader>d :NERDTreeToggle<CR>
 
 " find current file in file browser
 nnoremap <leader>f :NERDTreeFind<CR>
-
-" toggle git diff markers in gutter
-nnoremap <leader>g :GitGutterToggle<CR>
 
 " properly delete buffer
 nnoremap <leader>c :Bclose<CR>
@@ -186,81 +175,20 @@ nnoremap <leader>h :split<CR>
 " strip whitespace
 nnoremap <leader><space> :call <SID>strip_trailing()<CR>
 
-" align text blocks on a symbol
-noremap <leader>l :Tabularize
-nnoremap <leader>l= :Tabularize /=<CR>
-vnoremap <leader>l= :Tabularize /=<CR>
-nnoremap <leader>l: :Tabularize /:\zs<CR>
-vnoremap <leader>l: :Tabularize /:\zs<CR>
-
-" Code completion
-nnoremap <leader>] :YcmCompleter GoTo<CR>
-" nnoremap <leader>[ :TsuImport<CR>
-
-" cucumber bar/pipe align
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
-" rspec / tslime
-" noremap <leader>R :call RunAllSpecs()<CR>
-" noremap <leader>r :call RunCurrentSpecFile()<CR>
-" noremap <leader>s :call RunNearestSpec()<CR>
-" nnoremap <leader>b <Plug>SetTmuxVars
-
 " edit / source vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <leader>el :vsplit $MYVIMRC.local<CR>
+nnoremap <leader>evl :vsplit $MYVIMRC.local<CR>
 nnoremap <leader>eb :vsplit $MYVIMRC.bundles<CR>
-nnoremap <leader>elb :vsplit $MYVIMRC.bundles.local<CR>
+nnoremap <leader>ebl :vsplit $MYVIMRC.bundles.local<CR>
 noremap <silent> <leader>es :source $MYVIMRC<CR>:execute ":echo 'vimrc reloaded'"<CR>
-
-" Navigation
-nmap <leader>m ]m
-nmap <leader>M [m
-
-" window size management
-" nnoremap <leader>. <C-w>>
-" nnoremap <leader>, <C-w><
-" nnoremap <leader>= <C-w>=
-
-" window movement
-" noremap <C-h> <C-w>h
-" noremap <C-j> <C-w>j
-" noremap <C-k> <C-w>k
-" noremap <C-l> <C-w>l
-
-" rails navigation
-" nnoremap <leader>v :Eview<CR>
-" nnoremap <leader>c :Econtroller<CR>
-" nnoremap <leader>m :Emodel<CR>
-
 
 
 " Plugin settings
 
-let g:used_javascript_libs = 'jquery'                               " set jquery in the list of used libraries
-let python_version_2 = 1                                            " python syntax settings
-let g:ctrlp_match_window = 'order:ttb,max:20'                       " ???
-let g:ctrlp_switch_buffer = 'H'                                     " Open a new instance of a buffer unless <c-x> is pressed
-let g:gitgutter_enabled=0                                           " git gutter disabled by default
 let g:html_indent_tags = 'li\|p'                                    " Treat <li> and <p> tags like the block tags they are
 let NERDTreeIgnore = ['\.pyc$']                                     " hide *.pyc files in NERDTree
 let g:NERDSpaceDelims=1                                             " ???
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'         " rspec / tslime
-let g:ycm_autoclose_preview_window_after_insertion = 1              " auto close preview window with ycm
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_enable_diagnostic_signs = 0
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*'] " force editorconfig to place nice with fugitive
-let g:tsuquyomi_shortest_import_path = 1
-
-" syntastic configruation
-" let g:syntastic_check_on_open=1                                     " use syntastic to check file on open
-" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-" let g:syntastic_ruby_checkers = ['mri']                             " use mri and default for ruby
-" let g:syntastic_scss_checkers = ['scss_lint']                       " use scss-lint for Sass files
-" let g:syntastic_javascript_checkers = ['jshint', 'jscs']            " use jshint and jscs for javascript files
-" let g:syntastic_html_checkers = []                                  " no html checking
-" let g:syntastic_python_checkers = ['python', 'pyflakes']            " use pyflakes and default for python
-" let g:syntastic_aggregate_errors = 1                                " display results from all checkers
 
 " ale configuration
 let g:ale_set_loclist = 1
@@ -268,11 +196,9 @@ let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
 let g:ale_linters = {
 \ 'typescript': ['tslint', 'tsserver'],
+\ 'javascript': ['eslint'],
+\ 'python': ['flake8', 'pylint'],
 \}
-
-" disable tsuquyomi error checking/linting
-" let g:tsuquyomi_disable_quickfix = 1
-
 
 " airline configuration
 let g:airline_powerline_fonts = 0
@@ -300,36 +226,23 @@ let g:airline#extensions#default#section_truncate_width = {
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 
-  " unicode symbols
-  " let g:airline_left_sep = '»'
-  " let g:airline_left_sep = '▶'
-  " let g:airline_right_sep = '«'
-  " let g:airline_right_sep = '◀'
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
   let g:airline_symbols.linenr = '☰'
-  " let g:airline_symbols.linenr = '␊'
-  " let g:airline_symbols.linenr = '␤'
-  " let g:airline_symbols.linenr = '¶'
   let g:airline_symbols.branch = '⎇'
-  " let g:airline_symbols.paste = 'ρ'
-  " let g:airline_symbols.paste = 'Þ'
   let g:airline_symbols.paste = '∥'
   let g:airline_symbols.whitespace = 'Ξ'
   let g:airline_symbols.notexists = '∄'
   let g:airline_symbols.spell = 'Ꞩ'
   let g:airline_symbols.crypt = '🔒'
   let g:airline_symbols.maxlinenr = ''
-  " let g:airline_symbols.maxlinenr = '㏑'
 endif
 
 " use silver searcher, when available
 if executable('ag')
-  " use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --ignore bower_components --ignore node_modules --ignore dist -U --nocolor -g ""'
+  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
 endif
 
 
@@ -366,10 +279,11 @@ augroup file_location
 augroup END
 
 if g:has_async
-  set updatetime=1000
+  set updatetime=300
   let g:ale_lint_on_text_changed = 0
 
   augroup linting
+    autocmd!
     autocmd CursorHold * call ale#Queue(0)
     autocmd CursorHoldI * call ale#Queue(0)
     autocmd InsertEnter * call ale#Queue(0)
@@ -383,18 +297,6 @@ endif
 
 " Ag command
 command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-
-" align pipe seperated tables
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
 
 " strip trailing whitespace
 function! s:strip_trailing()
@@ -527,3 +429,114 @@ endfunction
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+
+
+
+
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+set hidden
+set cmdheight=2
+set shortmess+=c
+set signcolumn=yes
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap for rename current word
+nmap <leader>orn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>of  <Plug>(coc-format-selected)
+nmap <leader>of  <Plug>(coc-format-selected)
+
+augroup cocgroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>oa  <Plug>(coc-codeaction-selected)
+nmap <leader>oa  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>oac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>oqf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+" xmap if <Plug>(coc-funcobj-i)
+" xmap af <Plug>(coc-funcobj-a)
+" omap if <Plug>(coc-funcobj-i)
+" omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+" nmap <silent> <C-d> <Plug>(coc-range-select)
+" xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" "  Show all diagnostics
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" " Manage extensions
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" " Show commands
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" " Find symbol of current document
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" " Search workspace symbols
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" " Do default action for next item.
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" " Do default action for previous item.
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" " Resume latest coc list
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
