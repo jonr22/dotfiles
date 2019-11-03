@@ -4,6 +4,15 @@
     "javascript": "javascriptreact"
   },
   "python.jediEnabled": false,
-  "prettier.singleQuote": true,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "javascriptreact", "typescript", "typescriptreact", "json"]
+  "prettier.singleQuote": false,
+  "prettier.tslintIntegration": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "Markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json"
+  ]
 }
