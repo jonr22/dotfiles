@@ -6,7 +6,8 @@ git@bitbucket.org:jonr22/zenlytic_docs.git ~/Developer/projects/zenlytic/docs
 git@bitbucket.org:jonr22/zenlytic_docs.git/wiki ~/Developer/projects/zenlytic/wiki
 git@bitbucket.org:jonr22/curability.git ~/Developer/projects/curability
 git@github.com:jonr22/wedding.git ~/Developer/projects/wedding
-git@github.com:sgiroux/neighborshould.git ~/Developer/projects/neighborshould
+git@github.com:sgiroux/neighborshould.git ~/Developer/projects/neighborshould/neighborshould-be
+git@github.com:jonr22/neighborshould-fe.git ~/Developer/projects/neighborshould/neighborshould-fe
 
 git@github.com:jonr22/laptop.git ~/Developer/open_source/laptop
 git@github.com:git/git.git ~/Developer/open_source/git
