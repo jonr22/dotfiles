@@ -197,7 +197,7 @@ let g:ale_set_highlights = 0
 let g:ale_linters = {
 \ 'typescript': ['tslint', 'tsserver'],
 \ 'javascript': ['eslint'],
-\ 'python': ['flake8', 'pylint'],
+\ 'python': ['flake8', 'mypy'],
 \}
 
 " airline configuration

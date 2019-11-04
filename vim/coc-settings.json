@@ -4,6 +4,9 @@
     "javascript": "javascriptreact"
   },
   "python.jediEnabled": false,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/Users/jon/.asdf/shims/black",
+  "python.sortImports.path": "/Users/jon/.asdf/shims/isort",
   "prettier.singleQuote": true,
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "javascriptreact", "typescript", "typescriptreact", "json"]
 }
