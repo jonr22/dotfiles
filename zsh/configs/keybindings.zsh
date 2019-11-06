@@ -16,3 +16,9 @@ bindkey "^N" insert-last-word
 bindkey "^Q" push-line-or-edit
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 bindkey "[Z" reverse-menu-complete
+
+
+
+if [[ -s "/usr/local/opt/fzf/shell/key-bindings.zsh" ]]; then
+  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+fi
