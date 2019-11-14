@@ -16,6 +16,7 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json"
+    "json",
+    "python"
   ]
 }
