@@ -7,6 +7,8 @@
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "/Users/jon/.asdf/shims/black",
   "python.sortImports.path": "/Users/jon/.asdf/shims/isort",
+  "python.venvFolders": [".virtualenvs"],
+  "python.venvPath": "~/.virtualenvs",
   "prettier.singleQuote": true,
   "prettier.semi": true,
   "prettier.printWidth": 88,
