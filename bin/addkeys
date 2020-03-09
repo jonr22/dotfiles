@@ -1,7 +1,7 @@
 #!/bin/bash
 
 for f in $HOME/.ssh/*; do
-  if file $f | grep -Fq PEM; then
+  if file $f | grep -Fq "private key"; then
     ssh-add -K $f
   fi
 done
