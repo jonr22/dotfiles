@@ -37,5 +37,6 @@ windows:
   - servers:
       layout: even-vertical
       panes:
-        - ng serve
+        # - ng serve
+        - #empty
         - #empty
