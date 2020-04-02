@@ -44,6 +44,8 @@ if [ $(uname) = Darwin ]; then
   alias post_status='pg_ctl status -D /usr/local/var/postgres -s'
 fi
 
+alias frun='foreman run -e $(git rev-parse --show-toplevel)/.env'
+
 # Fun
 alias weather='curl wttr.in/Boston'
 alias myip='curl https://ipinfo.io/ip'
