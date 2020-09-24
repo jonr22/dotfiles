@@ -24,3 +24,4 @@ classes/
 .project
 .settings/
 .classpath
+.factorypath
