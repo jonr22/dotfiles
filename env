@@ -1,5 +1,6 @@
 HOMEBREW_PATH=/usr/local
 HEROKU_PATH=/usr/local/heroku
+SCALA_PATH="$HOME/Library/Application Support/Coursier"
 
 # use vim as the visual editor
 export VISUAL=vim
@@ -54,6 +55,11 @@ fi
 # Heroku
 if [[ -n "$HEROKU_PATH" && -d "$HEROKU_PATH/bin" ]]; then
   PATH=$(add_to_path "$PATH" "$HEROKU_PATH/bin")
+fi
+
+# Scala
+if [[ -n "$SCALA_PATH" && -d "$SCALA_PATH/bin" ]]; then
+  PATH=$(add_to_path "$PATH" "$SCALA_PATH/bin")
 fi
 
 # personal bin
