@@ -82,6 +82,7 @@ class RepoMan
         FileUtils.rm_rf path
       end
     else
+      # TODO: handle mkdir failures gracefully (readonly for example)
       FileUtils.mkdir_p path
       FileUtils.rm_rf path
     end
@@ -92,6 +93,7 @@ class RepoMan
       log "Adding to #{config}: #{repo} ..."
 
       # TODO: cleanup new lines
+      # TODO: add ~/$HOME back in if possible
       f << "\n#{repo}"
     end
   end
