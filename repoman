@@ -17,29 +17,29 @@ git@gitlab.com:jonr22/voting.git ~/Developer/scratch/voting
 
 git@bitbucket.org:jonr22/bellissimo_grande.git ~/Developer/consulting/bellissimo_grande
 
-git@bitbucket.org:madaket/aws.git /Developer/madaket/workspace/aws
+git@bitbucket.org:madaket/aws.git ~/Developer/madaket/workspace/aws
 git@bitbucket.org:madaket/common-jars.git ~/Developer/madaket/workspace/platform/common-jars
 git@bitbucket.org:madaket/common-ui.git ~/Developer/madaket/workspace/common-ui
 git@bitbucket.org:madaket/server-operations.git ~/Developer/madaket/workspace/server-operations
 git@bitbucket.org:madaket/docker-images.git ~/Developer/madaket/workspace/madaket/docker-images
 git@bitbucket.org:madaket/madabot.git ~/Developer/madaket/workspace/madaket/madabot
-git@bitbucket.org:madaket/bi.git /Developer/madaket/workspace/micro-services/bi
-git@bitbucket.org:madaket/customer.git /Developer/madaket/workspace/micro-services/customer
-git@bitbucket.org:madaket/elastic.git /Developer/madaket/workspace/micro-services/elastic
+git@bitbucket.org:madaket/bi.git ~/Developer/madaket/workspace/micro-services/bi
+git@bitbucket.org:madaket/customer.git ~/Developer/madaket/workspace/micro-services/customer
+git@bitbucket.org:madaket/elastic.git ~/Developer/madaket/workspace/micro-services/elastic
 git@bitbucket.org:madaket/msmanage.git ~/Developer/madaket/workspace/micro-services/msmanage
 git@bitbucket.org:madaket/practice.git ~/Developer/madaket/workspace/micro-services/practice
 git@bitbucket.org:madaket/provider.git ~/Developer/madaket/workspace/micro-services/provider
-git@bitbucket.org:madaket/rbac.git /Developer/madaket/workspace/micro-services/rbac
-git@bitbucket.org:madaket/tzsync.git /Developer/madaket/workspace/micro-services/tzsync
-git@bitbucket.org:madaket/user.git /Developer/madaket/workspace/micro-services/user
-git@bitbucket.org:madaket/dashboard-ux.git /Developer/madaket/workspace/madaket/dashboard-ux followup
-git@bitbucket.org:madaket/dashboard.git /Developer/madaket/workspace/madaket/dashboard followup
-git@bitbucket.org:madaket/edi-elastic-indexer.git /Developer/madaket/workspace/madaket/edi-elastic-indexer
-git@bitbucket.org:madaket/elastic-ui.git /Developer/madaket/workspace/madaket/elastic-ui
-git@bitbucket.org:madaket/enrollment-indexer.git /Developer/madaket/workspace/madaket/enrollment-indexer
+git@bitbucket.org:madaket/rbac.git ~/Developer/madaket/workspace/micro-services/rbac
+git@bitbucket.org:madaket/tzsync.git ~/Developer/madaket/workspace/micro-services/tzsync
+git@bitbucket.org:madaket/user.git ~/Developer/madaket/workspace/micro-services/user
+git@bitbucket.org:madaket/dashboard-ux.git ~/Developer/madaket/workspace/madaket/dashboard-ux followup
+git@bitbucket.org:madaket/dashboard.git ~/Developer/madaket/workspace/madaket/dashboard followup
+git@bitbucket.org:madaket/edi-elastic-indexer.git ~/Developer/madaket/workspace/madaket/edi-elastic-indexer
+git@bitbucket.org:madaket/elastic-ui.git ~/Developer/madaket/workspace/madaket/elastic-ui
+git@bitbucket.org:madaket/enrollment-indexer.git ~/Developer/madaket/workspace/madaket/enrollment-indexer
 git@bitbucket.org:madaket/cred.git ~/Developer/madaket/workspace/cred
 git@bitbucket.org:madaket/enroll-app.git ~/Developer/madaket/workspace/enroll/enroll-app
-git@bitbucket.org:madaket/enroll-command-line.git /Developer/madaket/workspace/enroll/enroll-command-line
+git@bitbucket.org:madaket/enroll-command-line.git ~/Developer/madaket/workspace/enroll/enroll-command-line
 git@bitbucket.org:madaket/enroll-import.git ~/Developer/madaket/workspace/enroll/enroll-import
 git@bitbucket.org:madaket/stem-app.git ~/Developer/madaket/workspace/stem/stem-app
 git@bitbucket.org:madaket/stem-reports.git ~/Developer/madaket/workspace/stem/stem-reports
