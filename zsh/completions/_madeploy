@@ -1,0 +1,21 @@
+#compdef madeploy
+
+_arguments \
+  '(-a --all)'{-a,--all}'[follow all steps, equivalent of -bsrct]' \
+  '(-b --build)'{-b,--build}'[build artifacts]' \
+  '(-c --copy)'{-c,--copy}'[copy artifacts to server]' \
+  '(-h --help)'{-h,--help}'[display help (this is it)]' \
+  '(-l --log)'{-l,--log}'[display logs]' \
+  '(-p --path)'{-p,--path}'[a path to the project to deploy, defaults to the current directory]:path:_files' \
+  '(-q --quiet)'{-q,--quiet}'[quiet mode]' \
+  '(-r --archive)'{-r,--archive}'[archive any deployed artifacts on the server]' \
+  '(-s --stop)'{-s,--stop}'[stop the currently running application on the server]' \
+  '(-t --start)'{-t,--start}'[start the application on the server]' \
+  '(-v --verbose)'{-v,--verbose}'[verbose mode, most significantly this prints build output]' \
+  ':remote host name:->userhost'
+
+case "$state" in
+  userhost)
+    _wanted hosts expl 'remote host name' _ssh_hosts
+  ;;
+esac

@@ -1,6 +1,7 @@
 HOMEBREW_PATH=/usr/local
 HEROKU_PATH=/usr/local/heroku
 SCALA_PATH="$HOME/Library/Application Support/Coursier"
+JAVA_PATH="/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home"
 
 # use vim as the visual editor
 export VISUAL=vim
@@ -60,6 +61,11 @@ fi
 # Scala
 if [[ -n "$SCALA_PATH" && -d "$SCALA_PATH/bin" ]]; then
   PATH=$(add_to_path "$PATH" "$SCALA_PATH/bin")
+fi
+
+# Java
+if [[ -n "$JAVA_PATH" && -d "$JAVA_PATH" ]]; then
+  export JAVA_HOME=$JAVA_PATH
 fi
 
 # personal bin
