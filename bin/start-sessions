@@ -8,5 +8,6 @@ tmuxinator start --no-attach madaket-stem-app
 tmuxinator start --no-attach madaket-stem-ux
 tmuxinator start --no-attach madaket-dashboard
 tmuxinator start --no-attach madaket-ms
+tmuxinator start --no-attach madaket-admin
 # tmuxinator start --no-attach neighborshould
 tmuxinator start --no-attach scratch
