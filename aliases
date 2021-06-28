@@ -54,3 +54,5 @@ alias myip='curl https://ipinfo.io/ip'
 if [ -f ~/.aliases.local ]; then
     source ~/.aliases.local
 fi
+
+alias mdt='mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:tree -Dverbose=true'
