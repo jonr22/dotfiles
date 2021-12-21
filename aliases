@@ -56,3 +56,4 @@ if [ -f ~/.aliases.local ]; then
 fi
 
 alias mdt='mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:tree -Dverbose=true'
+
