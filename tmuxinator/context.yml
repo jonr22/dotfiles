@@ -1,7 +1,7 @@
-# ~/.tmuxinator/madaket-dashboard.yml
+# ~/.tmuxinator/context.yml
 
-name: madaket-dashboard
-root: /madaket/workspace/madaket/dashboard
+name: context
+root: ~/Developer/context
 
 # Optional tmux socket
 # socket_name: foo
@@ -25,7 +25,7 @@ root: /madaket/workspace/madaket/dashboard
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t madaket-dashboard
+# post: tmux -CC attach -t context
 
 windows:
   - code:

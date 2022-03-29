@@ -2,12 +2,6 @@
 
 tmuxinator start --no-attach dotfiles
 tmuxinator start --no-attach laptop
-# tmuxinator start --no-attach madaket-common-ui
-# tmuxinator start --no-attach madaket-enroll-app
-# tmuxinator start --no-attach madaket-stem-app
-# tmuxinator start --no-attach madaket-stem-ux
-# tmuxinator start --no-attach madaket-dashboard
-# tmuxinator start --no-attach madaket-ms
-# tmuxinator start --no-attach madaket-admin
-tmuxinator start --no-attach neighborshould
+# tmuxinator start --no-attach neighborshould
+tmuxinator start --no-attach context
 tmuxinator start --no-attach scratch
