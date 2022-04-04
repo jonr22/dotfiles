@@ -1,4 +1,6 @@
 @angular/cli
+@aws-amplify/cli
+@nestjs/cli
 eslint
 tslint
 typescript
