@@ -2,6 +2,6 @@
 
 for f in $HOME/.ssh/*; do
   if file $f | grep -Fq "private key"; then
-    ssh-add -K $f
+    ssh-add --apple-load-keychain $f
   fi
 done
