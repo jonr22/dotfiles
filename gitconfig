@@ -35,10 +35,8 @@
   path = ~/.gitconfig.local
 [include]
   path = ~/.gitconfig.default
-[includeIf "gitdir:**/madaket/"]
-  path = ~/.gitconfig.madaket
-[includeIf "gitdir:/madaket/"]
-  path = ~/.gitconfig.madaket
+[includeIf "gitdir:**/context/"]
+  path = ~/.gitconfig.context
 [mergetool]
 	prompt = false
 [mergetool "Kaleidoscope"]
