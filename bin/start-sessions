@@ -4,4 +4,5 @@ tmuxinator start --no-attach dotfiles
 tmuxinator start --no-attach laptop
 # tmuxinator start --no-attach neighborshould
 tmuxinator start --no-attach context
+tmuxinator start --no-attach context-editor
 tmuxinator start --no-attach scratch
