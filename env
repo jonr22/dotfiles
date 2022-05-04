@@ -28,10 +28,16 @@ if [[ "$TERM" == "xterm" ]]; then
   TERM="xterm-256color"
 fi
 
-# ASDF
-if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
-  . "$HOME/.asdf/asdf.sh"
+# Ruby
+if [ -d "/usr/local/opt/ruby/bin" ]; then
+  PATH=$(add_to_path "$PATH" "/usr/local/opt/ruby/bin")
+  PATH=$(add_to_path "$PATH" `gem environment gemdir`/bin)
 fi
+
+# ASDF
+# if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
+#   . "$HOME/.asdf/asdf.sh"
+# fi
 
 # Homebrew
 if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
@@ -40,18 +46,18 @@ if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
 fi
 
 # Load virtualenvwrapper
-if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-  source "/usr/local/bin/virtualenvwrapper.sh"
-elif [ "$(command -v asdf)" ] && asdf list python >/dev/null 2>&1; then
-  python_bin="$(asdf where python)"
-  if [ -f "$python_bin/bin/virtualenvwrapper.sh" ]; then
-    source "$python_bin/bin/virtualenvwrapper.sh"
-  fi
-fi
+# if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+#   source "/usr/local/bin/virtualenvwrapper.sh"
+# elif [ "$(command -v asdf)" ] && asdf list python >/dev/null 2>&1; then
+#   python_bin="$(asdf where python)"
+#   if [ -f "$python_bin/bin/virtualenvwrapper.sh" ]; then
+#     source "$python_bin/bin/virtualenvwrapper.sh"
+#   fi
+# fi
 
-if [[ -d "$HOME/.virtualenvs" ]]; then
-  export WORKON_HOME=$HOME/.virtualenvs
-fi
+# if [[ -d "$HOME/.virtualenvs" ]]; then
+#   export WORKON_HOME=$HOME/.virtualenvs
+# fi
 
 # Heroku
 if [[ -n "$HEROKU_PATH" && -d "$HEROKU_PATH/bin" ]]; then

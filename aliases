@@ -47,7 +47,7 @@ fi
 alias frun='foreman run -e $(git rev-parse --show-toplevel)/.env'
 
 # Fun
-alias weather='curl wttr.in/Boston'
+alias weather='curl wttr.in/Hingham'
 alias myip='curl https://ipinfo.io/ip'
 
 # Run local aliases if they exist

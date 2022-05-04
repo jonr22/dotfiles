@@ -2,5 +2,6 @@
 @aws-amplify/cli
 @nestjs/cli
 eslint
+serve
 tslint
 typescript
