@@ -1,5 +1,5 @@
 HOMEBREW_PATH=/usr/local
-HEROKU_PATH=/usr/local/heroku
+# HEROKU_PATH=/usr/local/heroku
 SCALA_PATH="$HOME/Library/Application Support/Coursier"
 JAVA_PATH="/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home"
 
@@ -28,40 +28,33 @@ if [[ "$TERM" == "xterm" ]]; then
   TERM="xterm-256color"
 fi
 
-# Ruby
-if [ -d "/usr/local/opt/ruby/bin" ]; then
-  PATH=$(add_to_path "$PATH" "/usr/local/opt/ruby/bin")
-  PATH=$(add_to_path "$PATH" `gem environment gemdir`/bin)
-fi
-
-# ASDF
-# if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
-#   . "$HOME/.asdf/asdf.sh"
-# fi
-
 # Homebrew
 if [[ -n "$HOMEBREW_PATH" && -d "$HOMEBREW_PATH/bin" ]]; then
   PATH=$(add_to_path "$PATH" "$HOMEBREW_PATH/bin")
   PATH=$(add_to_path "$PATH" "$HOMEBREW_PATH/sbin")
 fi
 
-# Load virtualenvwrapper
-# if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-#   source "/usr/local/bin/virtualenvwrapper.sh"
-# elif [ "$(command -v asdf)" ] && asdf list python >/dev/null 2>&1; then
-#   python_bin="$(asdf where python)"
-#   if [ -f "$python_bin/bin/virtualenvwrapper.sh" ]; then
-#     source "$python_bin/bin/virtualenvwrapper.sh"
-#   fi
+# Node
+export NVM_DIR="$HOME/.nvm"
+if [ -s "$(brew --prefix nvm)/nvm.sh" ]; then
+  source "$(brew --prefix nvm)/nvm.sh"
+fi
+# Run `nvm use` in order to start version management running
+# export NVM_DIR="$HOME/.nvm"
+# if [ -s "$(brew --prefix nvm)/nvm.sh" ]; then
+#   PATH=$(add_to_path "$PATH" "$HOME/.nvm/versions/node/v17.8.0/bin")
+#   source "$(brew --prefix nvm)/nvm.sh" --no-use
 # fi
 
-# if [[ -d "$HOME/.virtualenvs" ]]; then
-#   export WORKON_HOME=$HOME/.virtualenvs
-# fi
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 
-# Heroku
-if [[ -n "$HEROKU_PATH" && -d "$HEROKU_PATH/bin" ]]; then
-  PATH=$(add_to_path "$PATH" "$HEROKU_PATH/bin")
+# Ruby
+if [ -d "/usr/local/opt/ruby/bin" ]; then
+  PATH=$(add_to_path "$PATH" "/usr/local/opt/ruby/bin")
+  PATH=$(add_to_path "$PATH" `gem environment gemdir`/bin)
 fi
 
 # Scala
@@ -86,6 +79,30 @@ if [ -d "$HOME/.lib" ]; then
   LD_LIBRARY_PATH=$(add_to_path "$LD_LIBRARY_PATH" "$HOME/.lib")
   export LD_LIBRARY_PATH
 fi
+
+# ASDF
+# if [[ -s "$HOME/.asdf/asdf.sh" ]]; then
+#   . "$HOME/.asdf/asdf.sh"
+# fi
+
+# Load virtualenvwrapper
+# if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+#   source "/usr/local/bin/virtualenvwrapper.sh"
+# elif [ "$(command -v asdf)" ] && asdf list python >/dev/null 2>&1; then
+#   python_bin="$(asdf where python)"
+#   if [ -f "$python_bin/bin/virtualenvwrapper.sh" ]; then
+#     source "$python_bin/bin/virtualenvwrapper.sh"
+#   fi
+# fi
+
+# if [[ -d "$HOME/.virtualenvs" ]]; then
+#   export WORKON_HOME=$HOME/.virtualenvs
+# fi
+
+# Heroku
+# if [[ -n "$HEROKU_PATH" && -d "$HEROKU_PATH/bin" ]]; then
+#   PATH=$(add_to_path "$PATH" "$HEROKU_PATH/bin")
+# fi
 
 # Run local env commands if they exist
 if [ -f ~/.env.local ]; then

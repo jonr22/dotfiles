@@ -2,6 +2,7 @@ tags
 node_modules/
 target/
 classes/
+.vscode/
 .DS_Store
 .netrwhist
 .idea
