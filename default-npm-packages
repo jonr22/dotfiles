@@ -1,7 +1,7 @@
-@angular/cli
 @aws-amplify/cli
 @nestjs/cli
 eslint
 serve
+truffle
 tslint
 typescript
