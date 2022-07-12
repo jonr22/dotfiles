@@ -8,13 +8,20 @@ git@bitbucket.org:jonr22/curability.git ~/Developer/projects/curability
 git@github.com:jonr22/wedding.git ~/Developer/projects/wedding
 git@github.com:sgiroux/neighborshould.git ~/Developer/projects/neighborshould/neighborshould-be
 git@github.com:jonr22/neighborshould-fe.git ~/Developer/projects/neighborshould/neighborshould-fe
+git@github.com:jonr22/lap-timer.git ~/Developer/projects/lap-timer main
 
 git@github.com:jonr22/laptop.git ~/Developer/open_source/laptop
 git@github.com:git/git.git ~/Developer/open_source/git
+git@github.com:ethereumbook/ethereumbook.git ~/Developer/open_source/ethereumbook develop
 
 git@github.com:jonr22/jonr22.github.io.git ~/Developer/blog source
-git@gitlab.com:jonr22/voting.git ~/Developer/scratch/voting
 
 git@bitbucket.org:jonr22/bellissimo_grande.git ~/Developer/consulting/bellissimo_grande
 
-git@github.com:joincontext/context.git ~/Developer/context/context main
+git@github.com:joincontext/content-oracle.git ~/Developer/context/content-oracle dev
+git@github.com:joincontext/context-editor.git ~/Developer/context/context-editor dev
+git@github.com:joincontext/amplify.git ~/Developer/context/amplify dev
+git@github.com:joincontext/hypothesis-extension.git ~/Developer/open_source/hypothesis/browser-extension feature/oauth
+git@github.com:joincontext/hypothesis-client.git ~/Developer/open_source/hypothesis/client feature/oauth
+git@github.com:joincontext/hypothesis-server.git ~/Developer/open_source/hypothesis/h feature/oauth
+
