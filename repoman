@@ -24,4 +24,4 @@ git@github.com:joincontext/amplify.git ~/Developer/context/amplify dev
 git@github.com:joincontext/hypothesis-extension.git ~/Developer/open_source/hypothesis/browser-extension feature/oauth
 git@github.com:joincontext/hypothesis-client.git ~/Developer/open_source/hypothesis/client feature/oauth
 git@github.com:joincontext/hypothesis-server.git ~/Developer/open_source/hypothesis/h feature/oauth
-
+git@github.com:joincontext/dailyreader-client.git ~/Developer/context/dailyreader-client main
