@@ -62,7 +62,7 @@ class RepoMan
 
   def clone_command(repo)
     clean repo.path
-    return log "Skipping #{repo.url} ..." if File.exists?(repo.path)
+    return log "Skipping #{repo.url} ..." if File.exist?(repo.path)
 
     cmd = "git clone #{create_url repo.url} #{repo.path}"
     cmd << " --branch #{repo.branch}" if repo.branch
@@ -76,7 +76,7 @@ class RepoMan
   end
 
   def clean(path)
-    if File.exists?(path) then
+    if File.exist?(path) then
       if @options[:force] then
         log "Deleting #{path} ..."
         FileUtils.rm_rf path
