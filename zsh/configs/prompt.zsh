@@ -32,7 +32,7 @@ PROMPT='
 
 RPROMPT=''
 
-virtualenvwrapper='virtualenvwrapper.sh'
-if (( $+commands[$virtualenvwrapper] )); then
-  RPROMPT='$(virtualenv_prompt_info)%{$reset_color%}'
-fi
+# virtualenvwrapper='virtualenvwrapper.sh'
+# if (( $+commands[$virtualenvwrapper] )); then
+#   RPROMPT='$(virtualenv_prompt_info)%{$reset_color%}'
+# fi

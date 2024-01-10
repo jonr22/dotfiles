@@ -1,3 +1,0 @@
-#compdef mvn-or-mvnw
-compdef mvn-or-mvnw=mvn
-

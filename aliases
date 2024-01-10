@@ -24,27 +24,9 @@ alias la='ls -lAh'
 # pretty print the path
 alias path='echo -e ${PATH//:/"\n"}'
 
-# tmux
-alias ta='tmux attach -t'
-alias ts='tmux new-session -s'
-alias tl='tmux list-sessions'
-alias mux='tmuxinator'
-
 # Extras
 alias tlf='tail -f'
 alias mkdir='mkdir -p'
-
-# mac specific settings
-if [ $(uname) = Darwin ]; then
-
-  alias post_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-  alias post_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-  alias post_restart='stoppost && sleep 1 && startpost'
-  alias post_reload='pg_ctl reload -D /usr/local/var/postgres -s'
-  alias post_status='pg_ctl status -D /usr/local/var/postgres -s'
-fi
-
-alias frun='foreman run -e $(git rev-parse --show-toplevel)/.env'
 
 # Fun
 alias weather='curl wttr.in/Hingham'
@@ -54,6 +36,3 @@ alias myip='curl https://ipinfo.io/ip'
 if [ -f ~/.aliases.local ]; then
     source ~/.aliases.local
 fi
-
-alias mdt='mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:tree -Dverbose=true'
-

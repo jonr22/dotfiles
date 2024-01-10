@@ -17,22 +17,4 @@ fi
 vim -u "$HOME"/.vimrc.bundles +PlugInstall +PlugClean! +qa
 reset -Q
 
-# ycm_check
-# if [ $? -ne 0 ]; then
-#   "$HOME"/.vim/bundle/YouCompleteMe/install.py --clang-completer --java-completer
-# fi
-
 repoman clone -v
-
-# detect old OS X broken /etc/zshenv and suggest rename
-if grep -qw path_helper /etc/zshenv 2>/dev/null; then
-  dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
-
-  cat <<MSG >&2
-Warning: \`/etc/zshenv' configuration file on your system may cause unexpected
-PATH changes on subsequent invocations of the zsh shell. The solution is to
-rename the file to \`zprofile':
-  sudo mv /etc/{zshenv,zprofile}
-(called from ${dir}/post-up:${LINENO})
-MSG
-fi
