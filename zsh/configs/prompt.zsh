@@ -27,7 +27,7 @@ function parse_git_dirty() {
 }
 
 PROMPT='
-%{$fg[magenta]%}%~%{$reset_color%}$(git_prompt_info)
+%{$fg[cyan]%}%~%{$reset_color%}$(git_prompt_info)
 %_$ '
 
 RPROMPT=''
