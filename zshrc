@@ -3,21 +3,6 @@
 export ZSH="$HOME/.zsh"
 
 
-
-### Shared Settings ###
-
-# Run env commands if they exist
-if [ -f ~/.env ]; then
-  source ~/.env
-fi
-
-# Run alias commands if they exist
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
-fi
-
-
-
 ### Configs ###
 
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post

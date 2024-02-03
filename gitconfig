@@ -30,8 +30,8 @@
   path = ~/.gitconfig.local
 [include]
   path = ~/.gitconfig.default
-[includeIf "gitdir:**/context/"]
-  path = ~/.gitconfig.context
+[includeIf "gitdir:**/dailyreader/"]
+  path = ~/.gitconfig.dailyreader
 [difftool]
 	prompt = false
 
